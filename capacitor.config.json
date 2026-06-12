@@ -1,0 +1,12 @@
+{
+  "appId": "com.xpressomedic.scenarioapp",
+  "appName": "XpressoMedic Scenarios",
+  "webDir": "www",
+  "bundledWebRuntime": false,
+  "ios": {
+    "backgroundColor": "#0d1117"
+  },
+  "android": {
+    "backgroundColor": "#0d1117"
+  }
+}
