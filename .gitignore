@@ -1,0 +1,10 @@
+node_modules/
+android/app/build/
+android/.gradle/
+android/key.properties
+ios/App/Pods/
+ios/App/App.xcworkspace/xcuserdata/
+*.mobileprovision
+*.keystore
+*.jks
+.DS_Store
