@@ -105,12 +105,18 @@ function showPopup(loc, e) {
 
 function movePopup(e) {
   if (!mapWrap || !popup) return;
-  const rect = mapWrap.getBoundingClientRect();
-  const clientX = e.clientX !== undefined ? e.clientX : (e.touches ? e.touches[0].clientX : rect.left + rect.width / 2);
-  const clientY = e.clientY !== undefined ? e.clientY : (e.touches ? e.touches[0].clientY : rect.top + 100);
-  const x = clientX - rect.left;
-  const y = clientY - rect.top;
 
+  const mapRect = mapWrap.getBoundingClientRect();
+  const vw = window.innerWidth;
+  const vh = window.innerHeight;
+
+  // Get cursor/touch position in viewport coords
+  const clientX = e.clientX !== undefined ? e.clientX
+    : (e.touches ? e.touches[0].clientX : mapRect.left + mapRect.width / 2);
+  const clientY = e.clientY !== undefined ? e.clientY
+    : (e.touches ? e.touches[0].clientY : mapRect.top + 100);
+
+  // Measure popup
   popup.style.visibility = 'hidden';
   popup.style.display    = 'flex';
   const pw = popup.offsetWidth;
@@ -118,14 +124,42 @@ function movePopup(e) {
   popup.style.visibility = '';
   if (!popup.classList.contains('visible')) { popup.style.display = ''; return; }
 
-  const M    = 8;
-  const left = Math.max(M, Math.min(x - pw / 2, rect.width - pw - M));
-  const flip = (y - ph - 22) < M;
+  const CARET  = 18; // caret height + gap
+  const MARGIN = 8;  // min edge clearance
+
+  // Decide vertical: prefer above pin, flip below if not enough room
+  const spaceAbove = clientY - mapRect.top - CARET;
+  const spaceBelow = mapRect.bottom - clientY - CARET;
+  const flip = spaceAbove < ph + MARGIN && spaceBelow > spaceAbove;
+
+  // Vertical position relative to mapWrap
+  let top;
+  if (flip) {
+    top = clientY - mapRect.top + CARET;
+    // Clamp so it doesn't go below viewport bottom
+    const bottomInViewport = mapRect.top + top + ph;
+    if (bottomInViewport > vh - MARGIN) {
+      top = vh - MARGIN - ph - mapRect.top;
+    }
+  } else {
+    top = clientY - mapRect.top - ph - CARET;
+    // Clamp so it doesn't go above viewport top
+    if (mapRect.top + top < MARGIN) {
+      top = MARGIN - mapRect.top;
+    }
+  }
+
+  // Horizontal: center on cursor, clamp within viewport
+  let left = clientX - mapRect.left - pw / 2;
+  const leftInViewport  = mapRect.left + left;
+  const rightInViewport = leftInViewport + pw;
+  if (leftInViewport < MARGIN) left = MARGIN - mapRect.left;
+  if (rightInViewport > vw - MARGIN) left = vw - MARGIN - pw - mapRect.left;
 
   caretUp.style.display = flip ? 'none'  : 'block';
   caretDn.style.display = flip ? 'block' : 'none';
   popup.style.left      = left + 'px';
-  popup.style.top       = (flip ? y + 22 : y - ph - 18) + 'px';
+  popup.style.top       = top  + 'px';
   popup.style.transform = 'none';
 }
 
