@@ -36,7 +36,7 @@ const locations = [
   { id:'bd_nursing',  name:"Grand-daddy's Nursing & Rehab", addr:"750 Crown St",          cat:'health', icon:'🏥', tagline:"Round-the-Clock Care"  },
   { id:'bd_grocery',  name:"Big Daddy's Food King",        addr:"180 Big Daddy Blvd", cat:'retail', icon:'🛒', tagline:"Everything You Need & Then Some" },
   { id:'bd_mhp',     name:"Big Daddy's Mobile Home Park",  addr:"200 Papa Drive",       cat:'school', icon:'🏠', tagline:"Home Is Where The Call Is"  },
-  { id:'bd_hospital',  name:"Big Daddy Regional Medical Center", addr:"480 Big Daddy Blvd", cat:'health', icon:'🏥', tagline:"Where Big Daddyville Gets Better" },
+  { id:'bd_pawn',     name:"Big Daddy's Pawn & Gold",      addr:"480 Big Daddy Blvd", cat:'retail', icon:'💍', tagline:"We Buy, Sell & Ask No Questions" },
   { id:'bd_pharmacy', name:"Big Daddy's Rx Pharmacy",      addr:"240 Crown St N",      cat:'health', icon:'💊', tagline:"Pills, Patience & Wisdom" },
   { id:'bd_cbd',      name:"Big Daddy's CBD & Wellness",   addr:"310 Throne Ave",      cat:'health', icon:'🌿', tagline:"Relax. Legally." },
   { id:'bd_smoke',    name:"Big Daddy's Smoke Shack",      addr:"330 Throne Ave",      cat:'health', icon:'💨', tagline:"Vapes, Tobacco & Bad Decisions" },
@@ -45,7 +45,7 @@ const locations = [
   { id:'bd_auto',     name:"Big Daddy's Auto Repair",      addr:"820 Big Daddy Blvd", cat:'auto',   icon:'🔧', tagline:"We Fix It. Eventually." },
   { id:'bd_club',     name:"Big Daddy's Gentleman's Club", addr:"730 Crown St",        cat:'adult',  icon:'🎭', tagline:"Discretion Is Our Middle Name" },
   { id:'bd_bar',      name:"Big Daddy's Tap Room",         addr:"370 Big Daddy Blvd", cat:'adult',  icon:'🍺', tagline:"Cold Beer, Warm Arguments" },
-  { id:'bd_estates',  name:"Big Daddy Estates",             addr:"580 Crown St",        cat:'school', icon:'🏡', tagline:"Home Is Where the Call Is" },
+  { id:'bd_liquor',   name:"Big Daddy's Liquors",          addr:"580 Crown St",        cat:'adult',  icon:'🥃', tagline:"Take the Edge Off" },
   { id:'bd_motel',    name:"Big Daddy's Motor Inn",        addr:"99 Papa Drive",       cat:'hotel',  icon:'🏨', tagline:"Hourly & Weekly Rates Available" },
   { id:'bd_suites',   name:"Big Daddy Suites",             addr:"840 Crown St",        cat:'hotel',  icon:'🏩', tagline:"Extended Stay. Extended Problems." },
   { id:'bd_fire',     name:"Big Daddy Fire Station 1",     addr:"500 Throne Ave",      cat:'fire',   icon:'🚒', tagline:"Home Base" },
@@ -136,11 +136,10 @@ function hidePopup() {
 // ── SCENARIO DISPLAY ────────────────────────────────────────
 const wrap    = document.getElementById('scenarioWrap');
 let activeLoc = null;
-const reveals = ['scene', 'patient', 'vitals', 'findings', 'teaching'];
+const reveals = ['scene', 'sizeup', 'primary', 'history', 'vitals', 'teaching'];
 
 function loadScenario(loc, next) {
   activeLoc = loc;
-  window.activeLoc = loc;
   hidePopup();
 
   // Highlight active pin
@@ -205,16 +204,29 @@ function loadScenario(loc, next) {
       </div>
     </div>
 
-    <div class="reveal-section" id="sec-patient">
-      <button class="reveal-btn" onclick="toggleReveal('patient')" id="btn-patient">
+    <div class="reveal-section" id="sec-sizeup">
+      <button class="reveal-btn" onclick="toggleReveal('sizeup')" id="btn-sizeup">
         <div class="reveal-btn-left">
-          <span class="reveal-btn-icon">👤</span>
-          <div><div class="reveal-btn-label">Patient Information</div><div class="reveal-btn-sub">Age, sex, PMH</div></div>
+          <span class="reveal-btn-icon">🔎</span>
+          <div><div class="reveal-btn-label">Scene Size-Up</div><div class="reveal-btn-sub">BSI, safety, MOI/NOI, general impression</div></div>
         </div>
         <span class="reveal-chevron">▶</span>
       </button>
-      <div class="reveal-content" id="con-patient">
-        <div class="content-text">${s.patient_info}</div>
+      <div class="reveal-content" id="con-sizeup">
+        <div class="content-text">${s.sceneSizeUp}</div>
+      </div>
+    </div>
+
+    <div class="reveal-section" id="sec-primary">
+      <button class="reveal-btn" onclick="toggleReveal('primary')" id="btn-primary">
+        <div class="reveal-btn-left">
+          <span class="reveal-btn-icon">👤</span>
+          <div><div class="reveal-btn-label">Primary Survey</div><div class="reveal-btn-sub">AVPU · Airway · Breathing · Circulation · Priority</div></div>
+        </div>
+        <span class="reveal-chevron">▶</span>
+      </button>
+      <div class="reveal-content" id="con-primary">
+        <div class="content-text">${s.primarySurvey}</div>
       </div>
     </div>
 
@@ -238,16 +250,16 @@ function loadScenario(loc, next) {
       </div>
     </div>
 
-    <div class="reveal-section" id="sec-findings">
-      <button class="reveal-btn" onclick="toggleReveal('findings')" id="btn-findings">
+    <div class="reveal-section" id="sec-history">
+      <button class="reveal-btn" onclick="toggleReveal('history')" id="btn-history">
         <div class="reveal-btn-left">
           <span class="reveal-btn-icon">🔍</span>
-          <div><div class="reveal-btn-label">Pertinent Findings</div><div class="reveal-btn-sub">Physical exam, positives &amp; negatives</div></div>
+          <div><div class="reveal-btn-label">History &amp; Secondary</div><div class="reveal-btn-sub">OPQRST · SAMPLE · Pertinent findings</div></div>
         </div>
         <span class="reveal-chevron">▶</span>
       </button>
-      <div class="reveal-content" id="con-findings">
-        <div class="content-text">${s.pertinent_findings}</div>
+      <div class="reveal-content" id="con-history">
+        <div class="content-text">${s.historySecondary}</div>
       </div>
     </div>
 
@@ -313,5 +325,13 @@ window.loadScenario  = loadScenario;
 window.toggleReveal  = toggleReveal;
 window.revealAll     = revealAll;
 window.resetReveals  = resetReveals;
+window.activeLoc     = activeLoc;
+
+// Keep activeLoc in sync
+const _origLoad = loadScenario;
+window.loadScenario = function(loc, next) {
+  _origLoad(loc, next);
+  window.activeLoc = activeLoc;
+};
 
 })();
