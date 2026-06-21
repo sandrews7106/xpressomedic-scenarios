@@ -16,7 +16,7 @@ workflows:
         bundle_identifier: "com.xpressomedic.scenarioapp"
 
       vars:
-        MARKETING_VERSION: "1.0.0"
+        MARKETING_VERSION: "1.0.1"
         XCODE_PROJECT: "ios/App/App.xcodeproj"
         XCODE_WORKSPACE: "ios/App/App.xcworkspace"
         XCODE_SCHEME: "App"
