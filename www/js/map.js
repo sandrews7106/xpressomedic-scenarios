@@ -50,6 +50,7 @@ const locations = [
   { id:'bd_fire',     name:"Big Daddy Fire Station 1",     addr:"500 Throne Ave",      cat:'fire',   icon:'🚒', tagline:"Home Base" },
   { id:'bd_police',   name:"Big Daddy PD",                 addr:"420 Big Daddy Blvd", cat:'police', icon:'🚔', tagline:"To Protect & Serve Big Daddyville" },
   { id:'bd_school',   name:"Big Daddy High School",        addr:"60 Papa Drive",       cat:'school', icon:'🏫', tagline:"Go Big Daddy Bulldogs!" },
+  { id:'bd_estates',  name:"Big Daddy Estates",            addr:"4000 Crowne Court",      cat:'retail', icon:'🏡', tagline:"Quiet Streets, Busy Medics" },
   { id:'bd_church',   name:"Big Daddy's House of Grace",   addr:"600 Throne Ave",      cat:'school', icon:'⛪', tagline:"All Are Welcome Here" },
   { id:'bd_park',     name:"Deron's Dreamland Park",       addr:"Center of Big Daddyville", cat:'park', icon:'🌳', tagline:"Where Every Call Is a Learning Moment" },
 ];
