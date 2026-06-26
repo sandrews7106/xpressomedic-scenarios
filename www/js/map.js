@@ -36,7 +36,8 @@ const locations = [
   { id:'bd_nursing',  name:"Grand-daddy's Nursing & Rehab", addr:"750 Crown St",          cat:'health', icon:'🏥', tagline:"Round-the-Clock Care"  },
   { id:'bd_grocery',  name:"Big Daddy's Food King",        addr:"180 Big Daddy Blvd", cat:'retail', icon:'🛒', tagline:"Everything You Need & Then Some" },
   { id:'bd_mhp',     name:"Big Daddy's Mobile Home Park",  addr:"200 Papa Drive",       cat:'school', icon:'🏠', tagline:"Home Is Where The Call Is"  },
-  { id:'bd_pawn',     name:"Big Daddy's Pawn & Gold",      addr:"480 Big Daddy Blvd", cat:'retail', icon:'💍', tagline:"We Buy, Sell & Ask No Questions" },
+  { id:'bd_laundry',  name:"Big Daddy's Laundromat",       addr:"150 Papa Drive",     cat:'auto',   icon:'🧺', tagline:"Wash, Dry & Wait for a Call" },
+  { id:'bd_dollar',   name:"Big Daddy's Dollar Deals",     addr:"450 Papa Drive",     cat:'retail', icon:'💵', tagline:"Everything's a Dollar. Mostly." },
   { id:'bd_pharmacy', name:"Big Daddy's Rx Pharmacy",      addr:"240 Crown St N",      cat:'health', icon:'💊', tagline:"Pills, Patience & Wisdom" },
   { id:'bd_cbd',      name:"Big Daddy's CBD & Wellness",   addr:"310 Throne Ave",      cat:'health', icon:'🌿', tagline:"Relax. Legally." },
   { id:'bd_smoke',    name:"Big Daddy's Smoke Shack",      addr:"330 Throne Ave",      cat:'health', icon:'💨', tagline:"Vapes, Tobacco & Bad Decisions" },
@@ -136,10 +137,11 @@ function hidePopup() {
 // ── SCENARIO DISPLAY ────────────────────────────────────────
 const wrap    = document.getElementById('scenarioWrap');
 let activeLoc = null;
-const reveals = ['scene', 'patient', 'vitals', 'findings', 'teaching'];
+const reveals = ['scene', 'primary', 'history', 'vitals', 'teaching'];
 
 function loadScenario(loc, next) {
   activeLoc = loc;
+  window.activeLoc = loc;
   hidePopup();
 
   // Highlight active pin
@@ -184,6 +186,8 @@ function loadScenario(loc, next) {
     <div class="dispatch-block">
       <div class="dispatch-label">📻 Dispatch</div>
       <div class="dispatch-text">${s.dispatch_line}</div>
+      <div class="content-label" style="margin-top:10px">Chief Complaint</div>
+      <div class="content-value">${s.chief_complaint}</div>
     </div>
 
     <button class="reveal-all-btn" onclick="revealAll()">👁 Reveal All Sections</button>
@@ -192,28 +196,25 @@ function loadScenario(loc, next) {
       <button class="reveal-btn" onclick="toggleReveal('scene')" id="btn-scene">
         <div class="reveal-btn-left">
           <span class="reveal-btn-icon">🚨</span>
-          <div><div class="reveal-btn-label">Scene Size-Up &amp; Chief Complaint</div><div class="reveal-btn-sub">Click to reveal</div></div>
+          <div><div class="reveal-btn-label">Scene Size-Up</div><div class="reveal-btn-sub">BSI · Safety · MOI/NOI · Resources</div></div>
         </div>
         <span class="reveal-chevron">▶</span>
       </button>
       <div class="reveal-content" id="con-scene">
-        <div class="content-label">Chief Complaint</div>
-        <div class="content-value" style="margin-bottom:10px">${s.chief_complaint}</div>
-        <div class="content-label">Scene Description</div>
-        <div class="content-text">${s.scene_description}</div>
+        <div class="content-text">${s.sceneSizeUp}</div>
       </div>
     </div>
 
-    <div class="reveal-section" id="sec-patient">
-      <button class="reveal-btn" onclick="toggleReveal('patient')" id="btn-patient">
+    <div class="reveal-section" id="sec-primary">
+      <button class="reveal-btn" onclick="toggleReveal('primary')" id="btn-primary">
         <div class="reveal-btn-left">
-          <span class="reveal-btn-icon">👤</span>
-          <div><div class="reveal-btn-label">Patient Information</div><div class="reveal-btn-sub">Age, sex, PMH</div></div>
+          <span class="reveal-btn-icon">⚡</span>
+          <div><div class="reveal-btn-label">Primary Survey</div><div class="reveal-btn-sub">AVPU · xABC · Patient Priority</div></div>
         </div>
         <span class="reveal-chevron">▶</span>
       </button>
-      <div class="reveal-content" id="con-patient">
-        <div class="content-text">${s.patient_info}</div>
+      <div class="reveal-content" id="con-primary">
+        <div class="content-text">${s.primarySurvey}</div>
       </div>
     </div>
 
@@ -237,16 +238,16 @@ function loadScenario(loc, next) {
       </div>
     </div>
 
-    <div class="reveal-section" id="sec-findings">
-      <button class="reveal-btn" onclick="toggleReveal('findings')" id="btn-findings">
+    <div class="reveal-section" id="sec-history">
+      <button class="reveal-btn" onclick="toggleReveal('history')" id="btn-history">
         <div class="reveal-btn-left">
           <span class="reveal-btn-icon">🔍</span>
-          <div><div class="reveal-btn-label">Pertinent Findings</div><div class="reveal-btn-sub">Physical exam, positives &amp; negatives</div></div>
+          <div><div class="reveal-btn-label">History &amp; Secondary Assessment</div><div class="reveal-btn-sub">OPQRST · SAMPLE · Focused Exam</div></div>
         </div>
         <span class="reveal-chevron">▶</span>
       </button>
-      <div class="reveal-content" id="con-findings">
-        <div class="content-text">${s.pertinent_findings}</div>
+      <div class="reveal-content" id="con-history">
+        <div class="content-text">${s.historySecondary}</div>
       </div>
     </div>
 
@@ -314,11 +315,6 @@ window.revealAll     = revealAll;
 window.resetReveals  = resetReveals;
 window.activeLoc     = activeLoc;
 
-// Keep activeLoc in sync
-const _origLoad = loadScenario;
-window.loadScenario = function(loc, next) {
-  _origLoad(loc, next);
-  window.activeLoc = activeLoc;
-};
+
 
 })();
