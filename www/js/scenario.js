@@ -347,35 +347,141 @@ function splitByMarkers(
    STRUCTURED ROW RENDERING
    ========================================================== */
 
-function renderRows(rows) {
+function getRowClass(label) {
+
+  return String(label || '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+
+function getPriorityClass(value) {
+
+  const text =
+    String(value || '').toLowerCase();
+
+  if (
+    text.includes('high') ||
+    text.includes('immediate') ||
+    text.includes('critical')
+  ) {
+    return 'priority-high';
+  }
+
+  if (
+    text.includes('low') ||
+    text.includes('non-emergent') ||
+    text.includes('nonemergent')
+  ) {
+    return 'priority-low';
+  }
+
+  return 'priority-question';
+}
+
+
+function renderRows(
+  rows,
+  variant = 'assessment'
+) {
 
   if (!rows.length)
     return '';
 
 
   return `
-    <div class="ps-grid">
+    <div class="ps-grid ps-grid-${variant}">
 
-      ${rows.map(row => `
+      ${rows.map(row => {
 
-        <div class="ps-row">
+        const slug =
+          getRowClass(row.label);
 
-          <div class="ps-content">
+        const isPriority =
+          String(row.label)
+            .toLowerCase()
+            .includes('patient priority');
 
-            <div class="ps-label">
+        const valueHtml =
+          isPriority
+            ? `
+              <span class="priority-badge ${getPriorityClass(row.value)}">
+                ${clean(row.value)}
+              </span>
+            `
+            : clean(row.value);
+
+        return `
+
+          <div class="ps-row ps-row-${variant} ps-row-${slug}">
+
+            <div class="ps-row-icon" aria-hidden="true">
               ${row.icon}
-              ${escapeHtml(row.label)}
             </div>
 
-            <div class="ps-value">
-              ${clean(row.value)}
+            <div class="ps-content">
+
+              <div class="ps-label">
+                ${escapeHtml(row.label)}
+              </div>
+
+              <div class="ps-value">
+                ${valueHtml}
+              </div>
+
             </div>
 
           </div>
 
-        </div>
+        `;
 
-      `).join('')}
+      }).join('')}
+
+    </div>
+  `;
+}
+
+
+function renderHistoryRows(rows) {
+
+  if (!rows.length)
+    return '';
+
+
+  return `
+    <div class="history-grid">
+
+      ${rows.map(row => {
+
+        const slug =
+          getRowClass(row.label);
+
+        return `
+
+          <article class="history-card history-${slug}">
+
+            <div class="history-card-header">
+
+              <span class="history-card-icon" aria-hidden="true">
+                ${row.icon}
+              </span>
+
+              <span class="history-card-label">
+                ${escapeHtml(row.label)}
+              </span>
+
+            </div>
+
+            <div class="history-card-value">
+              ${clean(row.value)}
+            </div>
+
+          </article>
+
+        `;
+
+      }).join('')}
 
     </div>
   `;
@@ -647,7 +753,7 @@ function parseSceneSizeUp(text) {
 
 
   return rows.length
-    ? renderRows(rows)
+    ? renderRows(rows, 'scene')
     : renderFallback(
         'Scene Size-Up',
         '🚨',
@@ -730,7 +836,7 @@ function parsePrimarySurvey(text) {
 
 
   return rows.length
-    ? renderRows(rows)
+    ? renderRows(rows, 'primary')
     : renderFallback(
         'Primary Survey',
         '⚡',
@@ -882,7 +988,7 @@ function parseHistorySecondary(text) {
 
 
   return rows.length
-    ? renderRows(rows)
+    ? renderHistoryRows(rows)
     : renderFallback(
         'History & Secondary Assessment',
         '🔍',
