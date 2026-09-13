@@ -20,7 +20,7 @@
     .map-help{position:absolute;left:12px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:25;max-width:270px;padding:9px 11px;border:1px solid #26394c;border-radius:10px;background:rgba(13,20,32,.9);color:#a9bacb;font:600 12px/1.35 Inter,system-ui,sans-serif;backdrop-filter:blur(8px)}
     .pin-group{cursor:pointer;transition:opacity .15s ease,transform .12s ease;transform-box:fill-box;transform-origin:center}
     .pin-group:active{opacity:.75;transform:scale(.96)}
-    .location-label{fill:#e3ebf4;font:700 9.2px Inter,system-ui,sans-serif;letter-spacing:.25px;paint-order:stroke;stroke:#0d1420;stroke-width:3px;stroke-linejoin:round;pointer-events:none}
+    .location-label{fill:#e3ebf4;font:700 10px Inter,system-ui,sans-serif;letter-spacing:.25px;paint-order:stroke;stroke:#0d1420;stroke-width:3px;stroke-linejoin:round;pointer-events:none}
     .district-label{fill:#314253;font:700 9px Inter,system-ui,sans-serif;letter-spacing:1.2px}
     @media(max-width:700px){.header-sub{display:none}.header-title{font-size:17px}.map-help{max-width:205px;font-size:11px}}
   </style>
@@ -87,46 +87,49 @@
         <text x="251" y="280" transform="rotate(-90 251 280)" text-anchor="middle" fill="#6c8298" font-size="9" font-family="Inter" font-weight="700" letter-spacing="1.4">NORTH STREET</text>
         <text x="541" y="280" transform="rotate(-90 541 280)" text-anchor="middle" fill="#6c8298" font-size="9" font-family="Inter" font-weight="700" letter-spacing="1.4">MARKET STREET</text>
 
-        <g class="pin-group" data-id="cedar_school" filter="url(#pinShadow)">
-          <circle cx="85" cy="115" r="24" fill="#d35400"/><text x="85" y="122" text-anchor="middle" font-size="20">🏫</text><text x="85" y="151" text-anchor="middle" class="location-label"><tspan x="85">HIGH</tspan><tspan x="85" dy="11">SCHOOL</tspan></text>
+        <g class="pin-group" data-id="bd_school" filter="url(#pinShadow)">
+          <circle cx="85" cy="115" r="24" fill="#d35400"/><text x="85" y="122" text-anchor="middle" font-size="20">🏫</text><text x="85" y="154" text-anchor="middle" class="location-label">HIGH SCHOOL</text>
         </g>
-        <g class="pin-group" data-id="cedar_pool" filter="url(#pinShadow)">
-          <circle cx="175" cy="115" r="24" fill="#2980b9"/><text x="175" y="122" text-anchor="middle" font-size="20">🏊</text><text x="175" y="151" text-anchor="middle" class="location-label"><tspan x="175">COMMUNITY</tspan><tspan x="175" dy="11">POOL</tspan></text>
+        <g class="pin-group" data-id="bd_pool" filter="url(#pinShadow)">
+          <circle cx="175" cy="115" r="24" fill="#2980b9"/><text x="175" y="122" text-anchor="middle" font-size="20">🏊</text><text x="175" y="154" text-anchor="middle" class="location-label">COMMUNITY POOL</text>
         </g>
-        <g class="pin-group" data-id="cedar_family_medicine" filter="url(#pinShadow)">
+        <g class="pin-group" data-id="bd_clinic" filter="url(#pinShadow)">
           <circle cx="345" cy="112" r="24" fill="#2980b9"/><text x="345" y="119" text-anchor="middle" font-size="20">🩺</text><text x="345" y="151" text-anchor="middle" class="location-label">FAMILY MEDICINE</text>
         </g>
-        <g class="pin-group" data-id="cedar_care" filter="url(#pinShadow)">
+        <g class="pin-group" data-id="bd_nursing" filter="url(#pinShadow)">
           <circle cx="455" cy="112" r="24" fill="#2980b9"/><text x="455" y="119" text-anchor="middle" font-size="20">🏥</text><text x="455" y="151" text-anchor="middle" class="location-label">CEDAR CARE</text>
         </g>
-        <g class="pin-group" data-id="cedar_athletics" filter="url(#pinShadow)">
-          <circle cx="625" cy="112" r="24" fill="#d35400"/><text x="625" y="119" text-anchor="middle" font-size="20">🏟️</text><text x="625" y="148" text-anchor="middle" class="location-label"><tspan x="625">ATHLETIC</tspan><tspan x="625" dy="11">COMPLEX</tspan></text>
+        <g class="pin-group" data-id="bd_sports" filter="url(#pinShadow)">
+          <circle cx="625" cy="112" r="24" fill="#d35400"/><text x="625" y="119" text-anchor="middle" font-size="20">🏟️</text><text x="625" y="151" text-anchor="middle" class="location-label">ATHLETIC COMPLEX</text>
         </g>
-        <g class="pin-group" data-id="cedar_apartments" filter="url(#pinShadow)">
+        <g class="pin-group" data-id="bd_apartments" filter="url(#pinShadow)">
           <circle cx="720" cy="112" r="24" fill="#27ae60"/><text x="720" y="119" text-anchor="middle" font-size="20">🏢</text><text x="720" y="151" text-anchor="middle" class="location-label">APARTMENTS</text>
         </g>
-        <g class="pin-group" data-id="cedar_park" filter="url(#pinShadow)">
+        <g class="pin-group" data-id="bd_park" filter="url(#pinShadow)">
           <circle cx="410" cy="274" r="25" fill="#2ea043"/><text x="410" y="281" text-anchor="middle" font-size="20">🌳</text>
         </g>
-        <g class="pin-group" data-id="cedar_grill" filter="url(#pinShadow)">
+        <g class="pin-group" data-id="bd_burger" filter="url(#pinShadow)">
           <circle cx="85" cy="445" r="24" fill="#e67e22"/><text x="85" y="452" text-anchor="middle" font-size="20">🍽️</text><text x="85" y="485" text-anchor="middle" class="location-label">CEDAR GRILL</text>
         </g>
-        <g class="pin-group" data-id="cedar_motor_lodge" filter="url(#pinShadow)">
+        <g class="pin-group" data-id="bd_motel" filter="url(#pinShadow)">
           <circle cx="175" cy="445" r="24" fill="#8e44ad"/><text x="175" y="452" text-anchor="middle" font-size="20">🏨</text><text x="175" y="485" text-anchor="middle" class="location-label">MOTOR LODGE</text>
         </g>
-        <g class="pin-group" data-id="cedar_quick_mart" filter="url(#pinShadow)">
+        <g class="pin-group" data-id="bd_mhp" filter="url(#pinShadow)">
           <circle cx="345" cy="445" r="24" fill="#27ae60"/><text x="345" y="452" text-anchor="middle" font-size="20">⛽</text><text x="345" y="485" text-anchor="middle" class="location-label">QUICK MART</text>
         </g>
-        <g class="pin-group" data-id="cedar_market" filter="url(#pinShadow)">
+        <g class="pin-group" data-id="bd_grocery" filter="url(#pinShadow)">
           <circle cx="455" cy="445" r="24" fill="#27ae60"/><text x="455" y="452" text-anchor="middle" font-size="20">🛒</text><text x="455" y="485" text-anchor="middle" class="location-label">CEDAR MARKET</text>
         </g>
-        <g class="pin-group" data-id="oakwood_estates" filter="url(#pinShadow)">
-          <circle cx="680" cy="445" r="24" fill="#27ae60"/><text x="680" y="452" text-anchor="middle" font-size="20">🏡</text><text x="680" y="481" text-anchor="middle" class="location-label"><tspan x="680">OAKWOOD</tspan><tspan x="680" dy="11">ESTATES</tspan></text>
+        <g class="pin-group" data-id="bd_estates" filter="url(#pinShadow)">
+          <circle cx="625" cy="445" r="24" fill="#27ae60"/><text x="625" y="452" text-anchor="middle" font-size="20">🏡</text><text x="625" y="485" text-anchor="middle" class="location-label">OAKWOOD ESTATES</text>
+        </g>
+        <g class="pin-group" data-id="bd_community" filter="url(#pinShadow)">
+          <circle cx="720" cy="445" r="24" fill="#d35400"/><text x="720" y="452" text-anchor="middle" font-size="20">🏛️</text><text x="720" y="485" text-anchor="middle" class="location-label">COMMUNITY CENTER</text>
         </g>
       </svg>
     </div>
 
-    <div class="map-help">Drag to move • Pinch or use + / − to zoom • Tap a location to start a scenario</div>
+    <div class="map-help">Drag to move • Pinch or use + / − to zoom • Tap a location to open a scenario</div>
 
     <div class="map-controls">
       <button class="map-control-btn" id="zoomIn" aria-label="Zoom in">+</button>

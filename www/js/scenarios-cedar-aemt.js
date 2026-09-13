@@ -1,0 +1,794 @@
+const SCENARIOS_CEDAR_AEMT = {
+  "cedar_school": [
+    {
+      "dispatch_line": "Medic 12, Cedar Hollow High School, 100 Falcon Way — student, 16 years old, seizure on the football field.",
+      "chief_complaint": "Seizure during football practice, post-ictal",
+      "sceneSizeUp": "BSI taken. Scene is safe — outdoor football field, coaches have cleared bystanders. One patient. Nature of illness: seizure in a 16-year-old athlete — first witnessed episode. C-spine: helmet still in place, no witnessed fall or head strike separate from the seizure — do not remove helmet without proper protocol, c-spine precautions in place until helmet is safely removed per protocol. Resources available: BLS Engine, ALS Ambulance, EMS Supervisor, Rotor-Wing Medevac, Police Department. You find a teenage male post-ictal on the field, helmet on, coaches holding him still. He is breathing on his own and moving all extremities. Slightly elevated temperature noted.",
+      "primarySurvey": "General Impression: Teenage male on the football field, post-ictal and confused, helmet in place, moving all extremities — first seizure in a young athlete. AVPU: Verbal — responds to voice with confused, slow responses. Airway: Patent, self-maintained — no secretions. Breathing: Rate and depth adequate, unlabored. Circulation: Radial pulse present and mildly rapid, skin warm and slightly moist. Patient Priority — high or low?",
+      "historySecondary": "16-year-old male. OPQRST: Witnessed generalized tonic-clonic seizure during afternoon football practice, duration unknown per coaches — now post-ictal, no prior seizure history. SAMPLE: PMH none, no medications, no known allergies. Secondary exam: Post-ictal confusion, slow to respond. Helmet remains in place — remove per protocol with c-spine precautions. No tongue laceration visible. No incontinence reported. Blood glucose 82 mg/dL. Temperature slightly elevated at 99.8°F — heat may have contributed. Moving all extremities.",
+      "vitals": {
+        "bp": "128/80",
+        "hr": "110",
+        "rr": "16",
+        "spo2": "97%",
+        "gcs": "12",
+        "temp": "99.8°F"
+      },
+      "teaching_points": "1. Post-ictal athlete with GCS 12 and temperature 99.8°F — lateral positioning, O2, BG check, IV access; if the patient re-seizes, IN or IV benzodiazepines are within AEMT scope. 2. Helmet removal per protocol with inline stabilization — after helmet removal, reassess the head and neck for trauma from the fall; document any cervical tenderness and maintain c-spine precautions if present."
+    },
+    {
+      "dispatch_line": "Medic 12, Cedar Hollow High School — teacher, 40s, anaphylaxis in the classroom, epinephrine given by school nurse.",
+      "chief_complaint": "Anaphylaxis, epinephrine administered by school nurse",
+      "sceneSizeUp": "BSI taken. Scene is safe — school nurse's office. One patient. Nature of illness: anaphylaxis of unknown trigger, initial epinephrine dose administered 8 minutes ago by school nurse. No mechanism for spinal injury — c-spine not indicated. Resources available: BLS Engine, ALS Ambulance, EMS Supervisor, Rotor-Wing Medevac, Police Department. You find a 44-year-old female teacher in the nurse's recliner, improved but not resolved. The nurse reports she found her in anaphylaxis in her classroom and administered epinephrine from the school emergency supply approximately 8 minutes ago. Residual hives remain and she is still tachycardic.",
+      "primarySurvey": "General Impression: Middle-aged female in the nurse's recliner, residual urticaria, tachycardic, improved from initial anaphylaxis but not resolved — risk of biphasic reaction. AVPU: Alert and oriented. Airway: Patent, self-maintained — no stridor, mild wheeze remains. Breathing: Mildly tachypneic, scattered wheeze audible. Circulation: Radial pulse present and rapid, skin flushed with residual urticaria. Patient Priority — high or low?",
+      "historySecondary": "44-year-old female. OPQRST: Anaphylaxis in her classroom from unknown trigger — no prior known allergies, first episode ever, onset approximately 15 minutes ago, improved with epinephrine 8 minutes ago but not fully resolved. SAMPLE: PMH none, no known allergies, no current medications, no known allergies. Secondary exam: Residual urticaria on trunk and arms. Mild scattered wheeze — bronchospasm not fully resolved. Hemodynamically improving — BP 112/70, HR 118. No angioedema. First anaphylaxis ever — allergen unidentified. Biphasic reaction risk exists for up to 12 hours post-epinephrine.",
+      "vitals": {
+        "bp": "112/70",
+        "hr": "118",
+        "rr": "20",
+        "spo2": "96%",
+        "gcs": "15",
+        "temp": "98.4°F"
+      },
+      "teaching_points": "1. Residual wheeze and tachycardia after epinephrine — nebulized albuterol for the bronchospasm component, IV access, second epinephrine dose if symptoms are worsening; antihistamines are adjuncts, not primary treatment. 2. The allergen is unidentified — document this clearly; the allergist managing this patient long-term will need the context of where she was and what she was exposed to; food, insect, latex, and medication exposures should all be documented."
+    },
+    {
+      "dispatch_line": "Medic 12, Cedar Hollow High School — student, 14 years old, found unresponsive in the bathroom, suspected fentanyl.",
+      "chief_complaint": "Teenage student unresponsive, suspected fentanyl overdose",
+      "sceneSizeUp": "BSI taken — mask and eye protection for fentanyl exposure risk, do not touch powder without PPE. Scene safety: school resource officer on scene, hallway secured. One patient. Nature of illness: suspected fentanyl overdose in a 14-year-old — critical respiratory depression. No mechanism for spinal injury — found on floor, no trauma. Resources available: BLS Engine, ALS Ambulance, EMS Supervisor, Rotor-Wing Medevac, Police Department. You find a 14-year-old male on the bathroom floor, agonal breathing, pinpoint pupils. A small folded paper packet with powder residue is near his hand. The school resource officer has cleared the scene.",
+      "primarySurvey": "General Impression: Teenage male on the bathroom floor, agonal breathing, pinpoint pupils, cyanotic lips — critical opioid overdose with respiratory failure. AVPU: Pain — minimal withdrawal to sternal rub, no eye opening. Airway: Obstructed — jaw thrust applied, NPA placed. Breathing: Agonal — 4 breaths per minute, BVM initiated immediately. Circulation: Weak bradycardic central pulse — lips cyanotic, skin pale. Patient Priority — high or low?",
+      "historySecondary": "14-year-old male. History from scene and SRO: found unresponsive in the boys' bathroom, small folded paper packet with powder residue near his hand — suspected fentanyl. SAMPLE: PMH unknown, medications unknown, allergies unknown — parents notified by school administration. Secondary exam: Agonal respirations — SpO2 76%. Pinpoint pupils bilaterally. GCS 4. Lips cyanotic. No obvious trauma. Suspected fentanyl — may require high-dose or repeated naloxone.",
+      "vitals": {
+        "bp": "88/52",
+        "hr": "58",
+        "rr": "4",
+        "spo2": "76%",
+        "gcs": "4",
+        "temp": "97.6°F"
+      },
+      "teaching_points": "1. Pediatric fentanyl overdose with GCS 4 and RR 4 — NPA, BVM, naloxone 2mg IV/IO or IN; IO is appropriate if IV access fails in this critically ill patient. 2. High-potency fentanyl in a teenager — monitor for re-sedation after naloxone; fentanyl analogues may outlast naloxone; if the patient responds and then re-sedates, a second naloxone dose is appropriate; transport is mandatory regardless of response."
+    },
+    {
+      "dispatch_line": "Medic 12, Cedar Hollow High School — cafeteria, student, 15 years old, choking on food, partial obstruction.",
+      "chief_complaint": "Choking, partial airway obstruction not fully cleared",
+      "sceneSizeUp": "BSI taken. Scene is safe — school cafeteria, area cleared by staff. One patient. Nature of illness: partial foreign body airway obstruction — abdominal thrusts partially effective. No mechanism for spinal injury — c-spine not indicated. Resources available: BLS Engine, ALS Ambulance, EMS Supervisor, Rotor-Wing Medevac, Police Department. You find a 15-year-old female seated at the cafeteria table, weak and ineffective cough, barely able to speak. A lunch monitor performed several abdominal thrusts and the obstruction partially cleared — she can cough weakly but cannot speak clearly and SpO2 is declining.",
+      "primarySurvey": "General Impression: Teenage female at cafeteria table, weak ineffective cough, unable to speak — partial airway obstruction with declining SpO2. AVPU: Alert and oriented — unable to speak clearly. Airway: Partial obstruction — weak cough, cannot phonate clearly, SpO2 declining. Breathing: Labored cough effort, inadequate air movement. Circulation: Radial pulse rapid, skin flushing to pale. Patient Priority — high or low?",
+      "historySecondary": "15-year-old female. OPQRST: Choking on food during lunch — large piece of food lodged, abdominal thrusts partially effective, weak cough remains, SpO2 dropping. SAMPLE: PMH none, no medications, no known allergies. Secondary exam: Weak, ineffective cough. Barely able to phonate. SpO2 88% and declining. No stridor but clearly unable to move adequate air. Abdominal thrusts performed by lunch monitor — partial effect only, obstruction not fully cleared.",
+      "vitals": {
+        "bp": "118/72",
+        "hr": "118",
+        "rr": "labored cough effort",
+        "spo2": "88%",
+        "gcs": "15",
+        "temp": "98.6°F"
+      },
+      "teaching_points": "1. Partial FBAO with declining SpO2 — abdominal thrusts, laryngoscopy with Magill forceps if the patient loses consciousness is an AEMT skill in some protocols; check your local scope. 2. If complete obstruction occurs and BVM fails — aggressive repositioning of the head, jaw thrust, and attempt to ventilate around the obstruction; if ventilation remains impossible, transport immediately with CPR; AEMT cannot perform a surgical airway."
+    }
+  ],
+  "cedar_pool": [
+    {
+      "dispatch_line": "Medic 12, respond to Cedar Hollow Community Pool, 215 North Street — 7-year-old child pulled from the water, conscious but having difficulty breathing.",
+      "chief_complaint": "Pediatric submersion injury, respiratory distress",
+      "sceneSizeUp": "BSI taken. Scene is safe — lifeguards have removed the child from the pool and the deck is clear. One patient. Nature of illness/injury: submersion event with respiratory compromise. No evidence of diving trauma. Additional resources are available if needed. You find a 7-year-old child sitting upright on the pool deck wrapped in towels, coughing continuously and visibly frightened. Lifeguards report the child was underwater for approximately 30 to 45 seconds before being pulled out and immediately began coughing.",
+      "primarySurvey": "General Impression: Pediatric patient sitting upright, persistent cough, increased work of breathing, pale and anxious — potentially serious respiratory patient. AVPU: Alert, crying, follows commands. Airway: Patent, frequent coughing, no visible obstruction. Breathing: Tachypneic with mild retractions and coarse breath sounds bilaterally. Circulation: Radial pulse rapid, skin pale and cool. Patient Priority — high or low?",
+      "historySecondary": "7-year-old child. OPQRST: Cough and shortness of breath began immediately after being submerged; symptoms have persisted since rescue. SAMPLE: No known medical history, no medications, no known allergies per parent, last meal approximately 2 hours ago. Secondary exam: Persistent cough, coarse bilateral breath sounds, mild intercostal retractions, no head or neck pain, no external trauma. Parent reports normal behavior before the incident.",
+      "vitals": {
+        "bp": "104/66",
+        "hr": "128",
+        "rr": "30",
+        "spo2": "91%",
+        "gcs": "15",
+        "temp": "97.8°F"
+      },
+      "teaching_points": "1. Submersion injury with SpO2 91% requires aggressive oxygenation and ventilation support; establish IV access and monitor closely for worsening pulmonary edema. 2. If respiratory status declines, use positive-pressure support within protocol and transport without delay."
+    },
+    {
+      "dispatch_line": "Medic 12, Cedar Hollow Community Pool — 17-year-old male, diving injury, neck pain and weakness in both arms.",
+      "chief_complaint": "Diving injury, suspected cervical spine trauma",
+      "sceneSizeUp": "BSI taken. Scene is safe — patient has been removed from the water by trained lifeguards and is lying supine on the pool deck. One patient. Mechanism of injury: head-first dive into the shallow end with direct impact to the top of the head. Cervical spine injury is strongly suspected. You find a 17-year-old male lying still, complaining of severe neck pain and tingling in both hands.",
+      "primarySurvey": "General Impression: Teenage male supine on pool deck after axial-load diving injury, anxious and reluctant to move — high-risk trauma patient. AVPU: Alert and oriented. Airway: Patent, self-maintained with manual stabilization maintained. Breathing: Rate and depth adequate, equal chest rise. Circulation: Radial pulse present, skin warm and slightly pale. Neurologic concern: bilateral upper-extremity paresthesias and weakness. Patient Priority — high or low?",
+      "historySecondary": "17-year-old male. OPQRST: Immediate severe midline neck pain after striking his head on the bottom of the shallow end, rated 8/10, worse with any attempted movement. SAMPLE: No significant medical history, no medications, no known allergies. Secondary exam: Midline cervical tenderness, decreased grip strength bilaterally, tingling in both hands, lower extremity motor function intact, no obvious skull deformity, no loss of consciousness reported.",
+      "vitals": {
+        "bp": "118/72",
+        "hr": "104",
+        "rr": "18",
+        "spo2": "98%",
+        "gcs": "15",
+        "temp": "98.1°F"
+      },
+      "teaching_points": "1. Diving injury with neurological findings requires spinal motion restriction, serial neurological exams, and IV access; provide analgesia per protocol without masking deterioration. 2. Document motor and sensory findings before and after every move."
+    },
+    {
+      "dispatch_line": "Medic 12, Cedar Hollow Community Pool — multiple people coughing near the pump room after a strong chlorine odor, one patient with severe shortness of breath.",
+      "chief_complaint": "Chlorine inhalation, respiratory distress",
+      "sceneSizeUp": "BSI taken. Scene safety is the priority — a strong chlorine odor is reported from the pump room. Do not enter the contaminated area. Fire department/HazMat is requested to control the source. Patient has already been moved outdoors to fresh air. One patient requires EMS care; additional exposed patrons are being evaluated separately. You find a 46-year-old pool employee seated outside, coughing forcefully with burning eyes and chest tightness.",
+      "primarySurvey": "General Impression: Adult patient seated outdoors after chemical inhalation, coughing continuously, eyes watering, increased work of breathing — sick respiratory patient. AVPU: Alert and oriented. Airway: Patent, hoarse voice but no stridor. Breathing: Tachypneic and labored with diffuse wheezing. Circulation: Radial pulse rapid, skin warm and moist. Patient Priority — high or low?",
+      "historySecondary": "46-year-old pool employee. OPQRST: Sudden cough, chest burning, and dyspnea after opening the pump-room door and inhaling a strong chlorine odor; symptoms began immediately and improved only slightly in fresh air. SAMPLE: PMH mild asthma, uses albuterol as needed, no known allergies. Secondary exam: Bilateral wheezing, tearing and conjunctival irritation, persistent nonproductive cough, no skin burns, no loss of consciousness.",
+      "vitals": {
+        "bp": "146/88",
+        "hr": "118",
+        "rr": "30",
+        "spo2": "89%",
+        "gcs": "15",
+        "temp": "98.5°F"
+      },
+      "teaching_points": "1. Chlorine exposure requires removal from the source, oxygen, and bronchodilator therapy for bronchospasm after decontamination; establish IV access for supportive care. 2. Do not enter the contaminated zone without appropriate HazMat PPE."
+    },
+    {
+      "dispatch_line": "Medic 12, Cedar Hollow Community Pool — 67-year-old male collapsed on the pool deck, bystander CPR in progress and AED attached.",
+      "chief_complaint": "Witnessed cardiac arrest on pool deck",
+      "sceneSizeUp": "BSI taken. Scene is safe — patient is on a dry section of the pool deck away from the water. One patient. Nature of illness: witnessed cardiac arrest. Bystander CPR is in progress and the facility AED has delivered one shock prior to EMS arrival. No trauma reported. You find a 67-year-old male supine with lifeguards performing high-quality CPR.",
+      "primarySurvey": "General Impression: Adult male supine, pulseless and apneic, CPR in progress — critical patient. AVPU: Unresponsive. Airway: Requires immediate management. Breathing: Apneic, BVM ventilation indicated. Circulation: Pulseless, CPR ongoing, AED/monitor pads in place. Patient Priority — immediate resuscitation.",
+      "historySecondary": "67-year-old male. History from spouse and lifeguards: patient had just completed several laps, complained briefly of pressure in his chest, then collapsed suddenly. CPR began within one minute and the AED advised and delivered one shock. SAMPLE: PMH hypertension and hyperlipidemia, medications include lisinopril and atorvastatin, no known allergies. Secondary exam: No trauma noted. Downtime approximately 4 minutes at EMS arrival.",
+      "vitals": {
+        "bp": "pulseless",
+        "hr": "pulseless",
+        "rr": "apneic",
+        "spo2": "not obtainable",
+        "gcs": "3",
+        "temp": "unknown"
+      },
+      "teaching_points": "1. Continue high-quality CPR and early defibrillation; establish IV/IO access without interrupting compressions and administer resuscitation medications per AEMT scope/protocol. 2. Airway placement should occur with minimal pause in compressions."
+    }
+  ],
+  "cedar_park": [
+    {
+      "dispatch_line": "Medic 12, Cedar Hollow Park — male, 34 years old, fall from bench, wrist injury.",
+      "chief_complaint": "Wrist injury, fall on outstretched hand",
+      "sceneSizeUp": "BSI taken. Scene is safe — park walking path near a bench. One patient. Mechanism of injury: fall from a park bench, landed on outstretched right hand — FOOSH mechanism. C-spine: isolated upper extremity injury, no head or axial impact — c-spine not indicated. Resources available: BLS Engine, ALS Ambulance, EMS Supervisor, Rotor-Wing Medevac, Police Department. You find a male seated on the ground near an overturned bench, right wrist visibly deformed and swelling rapidly. A group of joggers stopped to help. He is in severe pain.",
+      "primarySurvey": "General Impression: Adult male on the ground near a bench, right wrist deformed and swelling — isolated upper extremity injury. AVPU: Alert and oriented. Airway: Patent, self-maintained. Breathing: Rate and depth adequate, unlabored. Circulation: Radial pulse present, skin warm and dry. Patient Priority — high or low?",
+      "historySecondary": "34-year-old male. OPQRST: Fell from a park bench and caught himself with his outstretched right hand — immediate wrist deformity and severe pain rated 9/10, cannot move the wrist. SAMPLE: PMH none, no medications, no known allergies. Secondary exam: Visible right distal radius deformity — Colles fracture pattern. Point tenderness at distal radius. Distal pulse, movement, and sensation (PMS) intact — fingers warm with normal sensation and movement. No open wound. No other injuries.",
+      "vitals": {
+        "bp": "132/84",
+        "hr": "98",
+        "rr": "16",
+        "spo2": "99%",
+        "gcs": "15",
+        "temp": "98.6°F"
+      },
+      "teaching_points": "1. Colles fracture with pain 9/10 — IV access and fentanyl or morphine weight-based before splinting; pain management before splinting allows the patient to cooperate with positioning and results in a better-quality splint. 2. Document PMS before and after splinting — fingers warm, sensation and movement intact before; document the same after; any change after splinting indicates the splint is too tight and must be immediately readjusted."
+    },
+    {
+      "dispatch_line": "Medic 12, Cedar Hollow Park — female jogger, 43 years old, near-syncope, heat exhaustion.",
+      "chief_complaint": "Heat exhaustion, near-syncope while jogging",
+      "sceneSizeUp": "BSI taken. Scene is safe — park walking path, patient at a bench. One patient. Nature of illness: heat exhaustion with near-syncope in a diuretic-dependent hypertensive patient. C-spine: near-syncope with no witnessed fall — c-spine not indicated. Resources available: BLS Engine, ALS Ambulance, EMS Supervisor, Rotor-Wing Medevac, Police Department. You find a female jogger seated on a park bench, hot and flushed, assisted by a bystander. She nearly lost consciousness on her third lap and was helped to the bench. She brought no water. Hot day, direct sun exposure.",
+      "primarySurvey": "General Impression: Middle-aged female on a park bench, hot, flushed, and diaphoretic — heat exhaustion with near-syncope. AVPU: Alert and oriented. Airway: Patent, self-maintained. Breathing: Rate mildly elevated, unlabored. Circulation: Radial pulse present and rapid, skin hot, flushed, and moist. Patient Priority — high or low?",
+      "historySecondary": "43-year-old female. OPQRST: Near-syncope during her third jogging lap — progressive weakness, nausea, and dizziness before nearly losing consciousness, no fall. SAMPLE: PMH hypertension, takes hydrochlorothiazide — diuretic use increases dehydration risk, no known allergies. Secondary exam: Skin hot, flushed, and moist. Temperature 102.6°F. Alert and oriented — GCS 15. Tachycardic at 118. Hypotensive at 96/58. Nausea present. No focal neurological deficits. Brought no water. Direct sun exposure for unknown duration.",
+      "vitals": {
+        "bp": "96/58",
+        "hr": "118",
+        "rr": "22",
+        "spo2": "98%",
+        "gcs": "15",
+        "temp": "102.6°F"
+      },
+      "teaching_points": "1. Heat exhaustion with BP 96/58 and temperature 102.6°F — active cooling measures and IV access with normal saline bolus 500mL to 1L; diuretic use means this patient's fluid deficit is larger than her symptoms suggest. 2. Reassess temperature and vital signs after cooling measures — improvement in BP and temperature toward normal indicates response; failure to improve or worsening toward temperature above 104°F indicates heat stroke requiring more aggressive intervention."
+    },
+    {
+      "dispatch_line": "Medic 12, Cedar Hollow Park — child, 8 years old, stick to the eye, possible globe injury.",
+      "chief_complaint": "Eye injury from stick, possible penetrating globe injury",
+      "sceneSizeUp": "BSI taken. Scene is safe — wooded section of the park. One patient. Mechanism of injury: branch strike directly to the right eye while running. C-spine: isolated eye injury with no head trauma mechanism — c-spine not indicated. Resources available: BLS Engine, ALS Ambulance, EMS Supervisor, Rotor-Wing Medevac, Police Department. You find an 8-year-old male crying and holding his hand over his right eye. Parent is present. He was running in the wooded park section when a branch struck his right eye directly. He cannot open the eye due to pain.",
+      "primarySurvey": "General Impression: Young child holding hand over right eye, crying, visible distress — penetrating eye injury mechanism. AVPU: Alert and oriented — crying, communicates with parent. Airway: Patent, self-maintained. Breathing: Rate mildly elevated from crying, unlabored. Circulation: Radial pulse present and mildly rapid, skin warm and dry. Patient Priority — high or low?",
+      "historySecondary": "8-year-old male. OPQRST: Branch struck directly to the right eye while running in the wooded area — immediate severe pain, unable to open the eye, tearing heavily. SAMPLE: PMH none, no medications, no known allergies. Secondary exam: Right eye — unable to open fully due to pain and photophobia. Subconjunctival hemorrhage visible on gentle inspection. Excessive tearing. Irregular right pupil shape suspected on inspection — do not apply pressure to the globe, cover with a rigid eye shield only. Globe rupture must be considered with this mechanism.",
+      "vitals": {
+        "bp": "108/66",
+        "hr": "108",
+        "rr": "18",
+        "spo2": "99%",
+        "gcs": "15",
+        "temp": "98.6°F"
+      },
+      "teaching_points": "1. Penetrating eye injury — rigid eye shield, IV analgesia to keep the child calm and reduce Valsalva, antiemetic (ondansetron 0.15mg/kg IV) to prevent vomiting which increases intraocular pressure. 2. Do not attempt to measure visual acuity or manipulate the eye in the field — any pressure or manipulation risks expressing intraocular contents through the injury; cover and transport."
+    },
+    {
+      "dispatch_line": "Medic 12, Cedar Hollow Park — elderly male, 76 years old, tripped on uneven pavement, hip pain.",
+      "chief_complaint": "Hip fracture, cannot bear weight, anticoagulated",
+      "sceneSizeUp": "BSI taken. Scene is safe — park walking path, uneven paving stone. One patient. Mechanism of injury: ground-level trip and fall onto the right side. C-spine: ground-level fall with no head strike reported — patient denies head strike, c-spine not indicated. Resources available: BLS Engine, ALS Ambulance, EMS Supervisor, Rotor-Wing Medevac, Police Department. You find an elderly male on the park path, right leg externally rotated, two bystanders unable to help him up because of his severe pain. He tripped on an uneven paving stone and fell on his right side.",
+      "primarySurvey": "General Impression: Elderly male on the park path, right lower extremity externally rotated, in severe pain — hip fracture in an anticoagulated patient. AVPU: Alert and oriented. Airway: Patent, self-maintained. Breathing: Rate and depth adequate, unlabored. Circulation: Radial pulse present and irregular, skin warm and dry. Patient Priority — high or low?",
+      "historySecondary": "76-year-old male. OPQRST: Tripped on an uneven paving stone and fell on his right side — immediate severe right hip pain rated 9/10, cannot stand or bear weight, any movement causes severe pain. SAMPLE: PMH osteoporosis and atrial fibrillation, takes warfarin and metoprolol — anticoagulated, no known allergies. Secondary exam: Right lower extremity externally rotated and shortened. Point tenderness over right hip. Distal pulse, movement, and sensation (PMS) intact. Irregular pulse consistent with known atrial fibrillation. On warfarin — significant internal hemorrhage risk.",
+      "vitals": {
+        "bp": "152/88",
+        "hr": "84 irregular",
+        "rr": "18",
+        "spo2": "96%",
+        "gcs": "15",
+        "temp": "98.4°F"
+      },
+      "teaching_points": "1. Hip fracture with pain rated 9/10 in an anticoagulated patient — IV access and fentanyl or morphine weight-based before any movement; analgesia before packaging prevents unnecessary pain and the splinting response that worsens limb position. 2. Warfarin and hip fracture — internal hemorrhage into the hip joint and retroperitoneal space is more significant in anticoagulated patients; monitor for hemodynamic deterioration during transport; a hip fracture that appears hemodynamically stable can bleed significantly into the retroperitoneum."
+    }
+  ],
+  "cedar_athletics": [
+    {
+      "dispatch_line": "Medic 12, Cedar Hollow Athletic Complex — 16-year-old football player, altered after practice, possible heat emergency.",
+      "chief_complaint": "Exertional heat stroke, altered mental status",
+      "sceneSizeUp": "BSI taken. Scene is safe — football practice has stopped and coaching staff have moved other players away. One patient. Nature of illness: exertional heat illness after prolonged practice in high heat and humidity. No trauma mechanism reported. You find a 16-year-old football player sitting on the turf with pads partially removed, confused, hot to the touch, and unable to answer questions appropriately.",
+      "primarySurvey": "General Impression: Teenage athlete confused after strenuous exercise, hot skin, marked tachycardia — life-threatening heat illness suspected. AVPU: Verbal — responds but is confused. Airway: Patent. Breathing: Rapid and deep. Circulation: Radial pulse rapid and bounding, skin hot and flushed. Patient Priority — high or low?",
+      "historySecondary": "16-year-old male. OPQRST: Progressive headache, weakness, nausea, then confusion near the end of practice; no trauma. SAMPLE: No significant medical history, no medications, no known allergies, limited fluid intake during practice. Secondary exam: Hot flushed skin, altered mental status, no focal neurological deficit, no external trauma. Core-temperature concern is high based on exertion and mental-status change.",
+      "vitals": {
+        "bp": "102/64",
+        "hr": "148",
+        "rr": "28",
+        "spo2": "97%",
+        "gcs": "13",
+        "temp": "105.2°F"
+      },
+      "teaching_points": "1. Exertional heat stroke requires immediate aggressive cooling while establishing IV access for fluid support; cooling takes priority and should continue during transport. 2. Altered mental status is the defining life-threat that separates heat stroke from heat exhaustion."
+    },
+    {
+      "dispatch_line": "Medic 12, Cedar Hollow Athletic Complex baseball field — 15-year-old player struck in the chest by a line drive, collapsed immediately, no pulse.",
+      "chief_complaint": "Cardiac arrest after blunt chest impact, suspected commotio cordis",
+      "sceneSizeUp": "BSI taken. Scene is safe — play is stopped and the field is clear. One patient. Mechanism of injury: high-velocity baseball struck the center of the chest immediately before collapse. Bystander CPR is in progress and an AED is being brought from the dugout. You find a 15-year-old athlete pulseless and apneic on the field.",
+      "primarySurvey": "General Impression: Teenage athlete supine and unresponsive after direct precordial impact, pulseless and apneic — cardiac arrest. AVPU: Unresponsive. Airway: Requires management. Breathing: Apneic. Circulation: No pulse, CPR indicated immediately. Patient Priority — immediate resuscitation.",
+      "historySecondary": "15-year-old male. Witnesses report a line drive struck him directly over the sternum; he took one step and collapsed. No prior complaints and no known medical history per coach. SAMPLE: No known medical problems, medications, or allergies. Secondary exam: Small circular contusion over the sternum, no other major trauma identified. Collapse was instantaneous after impact.",
+      "vitals": {
+        "bp": "pulseless",
+        "hr": "pulseless",
+        "rr": "apneic",
+        "spo2": "not obtainable",
+        "gcs": "3",
+        "temp": "unknown"
+      },
+      "teaching_points": "1. Commotio cordis is a shockable-arrest problem — CPR and immediate defibrillation come first, with IV/IO and epinephrine added per arrest protocol. 2. Do not delay defibrillation for vascular access or airway procedures."
+    },
+    {
+      "dispatch_line": "Medic 12, Cedar Hollow Athletic Complex bleachers — 63-year-old spectator with crushing chest pain and diaphoresis.",
+      "chief_complaint": "Acute chest pain in spectator",
+      "sceneSizeUp": "BSI taken. Scene is safe — crowded bleachers, staff are clearing space for EMS access. One patient. Nature of illness: suspected acute coronary syndrome. No trauma mechanism. You find a 63-year-old male seated halfway up the bleachers, pale and diaphoretic, clutching his chest while family members fan him.",
+      "primarySurvey": "General Impression: Older male seated upright, pale and diaphoretic with ongoing chest pressure — sick patient. AVPU: Alert and oriented. Airway: Patent. Breathing: Mildly tachypneic but adequate. Circulation: Radial pulse present, skin cool and clammy. Patient Priority — high or low?",
+      "historySecondary": "63-year-old male. OPQRST: Sudden crushing substernal pressure radiating to left shoulder while watching the game, 9/10, constant for 20 minutes, associated nausea and diaphoresis. SAMPLE: PMH hypertension, Type 2 diabetes, hyperlipidemia; takes metformin, lisinopril, and atorvastatin; no known allergies. Secondary exam: Lungs clear, no JVD, no reproducible chest wall tenderness.",
+      "vitals": {
+        "bp": "168/96",
+        "hr": "104",
+        "rr": "20",
+        "spo2": "95%",
+        "gcs": "15",
+        "temp": "98.6°F"
+      },
+      "teaching_points": "1. Manage as ACS: aspirin, 12-lead acquisition/transmission, IV access, and nitroglycerin if indicated by protocol and blood pressure. 2. Reassess after each intervention and pre-notify the cardiac receiving facility when appropriate."
+    },
+    {
+      "dispatch_line": "Medic 12, Cedar Hollow Athletic Complex football field — 18-year-old player down after helmet-to-helmet contact, neck pain and numbness in both legs.",
+      "chief_complaint": "Football collision, suspected cervical spinal cord injury",
+      "sceneSizeUp": "BSI taken. Scene is safe — play has stopped. One patient. Mechanism of injury: high-energy helmet-to-helmet collision with axial loading. Cervical spine injury is strongly suspected. Athletic trainers are maintaining manual stabilization and have not removed the helmet. You find an 18-year-old player supine on the field, alert, reporting severe neck pain and numbness in both legs.",
+      "primarySurvey": "General Impression: Young athlete supine after high-energy collision, helmet and shoulder pads in place, reports bilateral lower-extremity numbness — high-risk spinal trauma. AVPU: Alert and oriented. Airway: Patent with inline stabilization maintained. Breathing: Adequate and symmetric. Circulation: Radial pulse present, skin warm and dry. Neurologic concern: reduced sensation and movement in both legs. Patient Priority — high or low?",
+      "historySecondary": "18-year-old male. OPQRST: Immediate neck pain after helmet-to-helmet impact, rated 8/10, with tingling and weakness in both legs. SAMPLE: No significant medical history, no medications, no known allergies. Secondary exam: Midline cervical tenderness, upper-extremity strength intact, lower-extremity sensation decreased bilaterally with weak movement, no obvious external hemorrhage, helmet remains properly fitted.",
+      "vitals": {
+        "bp": "110/68",
+        "hr": "92",
+        "rr": "18",
+        "spo2": "98%",
+        "gcs": "15",
+        "temp": "98.4°F"
+      },
+      "teaching_points": "1. Suspected spinal cord injury requires motion restriction, serial neuro checks, IV access, and pain management per protocol. 2. Avoid unnecessary helmet removal in the field unless airway access requires it; coordinate equipment removal with trained rescuers."
+    }
+  ],
+  "cedar_care": [
+    {
+      "dispatch_line": "Medic 12, Cedar Care Nursing & Rehab — room 12, male resident, acute change in mental status from baseline.",
+      "chief_complaint": "Acute altered mental status from baseline, sepsis suspected",
+      "sceneSizeUp": "BSI taken. Scene is safe — nursing facility resident room, staff cooperative and available. One patient. Nature of illness: acute change in mental status from baseline in a nursing home resident — sepsis from UTI source suspected. No mechanism for spinal injury — c-spine not indicated. Resources available: BLS Engine, ALS Ambulance, EMS Supervisor, Rotor-Wing Medevac, Police Department. You find a 79-year-old male in his bed, confused and combative — staff say this is completely unlike his normal behavior. The nurse hands you a 14-medication list and reports cloudy, foul-smelling urine since yesterday.",
+      "primarySurvey": "General Impression: Elderly male in bed, acutely confused and combative from his normal alert baseline — sepsis must be considered in any nursing home patient with acute AMS. AVPU: Verbal — responds to voice with confused, combative, disoriented responses. Airway: Patent, self-maintained. Breathing: Rate mildly elevated, unlabored. Circulation: Radial pulse present and irregular, skin warm and dry. Patient Priority — high or low?",
+      "historySecondary": "79-year-old male. History from staff: completely alert and oriented at baseline — acute confusion and combativeness over the past 2 hours, cloudy urine with strong odor since yesterday. SAMPLE: PMH hypertension, Type 2 DM, and atrial fibrillation, takes warfarin, metoprolol, lisinopril, and 11 others, allergies unknown. Secondary exam: Acutely confused and combative from normal baseline. Febrile at 101.6°F. SpO2 94%. Blood glucose 182. Irregular pulse consistent with atrial fibrillation. Cloudy malodorous urine reported by staff — UTI as sepsis source. On warfarin — anticoagulated.",
+      "vitals": {
+        "bp": "168/102",
+        "hr": "92 irregular",
+        "rr": "18",
+        "spo2": "94%",
+        "gcs": "12",
+        "temp": "101.6°F"
+      },
+      "teaching_points": "1. Suspected sepsis with temperature 101.6°F, SpO2 94%, and acute AMS — O2, IV access, normal saline bolus 500mL to 1L; early fluid resuscitation in sepsis improves outcomes; initiate the bolus en route. 2. Fourteen-medication list — bring the complete list to the hospital; polypharmacy in nursing home patients affects antibiotic choice, fluid management, and all other interventions; the warfarin and metoprolol are particularly relevant."
+    },
+    {
+      "dispatch_line": "Medic 12, Cedar Care Nursing & Rehab — room 24, 84-year-old female, fall from bed, hip fracture, DNR on file.",
+      "chief_complaint": "Hip fracture, severe pain, DNR confirmed, anticoagulated",
+      "sceneSizeUp": "BSI taken. Scene is safe — nursing facility room. One patient. Mechanism of injury: fall from bed — found on the floor beside the bed during morning rounds. C-spine: fall from bed height in a dementia patient — assess for head strike; patient cannot reliably report, no trauma signs on inspection — c-spine not indicated based on mechanism and exam. Resources available: BLS Engine, ALS Ambulance, EMS Supervisor, Rotor-Wing Medevac, Police Department. You find an 84-year-old female with moderate dementia on the floor beside her bed, right leg externally rotated, in significant pain. A valid DNR is confirmed by staff with document on file.",
+      "primarySurvey": "General Impression: Elderly female on the floor beside her bed, right lower extremity externally rotated — hip fracture with confirmed DNR and anticoagulation. AVPU: Verbal — responds to voice with confused, dementia-baseline responses. Airway: Patent, self-maintained. Breathing: Rate and depth adequate, unlabored. Circulation: Radial pulse present and irregular, skin warm and dry. Patient Priority — high or low?",
+      "historySecondary": "84-year-old female, moderate dementia. History from staff: found on the floor during morning rounds — cannot recall falling. SAMPLE: PMH osteoporosis, atrial fibrillation, and moderate dementia, takes Eliquis, donepezil, and memantine — anticoagulated on Eliquis, allergies unknown. Secondary exam: Right lower extremity externally rotated and shortened. Severe pain with any movement — pain assessed via behavioral cues (grimacing, guarding, resistance) given dementia. Distal pulse, movement, and sensation (PMS) intact. DNR confirmed with document on file — review and honor. On Eliquis — elevated bleeding risk.",
+      "vitals": {
+        "bp": "144/88",
+        "hr": "86 irregular",
+        "rr": "16",
+        "spo2": "97%",
+        "gcs": "14",
+        "temp": "98.2°F"
+      },
+      "teaching_points": "1. Hip fracture with confirmed DNR — IV access and fentanyl or morphine weight-based for pain management; the DNR does not limit your scope of care for this injury; treat pain aggressively. 2. Eliquis and hip fracture — communicate the anticoagulant, dose, and last dose timing to the receiving team; Eliquis has no routinely available reversal agent (andexanet alfa is expensive and not universally stocked); the orthopedic team needs this information to plan surgical timing."
+    },
+    {
+      "dispatch_line": "Medic 12, Cedar Care Nursing & Rehab — room 8, 72-year-old male, respiratory distress after eating, aspiration suspected, DNI on file.",
+      "chief_complaint": "Aspiration after eating, respiratory distress, DNI order confirmed",
+      "sceneSizeUp": "BSI taken. Scene is safe — nursing facility dining room then transferred to room. One patient. Nature of illness: aspiration event during meal in a patient with known stroke-related dysphagia — respiratory distress now. No mechanism for spinal injury — c-spine not indicated. Resources available: BLS Engine, ALS Ambulance, EMS Supervisor, Rotor-Wing Medevac, Police Department. You find a 72-year-old male in his bed in significant respiratory distress. Staff say he was eating pureed food when he began coughing violently and is now unable to breathe adequately. Food particles are visible in the oropharynx. A confirmed DNI order is on file — reviewed and confirmed by staff and documentation.",
+      "primarySurvey": "General Impression: Elderly male in bed in significant respiratory distress, audible gurgling, food visible in the oropharynx — aspiration event with DNI order. AVPU: Verbal — responds to voice with confused, labored responses. Airway: Compromised — food particles in oropharynx, gurgling audible, suction required. Breathing: Rapid and severely labored — SpO2 86% on supplemental O2. Circulation: Radial pulse present and rapid, skin warm and moist. Patient Priority — high or low?",
+      "historySecondary": "72-year-old male. History from staff: CVA 2 years ago with known dysphagia — prescribed pureed diet. Aspirated during lunch, coughing violently, progressive respiratory distress since. SAMPLE: PMH CVA with residual dysphagia, hypertension, and COPD, medications include antihypertensives, allergies unknown. Secondary exam: Audible gurgling — food particles in oropharynx, suction initiated. Coarse crackles right lower lobe on auscultation. SpO2 86% with supplemental O2. Febrile at 99.8°F — early aspiration pneumonia possible. DNI order confirmed on file — intubation is not an option; airway management is limited to positioning and suction.",
+      "vitals": {
+        "bp": "148/92",
+        "hr": "118",
+        "rr": "34",
+        "spo2": "86%",
+        "gcs": "13",
+        "temp": "99.8°F"
+      },
+      "teaching_points": "1. Aspiration with DNI confirmed — suction aggressively, O2, CPAP is an option if the patient tolerates it and CPAP is not contraindicated by the patient's advance directives; contact medical direction if unclear whether CPAP is consistent with the patient's wishes. 2. SpO2 86% on supplemental O2 in an aspiration patient — the aspirated material causes surfactant destruction and alveolar flooding; CPAP improves oxygenation by recruiting collapsed alveoli without requiring intubation."
+    },
+    {
+      "dispatch_line": "Medic 12, Cedar Care Nursing & Rehab — room 19, 86-year-old female, cardiac arrest, CPR in progress, DNR being located.",
+      "chief_complaint": "Cardiac arrest, CPR in progress, DNR document being located",
+      "sceneSizeUp": "BSI taken. Scene is safe — nursing facility room, staff performing CPR. One patient. Nature of illness: cardiac arrest in an end-stage CHF and COPD patient — DNR believed to exist but physical document not yet produced. No mechanism for spinal injury — c-spine not indicated. Resources available: BLS Engine, ALS Ambulance, EMS Supervisor, Rotor-Wing Medevac, Police Department. You find two CNAs performing CPR on an 86-year-old female found unresponsive in her room. The charge nurse is searching for the DNR paperwork. Staff verbally confirm a DNR exists but cannot immediately produce the document.",
+      "primarySurvey": "General Impression: Elderly female pulseless in her bed, CPR in progress — end-stage CHF and COPD patient with verbal report of DNR but document not yet produced. AVPU: Unresponsive — GCS 3. Airway: Requires management — BVM initiated. Breathing: Apneic — ventilating with BVM. Circulation: Pulseless — CPR in progress. Patient Priority — high or low?",
+      "historySecondary": "86-year-old female. History from staff: end-stage CHF and COPD, recent hospice evaluation — found unresponsive in her room. SAMPLE: PMH end-stage CHF, COPD, and dementia, medications include cardiac and respiratory medications, allergies unknown. Secondary exam: Pulseless and apneic. No obvious trauma. Staff verbally confirm DNR exists — physical document not yet located. Continue resuscitation per protocol until DNR is physically produced and confirmed — verbal reports alone do not authorize stopping resuscitation in most jurisdictions. Charge nurse continuing to search.",
+      "vitals": {
+        "bp": "pulseless",
+        "hr": "pulseless",
+        "rr": "apneic",
+        "spo2": "not obtainable",
+        "gcs": "3",
+        "temp": "unknown"
+      },
+      "teaching_points": "1. Cardiac arrest with unconfirmed DNR — continue CPR, IV access, and standard ACLS until the DNR is physically produced; do not slow or stop resuscitation based on verbal reports alone. 2. Once the DNR is confirmed — stop all resuscitative efforts per your jurisdiction's protocol; document the time the DNR was confirmed, the name of the staff member who produced it, and the time resuscitation was discontinued."
+    }
+  ],
+  "cedar_family_medicine": [
+    {
+      "dispatch_line": "Medic 12, Cedar Family Medicine, 240 Crown St — elderly male, possible medication overdose.",
+      "chief_complaint": "Altered mental status, possible medication overdose",
+      "sceneSizeUp": "BSI taken. Scene is safe — clinic waiting area. One patient. Nature of illness: suspected medication overdose. No mechanism for spinal injury — c-spine not indicated. Resources available: BLS Engine, ALS Ambulance, EMS Supervisor, Rotor-Wing Medevac, Police Department. You find an elderly male in the waiting area, confused and lethargic, discovered by the clinic nurse. He had just picked up his monthly medications — a bag of prescriptions is in his lap and several empty blister packs are on the seat beside him.",
+      "primarySurvey": "General Impression: Elderly male slumped in a waiting room chair, lethargic and barely responsive, bradycardic — critical medication overdose. AVPU: Pain — responds only to sternal rub, no eye opening to voice. Airway: At risk — jaw thrust applied, positioning maintained. Breathing: Slow and shallow — inadequate, BVM prepared. Circulation: Central pulse present, severely bradycardic and weak — skin pale. Patient Priority — high or low?",
+      "historySecondary": "79-year-old male. History from scene: empty blister packs of metoprolol and digoxin found on the seat — both cause fatal bradycardia in overdose. SAMPLE: PMH hypertension, CHF, atrial fibrillation, and depression, takes metoprolol, digoxin, and antidepressants, allergies unknown. Secondary exam: Responds to sternal rub only. Pupils equal and slightly dilated. Severely bradycardic at 42. Severely hypotensive at 82/48. Respirations slow at 10. SpO2 92%.",
+      "vitals": {
+        "bp": "82/48",
+        "hr": "42",
+        "rr": "10",
+        "spo2": "92%",
+        "gcs": "10",
+        "temp": "97.4°F"
+      },
+      "teaching_points": "1. Beta blocker and digoxin overdose with bradycardia at 42 and BP 82/48 — IV access, atropine 1mg IV for symptomatic bradycardia, transcutaneous pacing preparation; glucagon 1 to 3mg IV/IO is within AEMT scope and is first-line for beta blocker toxicity. 2. Atropine may be ineffective in beta blocker toxicity — glucagon bypasses the beta receptor and is more effective; administer glucagon 1mg IV as your first pharmacological intervention for beta blocker-induced bradycardia."
+    },
+    {
+      "dispatch_line": "Medic 12, Cedar Family Medicine — elderly female, anaphylaxis after receiving a vaccine.",
+      "chief_complaint": "Anaphylaxis following flu vaccine",
+      "sceneSizeUp": "BSI taken. Scene is safe — clinic treatment room. One patient. Nature of illness: anaphylaxis following vaccine administration. No mechanism for spinal injury — c-spine not indicated. Resources available: BLS Engine, ALS Ambulance, EMS Supervisor, Rotor-Wing Medevac, Police Department. You are met at the door by the clinic nurse who administered the flu shot 10 minutes ago. You find an elderly female semi-conscious in a recliner chair in the vaccine area, with hives and progressive difficulty breathing. The clinic nurse reports administering epinephrine 0.3mg IM 5 minutes ago with minimal improvement.",
+      "primarySurvey": "General Impression: Elderly female semi-conscious in a recliner, urticaria across chest and neck, audible wheeze, angioedema — anaphylaxis refractory to initial epinephrine. AVPU: Verbal — responds to voice with slow, confused responses. Airway: Angioedema of the lips, audible wheeze — airway at risk and worsening. Breathing: Rapid and labored, audible wheeze bilaterally. Circulation: Radial pulse rapid and irregular, skin flushed with urticaria. Patient Priority — high or low?",
+      "historySecondary": "82-year-old female. OPQRST: Progressive difficulty breathing, hives, and loss of consciousness beginning approximately 10 minutes after flu shot administration — not improving despite epinephrine. SAMPLE: PMH CHF, hypertension, and atrial fibrillation, medications include cardiac medications — allergies unknown prior to this reaction, no prior vaccine reactions reported. Secondary exam: Semi-conscious, GCS 12. Urticaria across chest and neck. Audible wheeze bilaterally. Angioedema of the lips. Hypotensive at 78/44. Irregular pulse consistent with known atrial fibrillation. First epinephrine dose 5 minutes ago — inadequate response.",
+      "vitals": {
+        "bp": "78/44",
+        "hr": "122 irregular",
+        "rr": "28",
+        "spo2": "88%",
+        "gcs": "12",
+        "temp": "98.0°F"
+      },
+      "teaching_points": "1. Refractory anaphylaxis — second dose of epinephrine 0.3mg IM, IV access, normal saline bolus for hypotension at 78/44, nebulized albuterol for bronchospasm; in an elderly CHF patient, be judicious with fluid volume to avoid pulmonary edema. 2. Epinephrine in a patient with CHF and atrial fibrillation — epinephrine is still mandatory in anaphylaxis regardless of cardiac history; the risk of untreated anaphylaxis exceeds the cardiac risk of epinephrine; administer it and monitor for dysrhythmias."
+    },
+    {
+      "dispatch_line": "Medic 12, Cedar Family Medicine — female, 30s, seizure in the clinic.",
+      "chief_complaint": "Active generalized seizure, ongoing",
+      "sceneSizeUp": "BSI taken. Scene is safe — clinic medication pick-up area, patient on the floor. One patient. Nature of illness: active generalized seizure, duration exceeding 4 minutes — status epilepticus. C-spine: patient fell during seizure — clinic nurse reports she went straight down, no head strike observed. Resources available: BLS Engine, ALS Ambulance, EMS Supervisor, Rotor-Wing Medevac, Police Department. You find a female on the floor in a full generalized tonic-clonic seizure. The clinic nurse says the seizure has been ongoing for at least 4 minutes with no sign of stopping.",
+      "primarySurvey": "General Impression: Adult female on the clinic floor in active generalized tonic-clonic seizure, duration exceeding 4 minutes — status epilepticus. AVPU: Unresponsive — GCS 3 during active seizure. Airway: At risk — position patient on side, suction available. Breathing: Irregular during active seizure — monitor closely. Circulation: Pulse present, rate unable to accurately assess during seizure. Patient Priority — high or low?",
+      "historySecondary": "33-year-old female. History from scene and clinic nurse: no known seizure history, no medical alert jewelry, no one present who knows her. SAMPLE: PMH unknown, medications unknown, allergies unknown. Secondary exam: Active generalized tonic-clonic seizure now entering its fifth minute — consistent with status epilepticus. No tongue laceration visible from observation. No obvious trauma from fall. Airway maintained with positioning. Blood glucose deferred — active seizure.",
+      "vitals": {
+        "bp": "unable to obtain",
+        "hr": "unable to obtain",
+        "rr": "irregular during seizure",
+        "spo2": "unable to obtain",
+        "gcs": "3",
+        "temp": "unknown"
+      },
+      "teaching_points": "1. Status epilepticus — IV or IN benzodiazepine immediately; lorazepam 2mg IV or midazolam 5mg IM or 10mg IN are AEMT interventions for active seizure; administer without delay as prolonged seizure causes neuronal injury and hypoxia. 2. If the first benzodiazepine dose does not terminate the seizure within 5 minutes — administer a second dose; benzodiazepines are safe to repeat in status epilepticus up to protocol-defined limits; failure to respond to two benzodiazepine doses may require levetiracetam IV which is a hospital or paramedic-level intervention."
+    },
+    {
+      "dispatch_line": "Medic 12, Cedar Family Medicine — male, 70s, chest pain after taking nitroglycerin.",
+      "chief_complaint": "Chest pain, severe hypotension after nitroglycerin",
+      "sceneSizeUp": "BSI taken. Scene is safe — clinic parking lot. One patient. Nature of illness: severe hypotension following nitroglycerin administration with concurrent PDE5 inhibitor use. No mechanism for spinal injury — c-spine not indicated. Resources available: BLS Engine, ALS Ambulance, EMS Supervisor, Rotor-Wing Medevac, Police Department. You find an elderly male sitting on a parking bumper looking pale and faint. The clinic nurse flagged him down after he picked up a new nitroglycerin prescription and took a tablet for chest pain before leaving the store.",
+      "primarySurvey": "General Impression: Elderly male sitting on a parking bumper, pale, faint, and confused — severe hypotension. AVPU: Alert but confused and vertiginous. Airway: Patent, self-maintained. Breathing: Rate and depth adequate, unlabored. Circulation: Radial pulse rapid and weak — severely hypotensive, skin pale and diaphoretic. Patient Priority — high or low?",
+      "historySecondary": "71-year-old male. OPQRST: Took one nitroglycerin SL tablet for 7/10 chest pain approximately 10 minutes ago — within minutes developed severe dizziness and near-syncope, chest pain still present but reduced to 5/10. SAMPLE: PMH CAD and prior MI, takes sildenafil (Viagra) and aspirin — admits to taking sildenafil yesterday, no other known allergies. Secondary exam: Severely hypotensive at 72/44 — nitrate and PDE5 inhibitor combination causes profound vasodilation and hypotension. Alert but faint. Chest pain ongoing at 5/10.",
+      "vitals": {
+        "bp": "72/44",
+        "hr": "104",
+        "rr": "18",
+        "spo2": "97%",
+        "gcs": "15",
+        "temp": "98.4°F"
+      },
+      "teaching_points": "1. NTG-sildenafil interaction with BP 72/44 — lay flat, normal saline bolus 500mL to 1L IV, O2; do not give additional NTG; the hypotension from this interaction can be prolonged and severe. 2. IV fluid resuscitation is the primary treatment for NTG-sildenafil hypotension — phenylephrine is a vasopressor option in some AEMT protocols for refractory hypotension; contact medical direction if BP does not respond to fluids."
+    }
+  ],
+  "cedar_apartments": [
+    {
+      "dispatch_line": "Medic 12, Cedar Hollow Apartments, Building 14 — male, 50s, difficulty breathing, O2 concentrator unplugged.",
+      "chief_complaint": "Severe COPD exacerbation, O2 concentrator unplugged",
+      "sceneSizeUp": "BSI taken. Scene safety: narrow gravel lane, limited access — confirm unit can reach the lot; smoky interior environment, open windows for ventilation if possible. One patient. Nature of illness: severe COPD exacerbation with prolonged hypoxia from unplugged home O2. No mechanism for spinal injury — c-spine not indicated. Resources available: BLS Engine, ALS Ambulance, EMS Supervisor, Rotor-Wing Medevac, Police Department. You find a heavyset male in a recliner in severe respiratory distress. The home is cluttered and smoky. A portable O2 concentrator sits in the corner — unplugged. His wife says he has been worsening all day.",
+      "primarySurvey": "General Impression: Middle-aged male in a recliner in severe respiratory distress, tripod position, barrel chest deformity — severe COPD exacerbation with prolonged hypoxia from no supplemental O2. AVPU: Alert and oriented. Airway: Patent, self-maintained. Breathing: Severely labored, tripod position, accessory muscle use, bilateral expiratory wheeze, prolonged expiratory phase. Circulation: Radial pulse present and rapid, skin warm and slightly diaphoretic. Patient Priority — high or low?",
+      "historySecondary": "54-year-old male. OPQRST: Worsening shortness of breath throughout the day — O2 concentrator found unplugged, unknown duration without supplemental O2, no relieving factors, speaking in very short phrases. SAMPLE: PMH COPD, CHF, and hypertension, smoker x35 years, medications unknown, no known allergies. Secondary exam: Tripod positioning, severe accessory muscle use. Bilateral expiratory wheeze with prolonged expiratory phase. Barrel chest deformity consistent with severe COPD. SpO2 84% on room air. O2 concentrator unplugged — duration without supplemental O2 unknown.",
+      "vitals": {
+        "bp": "158/96",
+        "hr": "108",
+        "rr": "28",
+        "spo2": "84%",
+        "gcs": "15",
+        "temp": "99.2°F"
+      },
+      "teaching_points": "1. Severe COPD exacerbation with SpO2 84% and O2 concentrator unplugged — O2 titrated to 88 to 92%, nebulized albuterol 2.5mg, CPAP at 5cm H2O if tolerated; the combination of COPD and CHF (noted in PMH) means CPAP benefits both the obstructive and the fluid component. 2. Smoky interior — remove the patient from the smoke exposure environment as quickly as possible; ongoing smoke inhalation in a COPD patient is a compounding injury; document the environmental exposure."
+    },
+    {
+      "dispatch_line": "Medic 12, Cedar Hollow Apartments, Building 22 — welfare check, elderly female, not seen in 3 days.",
+      "chief_complaint": "Found down, prolonged downtime, hypoglycemia and hyperthermia",
+      "sceneSizeUp": "BSI taken. Scene safety: welfare check, door opened by neighbor — confirm scene is safe, home very warm. One patient. Nature of illness: prolonged downtime with hypoglycemia, hyperthermia, and dehydration — elderly female living alone. No mechanism for spinal injury — found on bathroom floor, no trauma evidence. Resources available: BLS Engine, ALS Ambulance, EMS Supervisor, Rotor-Wing Medevac, Police Department. You find a 78-year-old female unresponsive on the bathroom floor. A neighbor called when mail piled up for 3 days and she did not respond to knocking. The home is very warm. Skin breakdown is present at the sacrum.",
+      "primarySurvey": "General Impression: Elderly female on the bathroom floor, unresponsive, skin breakdown at pressure points — prolonged downtime with multi-system compromise. AVPU: Pain — minimal response to sternal rub only. Airway: At risk — jaw thrust applied, positioning maintained. Breathing: Slow and shallow — inadequate, BVM prepared. Circulation: Weak rapid central pulse — skin dry and hot. Patient Priority — high or low?",
+      "historySecondary": "78-year-old female, lives alone. History from neighbor: not seen in approximately 3 days, mail accumulating. SAMPLE: PMH diabetes and hypertension per neighbor, medications unknown, allergies unknown. Secondary exam: GCS 6 — responds minimally to sternal rub. Febrile at 103.8°F — hyperthermia from hot home. Blood glucose 42 mg/dL — critically low. Dry mucous membranes — severely dehydrated. Skin breakdown at sacrum — prolonged immobility. SpO2 90%.",
+      "vitals": {
+        "bp": "88/52",
+        "hr": "112",
+        "rr": "10",
+        "spo2": "90%",
+        "gcs": "6",
+        "temp": "103.8°F"
+      },
+      "teaching_points": "1. BG 42 mg/dL with GCS 6 — IV access and dextrose 50% 25g IV; temperature 103.8°F requires active cooling simultaneously; two critical problems require simultaneous treatment. 2. Dehydration combined with hyperthermia and hypoglycemia — IV fluid resuscitation after dextrose to address dehydration; NS bolus 500mL initially; reassess BG every 5 minutes and temperature trend during cooling."
+    },
+    {
+      "dispatch_line": "Medic 12, Cedar Hollow Apartments, Building 7 — 4-year-old, possible ingestion, mother's medications accessed.",
+      "chief_complaint": "Pediatric ingestion, opioid and benzodiazepine suspected",
+      "sceneSizeUp": "BSI taken. Scene is safe — apartment living room, mother present. One patient. Nature of illness: suspected poly-substance pediatric ingestion — opioid and benzodiazepine. No mechanism for spinal injury — c-spine not indicated. Resources available: BLS Engine, ALS Ambulance, EMS Supervisor, Rotor-Wing Medevac, Police Department. You find a 4-year-old male on the couch, staring blankly and lethargic. His mother found him in the bedroom with several opened medication bottles. He is not speaking. Mother's medications include oxycodone, alprazolam, and metformin.",
+      "primarySurvey": "General Impression: Young child on the couch, blank stare, lethargic, slow respirations — opioid and benzodiazepine toxidrome suspected. AVPU: Verbal — responds to voice with slow, inappropriate responses. Airway: At risk — depressed gag reflex possible, positioning maintained, NPA prepared. Breathing: Slow — borderline inadequate, monitor closely. Circulation: Weak bradycardic pulse — skin pale and cool. Patient Priority — high or low?",
+      "historySecondary": "4-year-old male, approximately 16kg. History from mother: found in the bedroom with opened bottles of oxycodone and alprazolam — unknown quantity ingested, unknown duration. SAMPLE: PMH none, no medications, no known allergies, weight approximately 16kg. Secondary exam: Responds to voice with slow, inappropriate responses. Pupils constricted bilaterally — opioid toxidrome. Bradycardic at 62. Slow respirations at 14 — borderline. Blood glucose 82 mg/dL. GCS 12. SpO2 94%.",
+      "vitals": {
+        "bp": "88/54",
+        "hr": "62",
+        "rr": "14",
+        "spo2": "94%",
+        "gcs": "12",
+        "temp": "97.8°F"
+      },
+      "teaching_points": "1. Pediatric opioid and benzodiazepine ingestion — NPA if GCS declines further, naloxone 0.1mg/kg IV or 2mg IN for the opioid component, IV access; GCS 12 with bradycardia at 62 and slow respirations requires close airway monitoring. 2. Naloxone reverses opioid only — after naloxone, if GCS does not return to normal, the benzodiazepine component is contributing; there is no prehospital reversal for benzodiazepines; continued airway monitoring and transport are the interventions."
+    },
+    {
+      "dispatch_line": "Medic 12, Cedar Hollow Apartments, Building 31 — domestic violence, female patient, facial trauma and arm injury.",
+      "chief_complaint": "Domestic violence, facial trauma, forearm fracture, postpartum",
+      "sceneSizeUp": "BSI taken. Scene safety: police have secured the scene, suspect in custody — confirm before approaching. One patient. Mechanism of injury: blunt force facial trauma and forearm fracture from domestic assault — 6 weeks postpartum. C-spine: direct facial and head trauma — c-spine precautions indicated until clinically assessed. Resources available: BLS Engine, ALS Ambulance, EMS Supervisor, Rotor-Wing Medevac, Police Department. You find a 28-year-old female on the front steps, visibly bruised left face, holding her right arm against her body. Police have the suspect in custody. A 2-year-old child is inside the home.",
+      "primarySurvey": "General Impression: Young adult female on the front steps, left periorbital hematoma, right arm guarded — domestic assault with facial trauma and forearm injury, 6 weeks postpartum. AVPU: Alert and oriented — watchful and anxious. Airway: Patent, self-maintained. Breathing: Rate mildly elevated, unlabored. Circulation: Radial pulse present and mildly rapid, skin warm and dry. Patient Priority — high or low?",
+      "historySecondary": "28-year-old female, 6 weeks postpartum. OPQRST: Struck in the face and right arm during a domestic assault — immediate left facial pain and right arm pain, cannot move right arm without severe pain. SAMPLE: PMH none, no medications, no known allergies. Secondary exam: Left periorbital hematoma and nasal swelling — possible zygomatic fracture. Right forearm deformity — fracture suspected. Distal pulse, movement, and sensation (PMS) intact in right hand. Tachycardic at 104 from pain and fear. States this has happened before. A 2-year-old child is inside — child protective services notification required per protocol.",
+      "vitals": {
+        "bp": "136/88",
+        "hr": "104",
+        "rr": "18",
+        "spo2": "99%",
+        "gcs": "15",
+        "temp": "98.4°F"
+      },
+      "teaching_points": "1. Forearm fracture from domestic assault — IV access and fentanyl or morphine weight-based before splinting; document PMS before and after splinting; the 2-year-old inside the home requires a child welfare check — notify law enforcement of the child's presence. 2. The patient states 'this has happened before' — mandatory domestic violence reporting laws vary by state; know your jurisdiction's requirements; document her statement verbatim in quotes."
+    }
+  ],
+  "oakwood_estates": [
+    {
+      "dispatch_line": "Medic 12, Oakwood Estates, 4412 Oakwood Court — elderly male, collapsed in the driveway, no pulse.",
+      "chief_complaint": "Husband collapsed in the driveway after yard work, no pulse",
+      "sceneSizeUp": "BSI taken. Scene is safe — residential driveway. One patient. Nature of illness: cardiac arrest. No mechanism for spinal injury — c-spine not indicated. Resources available: BLS Engine, ALS Ambulance, EMS Supervisor, Rotor-Wing Medevac, Police Department. You find a 72-year-old male pulseless in his driveway. His wife found him after he was raking leaves. She has not started CPR. Estimated downtime 2 to 3 minutes. Wife is hysterical at the doorway.",
+      "primarySurvey": "General Impression: Elderly male pulseless in the driveway, wife hysterical — cardiac arrest, begin CPR immediately. AVPU: Unresponsive — GCS 3. Airway: Requires management — BVM initiated. Breathing: Apneic — ventilating with BVM. Circulation: Pulseless — CPR initiated, AED applied. Patient Priority — high or low?",
+      "historySecondary": "72-year-old male. History from wife: prior MI, takes metoprolol and aspirin — was raking leaves when he collapsed, estimated downtime 2 to 3 minutes, no CPR started before your arrival. SAMPLE: PMH HTN and prior MI per wife, takes metoprolol and aspirin, allergies unknown. Secondary exam: Pulseless and apneic. No obvious trauma. No DNR per wife. AED applied — analyzing rhythm.",
+      "vitals": {
+        "bp": "pulseless",
+        "hr": "pulseless",
+        "rr": "apneic",
+        "spo2": "not obtainable",
+        "gcs": "3",
+        "temp": "unknown"
+      },
+      "teaching_points": "1. Cardiac arrest with 2 to 3 minute downtime — CPR, AED, IV/IO access, epinephrine 1mg every 3 to 5 minutes; establish IO if IV access is not immediately obtainable. 2. Post-ROSC priorities — if ROSC is achieved, 12-lead acquisition and transmission immediately; a cardiac arrest from ACS will show STEMI on post-ROSC 12-lead in many cases; STEMI activation begins at the scene."
+    },
+    {
+      "dispatch_line": "Medic 12, Oakwood Estates, 4201 Manor Drive — 7-year-old, fell from a trampoline onto the deck.",
+      "chief_complaint": "Son fell off the trampoline and hit the wooden deck, arm looks bent and he hit his head",
+      "sceneSizeUp": "BSI taken. Scene is safe — residential backyard. One patient. Mechanism of injury: fall from a trampoline onto a wooden deck approximately 4 feet below — head strike and forearm deformity. C-spine: fall with head strike and significant MOI — c-spine precautions indicated. Resources available: BLS Engine, ALS Ambulance, EMS Supervisor, Rotor-Wing Medevac, Police Department. You find a 7-year-old male crying in his mother's arms, right forearm visibly deformed, a minor forehead abrasion. The mother says he fell off the trampoline and landed on the deck hitting his head and arm.",
+      "primarySurvey": "General Impression: Young child in mother's arms, crying, right forearm deformity, forehead abrasion — pediatric trauma with head strike and extremity fracture. AVPU: Alert — crying, oriented to parents. Airway: Patent, self-maintained. Breathing: Rate mildly elevated from crying, unlabored. Circulation: Radial pulse present and rapid, skin warm and pink. Patient Priority — high or low?",
+      "historySecondary": "7-year-old male. OPQRST: Fell from a trampoline onto the wooden deck below — head strike on the deck and right forearm struck as well, immediate pain in the forearm and forehead, rated 9/10. SAMPLE: PMH none, no medications, no known allergies. Secondary exam: Right forearm mid-shaft deformity. Distal pulse, movement, and sensation (PMS) intact in right hand. Minor forehead abrasion with minor bleeding. GCS 15 — alert and appropriate. Pupils equal and reactive. No LOC observed per mother.",
+      "vitals": {
+        "bp": "108/70",
+        "hr": "128",
+        "rr": "24",
+        "spo2": "99%",
+        "gcs": "15",
+        "temp": "98.6°F"
+      },
+      "teaching_points": "1. Pediatric forearm fracture with head strike — c-spine, IV access, fentanyl 1mcg/kg IV before splinting; pain management before splinting in a frightened child improves cooperation and splint quality. 2. Serial neurological assessment every 5 minutes — GCS 15 now, but pediatric epidural hematoma can present with a lucid interval followed by rapid deterioration; any GCS decline during transport is an immediate escalation."
+    },
+    {
+      "dispatch_line": "Medic 12, Oakwood Estates, 3800 Crown View Drive — 78-year-old male, difficulty breathing, home O2 dependent.",
+      "chief_complaint": "Husband cannot breathe, home oxygen on but getting worse",
+      "sceneSizeUp": "BSI taken. Scene is safe — residential living room. One patient. Nature of illness: severe COPD exacerbation failing home O2. No mechanism for spinal injury — c-spine not indicated. Resources available: BLS Engine, ALS Ambulance, EMS Supervisor, Rotor-Wing Medevac, Police Department. You find a 78-year-old male in his recliner in the tripod position, pursed-lip breathing, barely able to speak in words. His wife says his home O2 is on at 2L and he has been worsening for 2 days with a URI.",
+      "primarySurvey": "General Impression: Elderly male in the recliner in tripod position, audible bilateral wheeze, one to two word responses only, failing on home O2 — severe COPD exacerbation. AVPU: Alert but severely dyspneic. Airway: Patent, self-maintained — tiring rapidly. Breathing: Severely labored, tripod position, pursed-lip breathing, bilateral audible wheeze, prolonged expiratory phase. Circulation: Rapid weak radial pulse, skin diaphoretic and warm. Patient Priority — high or low?",
+      "historySecondary": "78-year-old male. OPQRST: Progressive worsening over 2 days with a URI — home O2 at 2L not maintaining acceptable SpO2, barely able to speak. SAMPLE: PMH severe COPD and CHF, takes tiotropium, albuterol, and furosemide, no known allergies. Secondary exam: Tripod positioning, pursed-lip breathing, bilateral expiratory wheeze, prolonged expiratory phase. SpO2 80% on home O2. Trace ankle edema. RR 30. Tiring rapidly — respiratory failure is imminent.",
+      "vitals": {
+        "bp": "156/94",
+        "hr": "122",
+        "rr": "30",
+        "spo2": "80%",
+        "gcs": "15",
+        "temp": "99.0°F"
+      },
+      "teaching_points": "1. Severe COPD with SpO2 80% on home O2 — O2 titrated to 88 to 92%, nebulized albuterol 2.5mg, CPAP at 5cm H2O; CPAP reduces work of breathing and can prevent intubation in this presentation. 2. CHF history with bilateral wheeze — albuterol and CPAP benefit both COPD and CHF; furosemide IV is an option if the CHF component is dominant; trace ankle edema supports CHF contribution."
+    },
+    {
+      "dispatch_line": "Medic 12, Oakwood Estates, 4900 Prestige Lane — 82-year-old female, altered mental status, insulin-dependent diabetic.",
+      "chief_complaint": "Mother is not herself, very confused, she is diabetic and did not eat much today",
+      "sceneSizeUp": "BSI taken. Scene is safe — residential bedroom. One patient. Nature of illness: severe hypoglycemia with altered mental status in an elderly insulin-dependent diabetic. No mechanism for spinal injury — c-spine not indicated. Resources available: BLS Engine, ALS Ambulance, EMS Supervisor, Rotor-Wing Medevac, Police Department. You find an 82-year-old female sitting on the edge of her bed, confused and lethargic, pale and diaphoretic. Her daughter called because her mother has not been acting right since this morning. She took her insulin but ate very little today.",
+      "primarySurvey": "General Impression: Elderly female on the edge of the bed, confused and lethargic, pale and diaphoretic — severe hypoglycemia with altered mental status. AVPU: Verbal — responds to voice with confused, slow responses. Airway: At risk — declining mental status, positioning maintained. Breathing: Rate and depth adequate, unlabored. Circulation: Rapid weak radial pulse, skin pale and diaphoretic. Patient Priority — high or low?",
+      "historySecondary": "82-year-old female. History from daughter: took her insulin this morning but ate very little — has been confused and lethargic since morning. SAMPLE: PMH Type 2 DM on insulin, HTN, and CHF, takes insulin, lisinopril, and furosemide, no known allergies. Secondary exam: GCS 12 with declining trend — confused and slow to respond. Blood glucose 34 mg/dL — critically low. Skin pale, cool, and diaphoretic. Pupils equal and reactive. No focal neurological deficits.",
+      "vitals": {
+        "bp": "128/78",
+        "hr": "104",
+        "rr": "16",
+        "spo2": "97%",
+        "gcs": "12",
+        "temp": "97.8°F"
+      },
+      "teaching_points": "1. BG 34 mg/dL with GCS 12 — IV access and dextrose 50% 25g IV immediately; recheck BG every 5 minutes; if IV access fails, glucagon 1mg IM is within AEMT scope. 2. After glucose correction, obtain a 12-lead — diaphoresis and tachycardia in an elderly diabetic can indicate concurrent ACS; hypoglycemia-induced sympathetic stimulation can trigger true myocardial ischemia in a patient with underlying CAD; do not assume the tachycardia is purely from hypoglycemia."
+    }
+  ],
+  "cedar_quick_mart": [
+    {
+      "dispatch_line": "Medic 12, Cedar Quick Mart — male found unresponsive in the restroom, suspected overdose.",
+      "chief_complaint": "Opioid overdose, respiratory failure, confined space",
+      "sceneSizeUp": "BSI taken — mask and eye protection for fentanyl exposure risk. Scene safety: single-stall convenience store restroom — tight space limits provider movement and BVM effectiveness, move patient to larger area as soon as safely possible. One patient. Nature of illness: suspected opioid overdose with respiratory failure — used syringe on floor. No mechanism for spinal injury — c-spine not indicated. Resources available: BLS Engine, ALS Ambulance, EMS Supervisor, Rotor-Wing Medevac, Police Department. You find an approximately 35-year-old male on the restroom floor, agonal breathing, cyanotic. A used syringe is beside him. Track marks are visible on both forearms. He has been in the restroom for over 30 minutes per the clerk.",
+      "primarySurvey": "General Impression: Adult male on the restroom floor, agonal breathing, pinpoint pupils, cyanotic — critical opioid overdose with respiratory failure in a confined space. AVPU: Pain — no purposeful response, minimal withdrawal. Airway: Obstructed — jaw thrust applied, NPA placed. Breathing: Agonal — 4 breaths per minute, BVM initiated, patient moved to hallway for better access. Circulation: Weak bradycardic central pulse — lips and fingertips cyanotic. Patient Priority — high or low?",
+      "historySecondary": "Approximately 35-year-old male. History from scene: in the restroom over 30 minutes, used syringe on floor, track marks bilateral forearms — suspected IV opioid use. SAMPLE: PMH unknown, medications unknown, allergies unknown. Secondary exam: Agonal respirations, SpO2 72%. Pinpoint pupils bilaterally. GCS 3. Cyanotic lips and fingertips. No obvious trauma. Hypothermic at 96.8°F — prolonged time on cold floor. Single stall space limits BVM effectiveness — patient moved to hallway.",
+      "vitals": {
+        "bp": "86/52",
+        "hr": "52",
+        "rr": "4 agonal",
+        "spo2": "72%",
+        "gcs": "3",
+        "temp": "96.8°F"
+      },
+      "teaching_points": "1. Critical opioid OD in a confined space — move patient, NPA, BVM, then naloxone 2mg IV/IO or IN; hypothermia at 96.8°F from prolonged floor exposure requires passive rewarming. 2. Naloxone response monitoring — if the patient responds to naloxone, monitor closely for re-sedation; fentanyl analogues frequently outlast naloxone; a patient who wakes after naloxone and then goes back down requires a second dose and mandatory transport."
+    },
+    {
+      "dispatch_line": "Medic 12, Cedar Quick Mart — female, 64-year-old, collapsed at the gas pump, bystander CPR in progress.",
+      "chief_complaint": "Witnessed cardiac arrest at gas pump, bystander CPR in progress",
+      "sceneSizeUp": "BSI taken. Scene safety: gas pump area — confirm pump is shut off and no fuel spill hazard before kneeling. One patient. Nature of illness: witnessed cardiac arrest at a gas pump. No mechanism for spinal injury — c-spine not indicated. AED available inside the station — retrieve immediately. Resources available: BLS Engine, ALS Ambulance, EMS Supervisor, Rotor-Wing Medevac, Police Department. You find a female on the pavement next to her vehicle, bystander CPR in progress with good technique. She collapsed while pumping gas. Total downtime approximately 4 minutes with continuous CPR. A crowd has gathered.",
+      "primarySurvey": "General Impression: Elderly female supine on the convenience store pavement, pulseless and apneic, good bystander CPR in progress — witnessed cardiac arrest. AVPU: Unresponsive — GCS 3. Airway: Requires management — BVM initiated. Breathing: Apneic — ventilating with BVM. Circulation: Pulseless — CPR in progress, AED retrieved from inside the station. Patient Priority — high or low?",
+      "historySecondary": "64-year-old female. History from bystanders: collapsed suddenly while pumping gas — no prodrome reported by witnesses. SAMPLE: PMH unknown, medications unknown, allergies unknown. Secondary exam: Pulseless and apneic. No obvious trauma. No DNR present. Bystander CPR quality good — proper depth and rate. AED applied — analyzing. Hard pavement surface provides good compression platform.",
+      "vitals": {
+        "bp": "pulseless",
+        "hr": "pulseless",
+        "rr": "apneic",
+        "spo2": "not obtainable",
+        "gcs": "3",
+        "temp": "unknown"
+      },
+      "teaching_points": "1. Cardiac arrest with 4-minute bystander CPR — take over, apply monitor, IV/IO access, epinephrine 1mg every 3 to 5 minutes; AED from the store should already be applied by the time you arrive. 2. IO access in cardiac arrest — if IV access is not immediately available, IO provides equivalent drug delivery; do not interrupt CPR for multiple IV attempts; IO is fast and effective."
+    },
+    {
+      "dispatch_line": "Medic 12, Cedar Quick Mart — male, 44-year-old, MVC into canopy support, diabetic medical alert, BG 24.",
+      "chief_complaint": "MVC caused by hypoglycemia, BG 24, airbag deployment",
+      "sceneSizeUp": "BSI taken. Scene safety: vehicle into a canopy support column — confirm structural stability of the canopy before approaching, fuel spill checked and negative, fire department en route. One patient. Mechanism of injury: MVC with airbag deployment caused by hypoglycemia — medical emergency precipitating trauma. C-spine: MVC with airbag deployment — c-spine precautions indicated. Resources available: BLS Engine, ALS Ambulance, EMS Supervisor, Rotor-Wing Medevac, Police Department. You find a confused and combative male in the driver's seat. Significant front-end damage, airbags deployed. His medical alert bracelet reads Diabetic — Insulin Dependent. BG is 24 mg/dL.",
+      "primarySurvey": "General Impression: Middle-aged male in the driver's seat post-MVC, confused and combative — hypoglycemia causing the crash and AMS, airbag deployment adds trauma component. AVPU: Verbal — responds to voice, confused and combative, not oriented. Airway: Patent, self-maintained — monitor. Breathing: Rate mildly elevated, unlabored. Circulation: Radial pulse rapid, skin pale and diaphoretic. Patient Priority — high or low?",
+      "historySecondary": "44-year-old male. History from scene: medical alert bracelet — Diabetic, Insulin Dependent, BG 24 mg/dL — hypoglycemia caused the crash. SAMPLE: PMH Type 1 DM on insulin per bracelet, other medications unknown, allergies unknown. Secondary exam: BG 24 mg/dL — critically low, neuroglycopenia causing confusion and combativeness. Confused and combative — difficult to assess. Airbag abrasions on face and forearms. Chest wall tenderness — rib injury possible from airbag. C-spine precautions applied. Medical alert bracelet identified the primary etiology.",
+      "vitals": {
+        "bp": "102/64",
+        "hr": "128",
+        "rr": "22",
+        "spo2": "96%",
+        "gcs": "13",
+        "temp": "98.6°F"
+      },
+      "teaching_points": "1. Hypoglycemia with MVC — IV dextrose 50% 25g after IV access, c-spine precautions, monitor BG every 5 minutes; the combativeness and confusion are from neuroglycopenia and should improve with glucose correction. 2. Do not confuse neuroglycopenic combativeness with traumatic brain injury — both can cause confusion and combativeness after an MVC; correcting the glucose and reassessing neurological status determines whether the AMS was purely from hypoglycemia or if TBI is contributing."
+    },
+    {
+      "dispatch_line": "Medic 12, Cedar Quick Mart — female, 17 years old, syncope inside the store, 14 weeks pregnant.",
+      "chief_complaint": "Syncope in early pregnancy, dehydration, no prenatal care",
+      "sceneSizeUp": "BSI taken. Scene is safe — convenience store convenience store. One patient. Nature of illness: syncope at 14 weeks gestation — dehydration and heat exposure as precipitants, no prenatal care established. C-spine: brief syncope with no fall — patient slumped to the floor, no head strike. Resources available: BLS Engine, ALS Ambulance, EMS Supervisor, Rotor-Wing Medevac, Police Department. You find a 17-year-old female on the convenience store floor, regaining consciousness, embarrassed. She was unconscious for approximately 20 seconds and is now alert. She has not eaten since yesterday and has been in the heat for several hours.",
+      "primarySurvey": "General Impression: Teenage female on the store floor, regaining consciousness, pale — syncope at 14 weeks gestation from dehydration and heat exposure. AVPU: Alert and oriented — embarrassed, cooperative. Airway: Patent, self-maintained. Breathing: Rate and depth adequate, unlabored. Circulation: Radial pulse present and mildly rapid — mildly hypotensive at 92/58, skin pale and warm. Patient Priority — high or low?",
+      "historySecondary": "17-year-old female, 14 weeks pregnant. OPQRST: Syncopal episode in the convenience store — unconscious approximately 20 seconds, no fall or head strike, now alert. SAMPLE: PMH none, no medications, no known allergies — 14 weeks pregnant with no prenatal care established. Secondary exam: Alert and oriented. Mildly tachycardic at 106. Mildly hypotensive at 92/58. Has not eaten since yesterday. Has been in the heat for several hours. Discloses 14 weeks pregnant and does not want to call her parents — she is alone. No prenatal care established.",
+      "vitals": {
+        "bp": "92/58",
+        "hr": "106",
+        "rr": "16",
+        "spo2": "99%",
+        "gcs": "15",
+        "temp": "99.0°F"
+      },
+      "teaching_points": "1. First-trimester syncope with BP 92/58 — left lateral positioning, IV access, small NS bolus 250mL, BG check; ectopic pregnancy must be considered in any first-trimester patient with syncope and hypotension — this is a surgical emergency if present. 2. No prenatal care at 14 weeks — this patient may have undetected obstetric complications; communicate the lack of prenatal care and the hypotension to the receiving OB team; ectopic pregnancy, hyperemesis gravidarum, and first-trimester complications require urgent evaluation."
+    }
+  ],
+  "cedar_market": [
+    {
+      "dispatch_line": "Medic 12, Cedar Market, 455 Market Street — male, 60s, collapsed in the produce section, CPR in progress.",
+      "chief_complaint": "Cardiac arrest, bystander CPR in progress",
+      "sceneSizeUp": "BSI taken. Scene is safe — market produce section, bystander CPR in progress. One patient. Nature of illness: cardiac arrest. No mechanism for spinal injury — c-spine not indicated. AED visible in wall mount near customer service desk approximately 20 feet away — retrieve immediately. Resources available: BLS Engine, ALS Ambulance, EMS Supervisor, Rotor-Wing Medevac, Police Department. You find a heavyset male on the floor, a store employee performing CPR. The wife is nearby and states he grabbed his chest and fell — estimated downtime 2 minutes.",
+      "primarySurvey": "General Impression: Heavyset middle-aged male supine on the grocery floor, pulseless and apneic, CPR in progress. AVPU: Unresponsive — GCS 3. Airway: Requires management — BVM initiated. Breathing: Apneic — ventilating with BVM. Circulation: Pulseless — CPR in progress, AED being applied. Patient Priority — high or low?",
+      "historySecondary": "63-year-old male. History from wife: no known cardiac history, described as healthy, no medications — has been under severe stress for months. SAMPLE: PMH unknown per wife, no medications, allergies unknown. Secondary exam: Pulseless and apneic. No obvious trauma. No DNR present. Bystander CPR quality assessed — adequate depth and rate. AED applied — analyzing rhythm.",
+      "vitals": {
+        "bp": "pulseless",
+        "hr": "pulseless",
+        "rr": "apneic",
+        "spo2": "not obtainable",
+        "gcs": "3",
+        "temp": "unknown"
+      },
+      "teaching_points": "1. Cardiac arrest with bystander CPR — take over CPR, apply monitor, establish IV/IO access, epinephrine 1mg IV/IO every 3 to 5 minutes; glucagon IM is within AEMT scope if cardiac arrest is from beta blocker or calcium channel blocker overdose, which is possible given the stress history. 2. IO access is equally effective as IV in cardiac arrest — if IV access fails after one attempt, go to IO immediately; do not interrupt CPR for multiple IV attempts when IO provides immediate access."
+    },
+    {
+      "dispatch_line": "Medic 12, Cedar Market — elderly female, fall from a step stool in the canned goods aisle.",
+      "chief_complaint": "Fall, wrist and shoulder pain",
+      "sceneSizeUp": "BSI taken. Scene is safe — market aisle, step stool on its side. One patient. Mechanism of injury: fall from a step stool while reaching for an item on a high shelf. C-spine: low-energy fall with no reported head strike — patient denies head strike, c-spine not indicated. Resources available: BLS Engine, ALS Ambulance, EMS Supervisor, Rotor-Wing Medevac, Police Department. You find an elderly female sitting on the aisle floor, holding her right arm against her body, wrist visibly deformed. She is alert and talking.",
+      "primarySurvey": "General Impression: Elderly female sitting on the floor, right arm guarded against her body, visible wrist deformity, in pain but alert. AVPU: Alert and oriented. Airway: Patent, self-maintained. Breathing: Rate and depth adequate, unlabored. Circulation: Radial pulse present, skin warm and dry. Patient Priority — high or low?",
+      "historySecondary": "72-year-old female. OPQRST: Fell from a step stool landing on outstretched right hand, immediate wrist and shoulder pain, rated 8/10 at wrist and 6/10 at shoulder. SAMPLE: PMH osteoporosis, takes calcium, vitamin D, and warfarin, no known allergies. Secondary exam: Obvious deformity of the right distal forearm consistent with Colles fracture. Right shoulder tenderness on palpation with limited ROM. Distal pulse, movement, and sensation (PMS) intact in right hand. On warfarin — elevated bleeding risk. No head strike reported.",
+      "vitals": {
+        "bp": "144/86",
+        "hr": "90",
+        "rr": "16",
+        "spo2": "98%",
+        "gcs": "15",
+        "temp": "98.4°F"
+      },
+      "teaching_points": "1. Colles fracture with pain rated 8/10 — IV access and morphine or fentanyl weight-based before splinting; pain management prior to manipulation and splinting improves patient cooperation and splint quality. 2. Right shoulder injury with limited ROM alongside the wrist fracture — splint the wrist, support the shoulder in a sling, and document both injuries; FOOSH mechanism commonly causes both distal radius fracture and shoulder injury from the transmitted force."
+    },
+    {
+      "dispatch_line": "Medic 12, Cedar Market — child, 4 years old, found unresponsive near the pharmacy counter, possible ingestion.",
+      "chief_complaint": "Pediatric unresponsive, unknown ingestion",
+      "sceneSizeUp": "BSI taken. Scene is safe — market pharmacy area. One patient. Nature of illness: suspected pediatric medication ingestion. No mechanism for spinal injury — c-spine not indicated. Resources available: BLS Engine, ALS Ambulance, EMS Supervisor, Rotor-Wing Medevac, Police Department. You find a 4-year-old boy lying on the floor near the pharmacy pickup counter, barely responsive. His mother says she set her purse down while speaking with the pharmacist and the child got into it. Mother's purse contains oxycodone, lorazepam, and blood pressure medications.",
+      "primarySurvey": "General Impression: Small child on the floor, minimally responsive, slow and irregular breathing, pale — critical pediatric patient. AVPU: Pain — minimal response to sternal rub, no eye opening to voice. Airway: At risk — jaw thrust applied, NPA prepared. Breathing: Slow and irregular — inadequate, BVM prepared. Circulation: Weak central pulse, skin pale and moist. Patient Priority — high or low?",
+      "historySecondary": "4-year-old male, approximately 16kg. History from mother: child accessed purse unsupervised for an unknown duration — purse contains oxycodone, lorazepam, and antihypertensive medications. Unknown quantity and substance ingested. SAMPLE: PMH none, no medications, no known allergies, weight approximately 16kg. Secondary exam: Minimally responsive to pain. Pinpoint pupils bilaterally — opioid toxidrome suspected. Skin pale and moist. Respirations slow and irregular — critical respiratory depression. SpO2 84% — critically low.",
+      "vitals": {
+        "bp": "78/44",
+        "hr": "48",
+        "rr": "8",
+        "spo2": "84%",
+        "gcs": "6",
+        "temp": "97.0°F"
+      },
+      "teaching_points": "1. Pediatric opioid ingestion with respiratory failure — NPA, BVM, then naloxone 0.1mg/kg IV/IO or 2mg IN; recheck after 2 to 3 minutes and repeat if needed; IO is appropriate if IV access fails in this critically ill child. 2. Lorazepam from the mother's purse is a co-ingestion — naloxone reverses the opioid component only; if the child does not improve fully after adequate naloxone dosing, benzodiazepine co-ingestion is contributing and requires continued supportive ventilation."
+    },
+    {
+      "dispatch_line": "Medic 12, Cedar Market — female, 30s, severe allergic reaction at the deli counter.",
+      "chief_complaint": "Anaphylaxis after eating deli sample",
+      "sceneSizeUp": "BSI taken. Scene is safe — market deli counter. One patient. Nature of illness: anaphylaxis following food exposure. No mechanism for spinal injury — c-spine not indicated. Resources available: BLS Engine, ALS Ambulance, EMS Supervisor, Rotor-Wing Medevac, Police Department. You find a female sitting on the floor near the deli counter in obvious respiratory distress. She sampled a deli product and within five minutes developed facial swelling, hives, and difficulty breathing. The deli worker reports the product may have contained tree nuts.",
+      "primarySurvey": "General Impression: Adult female on the floor near the deli counter, severe facial angioedema, stridor audible, widespread urticaria — critical anaphylaxis. AVPU: Alert and oriented but visibly frightened. Airway: Stridor present, severe angioedema of face, lips, and tongue — airway immediately threatened. Breathing: Rapid and severely labored, stridor and wheeze. Circulation: Radial pulse rapid and weak, skin flushed with widespread urticaria across trunk. Patient Priority — high or low?",
+      "historySecondary": "31-year-old female. OPQRST: Onset within 5 minutes of eating a deli sample — rapid progression to facial swelling, hives, and stridor. SAMPLE: PMH tree nut allergy, EpiPen prescribed — EpiPen is in her car in the parking lot, no other medications, no other known allergies. Secondary exam: Severe angioedema of face, lips, and tongue. Stridor present and worsening. Widespread urticaria across trunk. Hypotensive at 86/52, tachycardic at 132. SpO2 91% and declining.",
+      "vitals": {
+        "bp": "86/52",
+        "hr": "132",
+        "rr": "28",
+        "spo2": "91%",
+        "gcs": "15",
+        "temp": "98.6°F"
+      },
+      "teaching_points": "1. Critical anaphylaxis with stridor, BP 86/52, and SpO2 91% — epinephrine 0.3mg IM immediately, IV access, normal saline bolus 500mL for hypotension, nebulized albuterol for bronchospasm after epinephrine. 2. Stridor indicates supraglottic angioedema — this airway can close rapidly; position the patient upright, administer epinephrine without delay, and transport immediately; every minute without epinephrine allows the angioedema to progress."
+    }
+  ],
+  "cedar_motor_lodge": [
+    {
+      "dispatch_line": "Medic 12, Cedar Motor Lodge, 175 Hollow Drive — room 14, welfare check, occupant not seen for 2 days, possible overdose.",
+      "chief_complaint": "Unresponsive, found down, suspected overdose",
+      "sceneSizeUp": "BSI taken — gloves, mask for airborne precautions in an enclosed space with unknown exposure risk. Scene safety: welfare check — unknown what is in the room, confirm with management whether any hazard is suspected before entering; scene is safe. One patient. Nature of illness: suspected poly-substance overdose with prolonged down time. No mechanism for spinal injury — found on bed, no trauma evidence. Resources available: BLS Engine, ALS Ambulance, EMS Supervisor, Rotor-Wing Medevac, Police Department. You find a male on the bed unresponsive in room 14, opened by management. The room smells of urine and body odor. Empty bottles of oxycodone and benzodiazepines are on the nightstand. He has a weak pulse.",
+      "primarySurvey": "General Impression: Male on the bed unresponsive, pinpoint pupils, respiratory failure — opioid toxidrome with prolonged downtime. AVPU: Pain — minimal response to sternal rub only. Airway: Obstructed — jaw thrust applied, NPA placed. Breathing: Agonal — 5 breaths per minute, BVM initiated immediately. Circulation: Weak central pulse present, bradycardic — skin pale, mottled at pressure points. Patient Priority — high or low?",
+      "historySecondary": "Approximately 38-year-old male. History from scene: empty oxycodone and benzodiazepine bottles on the nightstand — quantities unknown. Not seen for approximately 2 days. SAMPLE: PMH unknown from bottles — oxycodone and benzodiazepine prescriptions, other medications unknown, allergies unknown. Secondary exam: Responds minimally to sternal rub. Pinpoint pupils bilaterally. Agonal respirations — SpO2 76%. Skin breakdown at pressure points — bony prominences suggest prolonged immobility over 24–48 hours. Hypothermic at 94.2°F.",
+      "vitals": {
+        "bp": "82/46",
+        "hr": "52",
+        "rr": "5",
+        "spo2": "76%",
+        "gcs": "4",
+        "temp": "94.2°F"
+      },
+      "teaching_points": "1. Prolonged opioid overdose — BVM ventilation, naloxone 2mg IV/IN, IV access; hypothermia at 94.2°F requires passive rewarming with warmed IV fluids if available. 2. Skin breakdown indicates prolonged immobility — rhabdomyolysis from muscle breakdown releases myoglobin into circulation; early IV fluid resuscitation helps prevent renal tubular obstruction; communicate the estimated downtime to the receiving team as it directly affects hospital management."
+    },
+    {
+      "dispatch_line": "Medic 12, Cedar Motor Lodge — room 8, male, hanging, found by wife.",
+      "chief_complaint": "Hanging, found by family, cut down",
+      "sceneSizeUp": "BSI taken. Scene safety: assess for ongoing danger — patient has been cut down, wife is in the doorway, scene is safe. One patient. Mechanism of injury: hanging with deep ligature mark — cervical spinal injury possible. C-spine: hanging mechanism with potential axial load and hyperextension — c-spine precautions indicated. Resources available: BLS Engine, ALS Ambulance, EMS Supervisor, Rotor-Wing Medevac, Police Department. You find a male on the bathroom floor having been cut down. He has a deep circumferential ligature mark around his neck and is making agonal gasping sounds. His wife is extremely distraught in the doorway — assign a crew member to stay with her.",
+      "primarySurvey": "General Impression: Adult male on the bathroom floor, deep ligature mark, agonal respirations, cyanotic — critical traumatic asphyxia with cervical injury risk. AVPU: Pain — minimal response only. Airway: Critically compromised — agonal gasping, cervical injury risk limits airway maneuvers, jaw thrust only. Breathing: Agonal — BVM initiated immediately. Circulation: Weak bradycardic central pulse — lips cyanotic, skin pale. Patient Priority — high or low?",
+      "historySecondary": "42-year-old male. History from wife: recently lost his job, history of depression — found hanging in the bathroom. SAMPLE: PMH depression, medications unknown, allergies unknown. Secondary exam: Deep circumferential ligature mark around the neck. Agonal respirations with cyanotic lips. Profoundly bradycardic at 46. SpO2 72%. GCS 4. Jaw thrust only — no head tilt given cervical injury risk from hanging mechanism. C-spine precautions maintained throughout.",
+      "vitals": {
+        "bp": "98/60",
+        "hr": "46",
+        "rr": "agonal",
+        "spo2": "72%",
+        "gcs": "4",
+        "temp": "97.8°F"
+      },
+      "teaching_points": "1. Hanging with agonal respirations and cervical injury risk — jaw thrust, BVM ventilation, IV access; cervical spine injury is possible from distraction or compression depending on hanging type; maintain c-spine alignment throughout. 2. SpO2 72% with agonal respirations — BVM ventilation should rapidly improve SpO2; if SpO2 does not improve with BVM ventilation, consider a mucus plug or bronchospasm from the hypoxic episode; suction the airway and reassess."
+    },
+    {
+      "dispatch_line": "Medic 12, Cedar Motor Lodge — room 22, female, 30s, difficulty breathing, chest pain, possible PE.",
+      "chief_complaint": "Sudden onset dyspnea and pleuritic chest pain",
+      "sceneSizeUp": "BSI taken. Scene is safe — motel room, patient ambulatory on arrival of EMS. One patient. Nature of illness: suspected pulmonary embolism — pleuritic chest pain after prolonged immobility. No mechanism for spinal injury — c-spine not indicated. Resources available: BLS Engine, ALS Ambulance, EMS Supervisor, Rotor-Wing Medevac, Police Department. You find a 33-year-old female sitting upright on the bed in significant respiratory distress. She called the front desk unable to breathe. She arrived yesterday after a 14-hour car trip and developed sudden sharp chest pain and difficulty breathing upon waking.",
+      "primarySurvey": "General Impression: Young adult female sitting upright on the hotel bed, tachypneic and frightened, pleuritic chest pain — suspected pulmonary embolism. AVPU: Alert and oriented. Airway: Patent, self-maintained. Breathing: Rapid and labored — pleuritic pain limiting inspiration, no wheeze. Circulation: Radial pulse rapid, skin mildly pale and diaphoretic. Patient Priority — high or low?",
+      "historySecondary": "33-year-old female. OPQRST: Sudden onset right-sided sharp chest pain and severe dyspnea upon waking — worsens with inspiration, no relieving factors, onset this morning after a 14-hour car ride yesterday. SAMPLE: PMH none, takes oral contraceptives, no known allergies. Secondary exam: Tachycardic at 126. Tachypneic at 32. SpO2 90%. Pleuritic chest pain right side. Right calf significantly more swollen than left with tenderness on palpation — DVT suspected. Oral contraceptive use and prolonged immobility are major independent risk factors for PE. No wheeze — distinguishes from bronchospasm.",
+      "vitals": {
+        "bp": "108/68",
+        "hr": "126",
+        "rr": "32",
+        "spo2": "90%",
+        "gcs": "15",
+        "temp": "99.2°F"
+      },
+      "teaching_points": "1. Suspected massive PE with SpO2 90%, tachycardia at 126, and hypotension at 108/68 — O2, IV access, position of comfort, and rapid transport; do not give aggressive fluid boluses in PE as the right ventricle is already under pressure and fluids can worsen RV failure. 2. Identify and communicate the risk factors — oral contraceptive use and 14-hour immobility are major independent risk factors for PE; communicating these to the receiving team before arrival allows them to prepare CT and anticoagulation."
+    },
+    {
+      "dispatch_line": "Medic 12, Cedar Motor Lodge — room 31, infant, 14 months old, unresponsive, found in crib.",
+      "chief_complaint": "Infant unresponsive, found in crib, pulseless",
+      "sceneSizeUp": "BSI taken. Scene is safe — motel room, parents hysterical in the doorway. One patient. Nature of illness: infant found unresponsive in crib — signs inconsistent with survival present. No mechanism for spinal injury — c-spine not indicated. Resources available: BLS Engine, ALS Ambulance, EMS Supervisor, Rotor-Wing Medevac, Police Department. You find a 14-month-old female pulseless and apneic in the crib. Parents put her to bed normally last night. She is cool to touch. Assign a crew member to stay with the parents in the doorway.",
+      "primarySurvey": "General Impression: Infant in crib, pulseless and apneic, cool to touch, no signs of life — prolonged downtime evident. AVPU: Unresponsive — no response to any stimulus. Airway: Apneic — assessment reveals no air movement. Breathing: Apneic. Circulation: Pulseless — skin cool with dependent lividity beginning on the back. Patient Priority — high or low?",
+      "historySecondary": "14-month-old female. History from parents: put to bed normally last night, found unresponsive this morning when they awoke — last known well approximately 8 to 10 hours ago. SAMPLE: PMH normal healthy infant, last well visit 2 months ago, no medications, no known allergies. Secondary exam: Pulseless and apneic. Core temperature 91.2°F. Dependent lividity present on the back. Early rigor mortis noted in the jaw. Findings are consistent with prolonged downtime — contact medical direction per protocol.",
+      "vitals": {
+        "bp": "pulseless",
+        "hr": "pulseless",
+        "rr": "apneic",
+        "spo2": "not obtainable",
+        "gcs": "3",
+        "temp": "91.2°F"
+      },
+      "teaching_points": "1. Signs of obvious death in an infant — dependent lividity and early rigor mortis indicate prolonged downtime; contact medical direction for guidance on resuscitation; in most jurisdictions these findings allow withholding resuscitation without medical direction contact. 2. Document all physical findings precisely — skin color and location of lividity, presence and extent of rigor mortis, core temperature, and crib environment (sleep position, bedding, co-sleeping) are critical for the medical examiner and law enforcement investigation."
+    }
+  ],
+  "cedar_grill": [
+    {
+      "dispatch_line": "Medic 12, respond to Cedar Grill, 80 Hollow Drive — 58-year-old male, chest pain, conscious and breathing.",
+      "chief_complaint": "Chest pain with diaphoresis",
+      "sceneSizeUp": "BSI taken. Scene is safe — commercial kitchen, no hazards. One patient. Nature of illness: chest pain. No mechanism for spinal injury — c-spine not indicated. No additional resources needed. You find a heavyset male cook sitting on a milk crate behind the counter, clutching his chest. Coworkers say he complained of heartburn for the past hour before turning pale and sweaty. The smell of grease and smoke fills the kitchen.",
+      "primarySurvey": "General Impression: Heavyset middle-aged male sitting upright, clutching his chest, pale and diaphoretic — sick patient. AVPU: Alert and oriented. Airway: Patent, self-maintained. Breathing: Rate and depth adequate, unlabored. Circulation: Radial pulse present, skin pale, cool, and diaphoretic. Patient Priority — high or low?",
+      "historySecondary": "58-year-old male. OPQRST: Crushing substernal chest pain radiating to the left arm, rated 8/10, onset 45 minutes ago, constant, no relieving factors, worse with exertion. SAMPLE: PMH hypertension and hyperlipidemia, smoker x30 years, no known allergies, last meal 2 hours ago, onset during his shift. Secondary exam: Skin pale, cool, diaphoretic. Lungs clear bilaterally. No JVD. No nausea reported. No pedal edema.",
+      "vitals": {
+        "bp": "162/98",
+        "hr": "96",
+        "rr": "18",
+        "spo2": "96%",
+        "gcs": "15",
+        "temp": "98.6°F"
+      },
+      "teaching_points": "1. Chest pain with diaphoresis, radiation, and cardiac risk factors is a STEMI until proven otherwise — O2 if SpO2 below 94%, ASA 324mg, NTG SL if BP at or above 100, 12-lead acquisition and transmission for STEMI destination and activation, IV access en route. 2. AEMT administers NTG SL independently — confirm systolic BP at or above 100 before each dose, repeat every 5 minutes up to 3 doses; hold if BP drops below 100 or if inferior STEMI pattern is present on the transmitted tracing."
+    },
+    {
+      "dispatch_line": "Medic 12, Cedar Grill — female patient, difficulty breathing, possibly allergic reaction.",
+      "chief_complaint": "Allergic reaction, facial swelling, hives",
+      "sceneSizeUp": "BSI taken. Scene is safe — restaurant break room. One patient. Nature of illness: allergic reaction. No mechanism for spinal injury — c-spine not indicated. No additional resources needed. You find a 24-year-old waitress sitting upright in a chair, face visibly swollen around the lips and eyes, raised red welts across her arms and neck. A coworker reports she ate a burger with a new sauce about 15 minutes ago.",
+      "primarySurvey": "General Impression: Young female sitting upright, visible facial angioedema and urticaria, anxious — sick patient. AVPU: Alert and anxious. Airway: Audible stridor, angioedema of lips and tongue — airway at risk. Breathing: Rapid and labored, accessory muscle use. Circulation: Radial pulse rapid and weak, skin flushed with urticaria across neck and arms. Patient Priority — high or low?",
+      "historySecondary": "24-year-old female. OPQRST: Sudden onset difficulty breathing and facial swelling approximately 15 minutes after eating a new house sauce, rapidly worsening, no relieving factors. SAMPLE: PMH seasonal allergies, no known food allergies, no current medications, no known drug allergies, last meal the burger approximately 15 minutes ago. Secondary exam: Audible stridor. Angioedema of lips and tongue. Urticaria across neck, arms, and upper chest. Patient states her throat feels like it is closing. No previous anaphylaxis history.",
+      "vitals": {
+        "bp": "98/60",
+        "hr": "118",
+        "rr": "24",
+        "spo2": "94%",
+        "gcs": "15",
+        "temp": "98.4°F"
+      },
+      "teaching_points": "1. Anaphylaxis with stridor and angioedema requires immediate epinephrine 0.3mg IM — follow with IV access, normal saline bolus for hypotension at 94/56, and nebulized albuterol if bronchospasm persists after epinephrine. 2. Establish IV access immediately after epinephrine in anaphylaxis — hypotension at 94/56 may require fluid resuscitation; do not delay epinephrine to get the IV, but get it without delay after."
+    },
+    {
+      "dispatch_line": "Medic 12, respond to Cedar Grill, 80 Hollow Drive — patron found unresponsive in the restroom.",
+      "chief_complaint": "Unresponsive male, possible overdose",
+      "sceneSizeUp": "BSI taken. Scene is safe — single-stall restaurant restroom, used syringe and baggie on the floor — use caution, do not handle sharps without proper PPE. One patient. Nature of illness: suspected opioid overdose. No mechanism for spinal injury — c-spine not indicated. No additional resources needed. You find an approximately 30-year-old male slumped on the floor between the toilet and wall, unresponsive to voice. Track marks visible on both arms.",
+      "primarySurvey": "General Impression: Young male on the floor, unresponsive, slow shallow breathing, cyanotic lips — critical patient. AVPU: Unresponsive — no response to voice or pain. Airway: Partially obstructed, snoring respirations — requires immediate management. Breathing: Slow and shallow — inadequate, BVM required. Circulation: Weak central pulse, skin pale and cyanotic at lips and fingertips. Patient Priority — high or low?",
+      "historySecondary": "Approximately 30-year-old male. History from scene: syringe and baggie on floor, track marks bilateral arms. OPQRST: Found unresponsive, unknown time of last contact — downtime unknown. SAMPLE: PMH unknown, medications unknown, allergies unknown, last oral intake unknown. Secondary exam: Pinpoint pupils bilaterally. No trauma noted. Cyanosis at lips and fingertips. No response to sternal rub. Blood glucose 82 mg/dL.",
+      "vitals": {
+        "bp": "88/50",
+        "hr": "54",
+        "rr": "6",
+        "spo2": "82%",
+        "gcs": "3",
+        "temp": "97.0°F"
+      },
+      "teaching_points": "1. Manage the airway and ventilate first — then administer naloxone 2mg IV/IO or IN; do not delay BVM for naloxone. 2. IV naloxone allows titration — start at 0.4 to 2mg IV and titrate to adequate respirations, not full wakefulness; waking the patient completely risks acute withdrawal, vomiting with aspiration, and a combative patient who removes your IV access."
+    },
+    {
+      "dispatch_line": "Medic 12, Cedar Grill — elderly female, fell in the parking lot, possible hip injury.",
+      "chief_complaint": "Fall, hip pain, unable to stand",
+      "sceneSizeUp": "BSI taken. Scene is safe — restaurant parking lot, no traffic hazards. One patient. Mechanism of injury: ground-level fall stepping off a curb. C-spine: low-energy MOI in an elderly patient — assess for head strike or loss of consciousness before clearing; no LOC reported, no head strike, c-spine not indicated. No additional resources needed. You find a 78-year-old female lying on her back near the entrance, alert and talking, right leg externally rotated. A witness confirms she stepped off the curb and went straight down.",
+      "primarySurvey": "General Impression: Elderly female supine in the parking lot, alert, in obvious pain, right lower extremity externally rotated and shortened. AVPU: Alert and oriented. Airway: Patent, self-maintained. Breathing: Rate and depth adequate, unlabored. Circulation: Radial pulse present, skin warm and dry. Patient Priority — high or low?",
+      "historySecondary": "78-year-old female. OPQRST: Immediate right hip and groin pain after stepping off the curb, rated 9/10, no relieving factors, unable to bear weight or move the leg without severe pain. SAMPLE: PMH osteoporosis and atrial fibrillation, takes warfarin, no known allergies, last meal 4 hours ago, onset stepping off the curb. Secondary exam: Right lower extremity externally rotated and shortened compared to left. Distal pulse, movement, and sensation (PMS) intact. No head strike reported, GCS 15. Patient lives alone.",
+      "vitals": {
+        "bp": "138/84",
+        "hr": "88",
+        "rr": "16",
+        "spo2": "98%",
+        "gcs": "15",
+        "temp": "98.2°F"
+      },
+      "teaching_points": "1. Hip fracture in an anticoagulated elderly patient — establish IV access en route and administer morphine or fentanyl weight-based for pain before and after splinting; document PMS before and after any movement. 2. Document pulse, movement, and sensation (PMS) before and after every splinting or packaging maneuver — a new PMS deficit after movement indicates vascular or nerve compromise requiring immediate reassessment and intervention."
+    }
+  ]
+};

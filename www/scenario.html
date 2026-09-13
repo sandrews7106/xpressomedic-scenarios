@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+
+  <title>Cedar Hollow Scenario — XpressoMedic</title>
+
+  <link rel="stylesheet" href="css/style.css"/>
+
+  <style>
+    html, body {
+      height: 100%;
+      overflow: hidden;
+      background: var(--bg);
+    }
+
+    body {
+      overscroll-behavior: none;
+    }
+
+    .scenario-screen {
+      height: 100vh;
+      height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      background:
+        radial-gradient(circle at top, rgba(240,192,64,.05), transparent 28%),
+        var(--bg);
+      padding-top: var(--safe-top);
+    }
+
+    .scenario-page-body {
+      flex: 1;
+      min-height: 0;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      padding:
+        16px
+        max(16px, var(--safe-right))
+        calc(92px + var(--safe-bottom))
+        max(16px, var(--safe-left));
+      scroll-behavior: smooth;
+    }
+
+    .scenario-page-body::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .scenario-page-body::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: 99px;
+    }
+
+    .scenario-inner {
+      width: min(760px, 100%);
+      margin: 0 auto;
+    }
+
+    /* ── LOCATION CARD ───────────────────────────────────── */
+    .scenario-top-card {
+      background:
+        linear-gradient(135deg, rgba(240,192,64,.06), transparent 35%),
+        linear-gradient(135deg, var(--card), var(--panel));
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--gold);
+      border-radius: 14px;
+      padding: 15px 16px;
+      margin-bottom: 12px;
+      display: flex;
+      gap: 13px;
+      align-items: flex-start;
+      box-shadow: 0 8px 24px rgba(0,0,0,.18);
+    }
+
+    .scenario-location-icon {
+      width: 50px;
+      height: 50px;
+      flex: 0 0 50px;
+      display: grid;
+      place-items: center;
+      border-radius: 13px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.05);
+      font-size: 26px;
+    }
+
+    .scenario-location-copy {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .scenario-location-name {
+      font-family: 'Bebas Neue', sans-serif;
+      color: var(--gold);
+      font-size: 1.45rem;
+      letter-spacing: 1.5px;
+      line-height: 1.02;
+    }
+
+    .scenario-location-meta {
+      color: var(--muted);
+      font-size: .69rem;
+      margin-top: 5px;
+      line-height: 1.45;
+    }
+
+    .scenario-counter {
+      margin-top: 8px;
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 9px;
+      border-radius: 99px;
+      border: 1px solid rgba(240,192,64,.22);
+      background: rgba(240,192,64,.06);
+      color: var(--gold2);
+      font-size: .61rem;
+      font-weight: 700;
+      letter-spacing: .7px;
+      text-transform: uppercase;
+    }
+
+    /* ── DISPATCH ────────────────────────────────────────── */
+    .dispatch-block {
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(56,139,253,.06), transparent 55%),
+        linear-gradient(135deg, #0b1724, #0c1d2c);
+      border: 1px solid rgba(240,192,64,.24);
+      border-left: 4px solid var(--gold);
+      border-radius: 14px;
+      padding: 15px 16px;
+      margin-bottom: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,.16);
+    }
+
+    .dispatch-block::after {
+      content: 'DISPATCH';
+      position: absolute;
+      right: -6px;
+      top: 4px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.8rem;
+      letter-spacing: 3px;
+      color: rgba(255,255,255,.025);
+      pointer-events: none;
+    }
+
+    .dispatch-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--gold);
+      font-size: .61rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .dispatch-text {
+      color: #f4dc8a;
+      font-size: .84rem;
+      line-height: 1.72;
+      font-style: normal;
+      font-weight: 500;
+    }
+
+    .dispatch-block .content-label {
+      margin-top: 13px !important;
+      color: var(--muted);
+    }
+
+    .dispatch-block .content-value {
+      font-size: .88rem;
+      color: var(--text);
+    }
+
+    /* ── REVEAL ALL ─────────────────────────────────────── */
+    .reveal-all-btn {
+      width: 100%;
+      margin-bottom: 12px;
+      padding: 10px 12px;
+      background: rgba(46,160,67,.08);
+      color: #73c985;
+      border: 1px solid rgba(46,160,67,.24);
+      border-radius: 10px;
+      font-size: .69rem;
+      font-weight: 700;
+      cursor: pointer;
+      letter-spacing: .45px;
+    }
+
+    .reveal-all-btn:active {
+      transform: scale(.99);
+      background: rgba(46,160,67,.14);
+    }
+
+    /* ── REVEAL SECTIONS ────────────────────────────────── */
+    .reveal-section {
+      margin-bottom: 9px;
+    }
+
+    .reveal-btn {
+      min-height: 58px;
+      border-radius: 11px;
+      padding: 11px 13px;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.02), transparent),
+        var(--card);
+    }
+
+    .reveal-btn.revealed {
+      border-color: #36516c;
+      border-radius: 11px 11px 0 0;
+      background: var(--panel);
+    }
+
+    .reveal-btn-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 9px;
+      background: rgba(255,255,255,.045);
+      display: inline-grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+
+    .reveal-btn-label {
+      font-size: .74rem;
+      letter-spacing: .1px;
+    }
+
+    .reveal-btn-sub {
+      font-size: .59rem;
+      margin-top: 2px;
+    }
+
+    .reveal-content {
+      padding: 12px 13px 13px;
+      border-color: #36516c;
+      background:
+        linear-gradient(180deg, rgba(56,139,253,.025), transparent 20%),
+        var(--panel);
+    }
+
+    .ps-grid {
+      gap: 7px;
+    }
+
+    .ps-row {
+      padding: 9px 10px;
+      border-radius: 8px;
+      background: rgba(255,255,255,.025);
+    }
+
+    .ps-label {
+      color: #92a4b6;
+      margin-bottom: 2px;
+    }
+
+    .ps-value {
+      font-size: .79rem;
+      line-height: 1.62;
+      color: #d2deea;
+    }
+
+    /* ── VITALS ─────────────────────────────────────────── */
+    .vitals-grid {
+      gap: 7px;
+    }
+
+    .vital {
+      padding: 9px 7px;
+      border-radius: 8px;
+      background: #0b1724;
+      border-color: #25384c;
+    }
+
+    .vital .val {
+      font-size: 1.05rem;
+      color: #fff;
+    }
+
+    .vital .lbl {
+      margin-top: 3px;
+      letter-spacing: .7px;
+    }
+
+    /* ── TEACHING / DEBRIEF ─────────────────────────────── */
+    #sec-teaching .reveal-btn {
+      border-left: 3px solid rgba(46,160,67,.65);
+    }
+
+    #sec-teaching .reveal-btn-label::after {
+      content: '  •  Instructor Debrief';
+      color: var(--green);
+      font-size: .56rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+    }
+
+    .teaching-block {
+      margin-top: 0;
+      padding: 12px 13px;
+      border-radius: 9px;
+    }
+
+    .tp-item {
+      gap: 10px;
+      margin-bottom: 11px;
+    }
+
+    .tp-num {
+      width: 20px;
+      height: 20px;
+      font-size: .62rem;
+    }
+
+    .tp-text {
+      font-size: .78rem;
+      line-height: 1.68;
+    }
+
+    /* ── EMPTY STATE ────────────────────────────────────── */
+    .scenario-empty {
+      margin-top: 36px;
+      padding: 28px 20px;
+      border: 1px dashed var(--border);
+      border-radius: 14px;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    .scenario-empty .empty-icon {
+      font-size: 2.6rem;
+      margin-bottom: 12px;
+    }
+
+    .scenario-empty h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      color: var(--gold);
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+
+    .scenario-empty p {
+      font-size: .78rem;
+      line-height: 1.65;
+    }
+
+    .scenario-map-return {
+      width: 100%;
+      margin-top: 14px;
+      padding: 11px 14px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--card);
+      color: var(--gold2);
+      font-size: .72rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    /* ── BOTTOM ACTION BAR ──────────────────────────────── */
+    .scenario-nav-row {
+      position: sticky;
+      bottom: calc(-92px - var(--safe-bottom));
+      display: flex;
+      gap: 8px;
+      margin-top: 14px;
+      padding: 12px 0 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .scenario-nav-row .btn {
+      min-height: 42px;
+      border-radius: 10px;
+    }
+
+    /* fixed mobile action bar */
+    @media (max-width: 768px) {
+      .scenario-page-body {
+        padding-top: 12px;
+      }
+
+      .scenario-top-card {
+        padding: 13px;
+      }
+
+      .scenario-location-name {
+        font-size: 1.2rem;
+      }
+
+      .scenario-nav-row {
+        position: fixed;
+        left: max(12px, var(--safe-left));
+        right: max(12px, var(--safe-right));
+        bottom: calc(10px + var(--safe-bottom));
+        z-index: 50;
+
+        margin: 0;
+        padding: 9px;
+        border: 1px solid var(--border);
+        border-radius: 13px;
+
+        background: rgba(13,17,23,.94);
+        box-shadow: 0 10px 35px rgba(0,0,0,.45);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
+
+      .scenario-nav-row .btn {
+        min-height: 44px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .scenario-page-body {
+        padding-left: 12px;
+        padding-right: 12px;
+      }
+
+      .scenario-location-icon {
+        width: 44px;
+        height: 44px;
+        flex-basis: 44px;
+        font-size: 23px;
+      }
+
+      .dispatch-text {
+        font-size: .79rem;
+      }
+
+      .vital .val {
+        font-size: .95rem;
+      }
+
+      .scenario-nav-row .btn {
+        font-size: .61rem;
+        padding-left: 5px;
+        padding-right: 5px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="scenario-screen">
+
+  <div class="app-header">
+    <button
+      class="header-back"
+      id="backToMap"
+      aria-label="Back to Cedar Hollow">
+      ←
+    </button>
+
+    <div class="header-center">
+      <div class="header-title">Cedar Hollow</div>
+      <div class="header-sub" id="headerSub">EMS Training Scenario</div>
+    </div>
+
+    <div class="header-badge" id="levelBadge">EMT-B</div>
+  </div>
+
+  <main class="scenario-page-body" id="scenarioPageBody">
+    <div class="scenario-inner" id="scenarioRoot"></div>
+  </main>
+
+</div>
+
+<script src="js/scenarios-cedar-emtb.js"></script>
+<script src="js/scenarios-cedar-aemt.js"></script>
+<script src="js/scenarios-cedar-medic.js"></script>
+<script src="js/scenario.js"></script>
+
+</body>
+</html>
