@@ -201,6 +201,12 @@
   let dragging = false, lastX = 0, lastY = 0;
 
   wrap.addEventListener('pointerdown', e => {
+    // Location pins are taps/clicks, not map drags.
+    // Do not capture the pointer when interaction begins on a pin.
+    if (e.target.closest?.('.pin-group')) {
+      return;
+    }
+
     dragging = true;
     lastX = e.clientX;
     lastY = e.clientY;
