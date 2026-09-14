@@ -994,56 +994,6 @@
 
   }
 
-    const selected =
-      choices[
-        Math.floor(
-          Math.random() *
-          choices.length
-        )
-      ];
-
-
-    const next =
-      new URLSearchParams();
-
-    next.set(
-      'level',
-      level
-    );
-
-    next.set(
-      'location',
-      selected.__location
-    );
-
-    next.set(
-      'scenario',
-      selected.__index
-    );
-
-    next.set(
-      'from',
-      'browse'
-    );
-
-    next.set(
-      'category',
-      category
-    );
-
-    if (subcategory) {
-      next.set(
-        'subcategory',
-        subcategory
-      );
-    }
-
-
-    window.location.href =
-      'scenario.html?' +
-      next.toString();
-
-  }
 
 
   if (
