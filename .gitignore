@@ -8,3 +8,10 @@ ios/App/App.xcworkspace/xcuserdata/
 *.keystore
 *.jks
 .DS_Store
+
+# Local development backups
+backups/
+codemagic-before-*.yaml
+www/*-before-*.html
+www/*-broken-*.html
+www/js/*-before-*.js
