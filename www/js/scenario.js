@@ -8,7 +8,15 @@
 const params = new URLSearchParams(window.location.search);
 
 const level = params.get('level') || 'emtb';
-const locationId = params.get('location') || 'cedar_school';
+const town = params.get('town') || 'cedar_hollow';
+
+const defaultLocation =
+  town === 'millstone'
+    ? 'millstone_plant'
+    : 'cedar_school';
+
+const locationId =
+  params.get('location') || defaultLocation;
 
 const LEVEL_LABELS = {
   emtb: 'EMT-B',
@@ -16,7 +24,12 @@ const LEVEL_LABELS = {
   medic: 'Paramedic'
 };
 
-const SCENARIO_MAP = {
+const TOWN_LABELS = {
+  cedar_hollow: 'Cedar Hollow',
+  millstone: 'Millstone'
+};
+
+const CEDAR_SCENARIO_MAP = {
   emtb:
     typeof SCENARIOS_CEDAR_EMTB !== 'undefined'
       ? SCENARIOS_CEDAR_EMTB
@@ -32,6 +45,32 @@ const SCENARIO_MAP = {
       ? SCENARIOS_CEDAR_MEDIC
       : {}
 };
+
+const MILLSTONE_SCENARIO_MAP = {
+  emtb:
+    typeof SCENARIOS_MILLSTONE_EMTB !== 'undefined'
+      ? SCENARIOS_MILLSTONE_EMTB
+      : {},
+
+  aemt:
+    typeof SCENARIOS_MILLSTONE_AEMT !== 'undefined'
+      ? SCENARIOS_MILLSTONE_AEMT
+      : {},
+
+  medic:
+    typeof SCENARIOS_MILLSTONE_MEDIC !== 'undefined'
+      ? SCENARIOS_MILLSTONE_MEDIC
+      : {}
+};
+
+const TOWN_SCENARIO_MAP = {
+  cedar_hollow: CEDAR_SCENARIO_MAP,
+  millstone: MILLSTONE_SCENARIO_MAP
+};
+
+const SCENARIO_MAP =
+  TOWN_SCENARIO_MAP[town] ||
+  TOWN_SCENARIO_MAP.cedar_hollow;
 
 const SCENARIOS_ACTIVE =
   SCENARIO_MAP[level] || SCENARIO_MAP.emtb;
@@ -129,13 +168,121 @@ const LOCATIONS = {
 };
 
 
+const MILLSTONE_LOCATIONS = {
+
+  millstone_plant: {
+    name: 'Millstone Manufacturing Plant',
+    shortName: 'Manufacturing Plant',
+    icon: '🏭',
+    address: 'Millstone Industrial District'
+  },
+
+  millstone_warehouse: {
+    name: 'Millstone Distribution Warehouse',
+    shortName: 'Distribution Warehouse',
+    icon: '📦',
+    address: 'Freight District'
+  },
+
+  millstone_truck_stop: {
+    name: 'Millstone Truck Stop',
+    shortName: 'Truck Stop',
+    icon: '🚛',
+    address: 'North Millstone'
+  },
+
+  millstone_interchange: {
+    name: 'North Millstone Interchange',
+    shortName: 'North Millstone Interchange',
+    icon: '🛣️',
+    address: 'North Millstone'
+  },
+
+  millstone_rail_yard: {
+    name: 'Millstone Rail Yard',
+    shortName: 'Rail Yard',
+    icon: '🚂',
+    address: 'Rail & Service Yard'
+  },
+
+  millstone_construction: {
+    name: 'Millstone Construction Site',
+    shortName: 'Construction Site',
+    icon: '🏗️',
+    address: 'Works District'
+  },
+
+  millstone_fire_training: {
+    name: 'Millstone Fire & Rescue Training Grounds',
+    shortName: 'Fire & Rescue Training',
+    icon: '🚒',
+    address: 'Works District'
+  },
+
+  millstone_airfield: {
+    name: 'Millstone Regional Airfield',
+    shortName: 'Regional Airfield',
+    icon: '✈️',
+    address: 'North Millstone'
+  },
+
+  millstone_riverside: {
+    name: 'Riverside Campground & Boat Ramp',
+    shortName: 'Riverside',
+    icon: '🚤',
+    address: 'Millstone River'
+  },
+
+  millstone_motor_inn: {
+    name: 'Millstone Motor Inn',
+    shortName: 'Motor Inn',
+    icon: '🏨',
+    address: 'South Millstone'
+  },
+
+  millstone_apartments: {
+    name: 'Millstone Worker Apartments',
+    shortName: 'Worker Apartments',
+    icon: '🏢',
+    address: 'South Millstone'
+  },
+
+  millstone_auto_shop: {
+    name: 'Millstone Auto & Machine Shop',
+    shortName: 'Auto & Machine Shop',
+    icon: '🔧',
+    address: 'Rail & Service Yard'
+  }
+};
+
+Object.assign(
+  LOCATIONS,
+  MILLSTONE_LOCATIONS
+);
+
+
+const townLabel =
+  TOWN_LABELS[town] ||
+  TOWN_LABELS.cedar_hollow;
+
 const loc =
   LOCATIONS[locationId] || {
-    name: 'Cedar Hollow',
+    name: townLabel,
     shortName: 'Scenario',
     icon: '🚑',
-    address: 'Cedar Hollow'
+    address: townLabel
   };
+
+document.title =
+  `${townLabel} Scenario — XpressoMedic`;
+
+const headerTitle =
+  document.querySelector('.header-title');
+
+if (headerTitle) {
+  headerTitle.textContent =
+    `${town === 'millstone' ? '🏭' : '🌲'} ${townLabel}`;
+}
 
 
 const pool =
@@ -1668,8 +1815,13 @@ function goBackToMap() {
     return;
   }
 
+  const mapPage =
+    town === 'millstone'
+      ? 'millstone-map.html'
+      : 'map.html';
+
   window.location.href =
-    `map.html?level=${encodeURIComponent(level)}`;
+    `${mapPage}?town=${encodeURIComponent(town)}&level=${encodeURIComponent(level)}`;
 }
 
 

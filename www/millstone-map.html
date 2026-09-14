@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <title>Millstone — XpressoMedic</title>
+
+  <link rel="stylesheet" href="css/style.css"/>
+  <script src="js/theme.js"></script>
+
+  <style>
+    html,body{
+      margin:0;
+      width:100%;
+      height:100%;
+      overflow:hidden;
+      background:#101214;
+    }
+
+    body{
+      overscroll-behavior:none;
+    }
+
+    .map-screen{
+      height:100vh;
+      height:100dvh;
+      display:flex;
+      flex-direction:column;
+      background:#101214;
+    }
+
+    .millstone-map-wrap{
+      position:relative;
+      flex:1;
+      min-height:0;
+      overflow:hidden;
+      touch-action:none;
+      background:#16191c;
+    }
+
+    #mapViewport{
+      position:absolute;
+      inset:0;
+      transform-origin:0 0;
+      will-change:transform;
+    }
+
+    #town{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      user-select:none;
+      -webkit-user-select:none;
+    }
+
+    .map-controls{
+      position:absolute;
+      right:14px;
+      bottom:calc(18px + env(safe-area-inset-bottom));
+      z-index:30;
+      display:grid;
+      gap:8px;
+    }
+
+    .map-control-btn{
+      width:46px;
+      height:46px;
+      border:1px solid #4c4f52;
+      border-radius:12px;
+      background:rgba(20,22,24,.95);
+      color:#fff;
+      font-size:24px;
+      font-weight:800;
+      cursor:pointer;
+      box-shadow:0 6px 18px rgba(0,0,0,.38);
+    }
+
+    .map-control-btn.reset{
+      font-size:18px;
+    }
+
+    .map-help{
+      position:absolute;
+      left:12px;
+      bottom:calc(14px + env(safe-area-inset-bottom));
+      z-index:25;
+      max-width:290px;
+      padding:9px 11px;
+      border:1px solid #48433d;
+      border-radius:10px;
+      background:rgba(22,24,26,.92);
+      color:#b7b2aa;
+      font:600 12px/1.35 Inter,system-ui,sans-serif;
+      backdrop-filter:blur(8px);
+    }
+
+    .pin-group{
+      cursor:pointer;
+      transition:opacity .15s ease,transform .12s ease;
+      transform-box:fill-box;
+      transform-origin:center;
+    }
+
+    .pin-group:active{
+      opacity:.75;
+      transform:scale(.96);
+    }
+
+    .location-label{
+      fill:#f0ebe3;
+      font:700 8.8px Inter,system-ui,sans-serif;
+      letter-spacing:.2px;
+      paint-order:stroke;
+      stroke:#16191c;
+      stroke-width:3px;
+      stroke-linejoin:round;
+      pointer-events:none;
+    }
+
+    .district-label{
+      fill:#665f57;
+      font:800 9px Inter,system-ui,sans-serif;
+      letter-spacing:1.5px;
+    }
+
+    .road-label{
+      fill:#8b8175;
+      font:700 8px Inter,system-ui,sans-serif;
+      letter-spacing:1.2px;
+    }
+
+    .industrial-block{
+      fill:#202428;
+      stroke:#30353a;
+      stroke-width:1;
+    }
+
+    .commercial-block{
+      fill:#1d2225;
+      stroke:#30353a;
+      stroke-width:1;
+    }
+
+    .yard-fill{
+      fill:#262522;
+    }
+
+    .river-fill{
+      fill:#102a34;
+    }
+
+    .river-edge{
+      fill:none;
+      stroke:#29576b;
+      stroke-width:3;
+    }
+
+    .highway{
+      fill:none;
+      stroke:#35383b;
+      stroke-width:38;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+    }
+
+    .highway-line{
+      fill:none;
+      stroke:#c08a48;
+      stroke-width:1.6;
+      stroke-dasharray:18 13;
+      opacity:.85;
+    }
+
+    .secondary-road{
+      fill:none;
+      stroke:#303438;
+      stroke-width:22;
+      stroke-linecap:round;
+    }
+
+    .secondary-line{
+      fill:none;
+      stroke:#686e74;
+      stroke-width:1.2;
+      stroke-dasharray:14 11;
+    }
+
+    .rail{
+      fill:none;
+      stroke:#7a7065;
+      stroke-width:3;
+    }
+
+    .rail-tie{
+      fill:none;
+      stroke:#4d4944;
+      stroke-width:7;
+      stroke-dasharray:4 7;
+    }
+
+    .runway{
+      fill:#292d30;
+      stroke:#50555a;
+      stroke-width:1;
+    }
+
+    .runway-center{
+      stroke:#a7a7a3;
+      stroke-width:1.5;
+      stroke-dasharray:16 12;
+    }
+
+    .map-note{
+      fill:#776d62;
+      font:700 8px Inter,system-ui,sans-serif;
+      letter-spacing:1px;
+    }
+
+    @media(max-width:700px){
+      .header-sub{display:none}
+      .header-title{font-size:17px}
+
+      .map-help{
+        left:50%;
+        right:auto;
+        top:8px;
+        bottom:auto;
+        transform:translateX(-50%);
+        max-width:none;
+        width:max-content;
+        padding:6px 9px;
+        font-size:0;
+        line-height:1.2;
+        white-space:nowrap;
+        pointer-events:none;
+      }
+
+      .map-help::after{
+        content:"Drag • Pinch to zoom • Tap a location";
+        font-size:10px;
+      }
+
+      .map-controls{
+        right:10px;
+        bottom:calc(12px + env(safe-area-inset-bottom));
+      }
+
+      .map-control-btn{
+        width:44px;
+        height:44px;
+      }
+
+      .location-label{
+        font-size:8.1px;
+        stroke-width:2.5px;
+      }
+    }
+
+    [data-theme="light"] html,
+    [data-theme="light"] body,
+    [data-theme="light"] .map-screen,
+    [data-theme="light"] .millstone-map-wrap{
+      background:#eeeae3;
+    }
+
+    [data-theme="light"] #town .map-background{
+      fill:#eeeae3;
+    }
+
+    [data-theme="light"] .industrial-block{
+      fill:#d8d6d1;
+      stroke:#c1bdb6;
+    }
+
+    [data-theme="light"] .commercial-block{
+      fill:#e1ddd6;
+      stroke:#c8c3ba;
+    }
+
+    [data-theme="light"] .yard-fill{
+      fill:#d5d0c6;
+    }
+
+    [data-theme="light"] .river-fill{
+      fill:#cfe4ea;
+    }
+
+    [data-theme="light"] .river-edge{
+      stroke:#79a9b8;
+    }
+
+    [data-theme="light"] .highway{
+      stroke:#b6b8ba;
+    }
+
+    [data-theme="light"] .secondary-road{
+      stroke:#c2c4c5;
+    }
+
+    [data-theme="light"] .rail{
+      stroke:#786f66;
+    }
+
+    [data-theme="light"] .rail-tie{
+      stroke:#aaa39b;
+    }
+
+    [data-theme="light"] .runway{
+      fill:#bfc2c3;
+      stroke:#a9adaf;
+    }
+
+    [data-theme="light"] .district-label,
+    [data-theme="light"] .road-label,
+    [data-theme="light"] .map-note{
+      fill:#716a62;
+    }
+
+    [data-theme="light"] .location-label{
+      fill:#252525;
+      stroke:#eeeae3;
+    }
+
+    [data-theme="light"] .map-help{
+      background:rgba(255,255,255,.94);
+      border-color:#c9c3ba;
+      color:#4b5563;
+      box-shadow:0 4px 12px rgba(0,0,0,.08);
+    }
+
+    [data-theme="light"] .map-control-btn{
+      background:rgba(255,255,255,.96);
+      border-color:#c4beb5;
+      color:#29313a;
+      box-shadow:0 5px 16px rgba(0,0,0,.12);
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="map-screen">
+
+  <div class="app-header">
+    <button class="header-back" id="backToTowns" aria-label="Back to communities">←</button>
+
+    <div class="header-center">
+      <div class="header-title">🏭 Millstone</div>
+      <div class="header-sub">Choose a location for your next scenario</div>
+    </div>
+
+    <div class="header-badge" id="levelBadge">EMT-B</div>
+  </div>
+
+  <div class="millstone-map-wrap" id="mapWrap">
+
+    <div id="mapViewport">
+
+      <svg
+        id="town"
+        viewBox="0 0 900 600"
+        xmlns="http://www.w3.org/2000/svg"
+        preserveAspectRatio="xMidYMid meet">
+
+        <defs>
+          <pattern id="industrialGrid" width="32" height="32" patternUnits="userSpaceOnUse">
+            <path d="M32 0 L0 0 0 32" fill="none" stroke="#202326" stroke-width=".5"/>
+          </pattern>
+
+          <filter id="pinShadow" x="-50%" y="-50%" width="200%" height="200%">
+            <feDropShadow dx="0" dy="2" stdDeviation="2.2" flood-opacity=".42"/>
+          </filter>
+        </defs>
+
+        <rect class="map-background" width="900" height="600" fill="#16191c"/>
+        <rect width="900" height="600" fill="url(#industrialGrid)" opacity=".35"/>
+
+        <path
+          class="river-fill"
+          d="M0 515 C130 475 210 560 350 520 C485 482 585 552 710 508 C790 480 850 485 900 470 L900 600 L0 600 Z"/>
+
+        <path
+          class="river-edge"
+          d="M0 515 C130 475 210 560 350 520 C485 482 585 552 710 508 C790 480 850 485 900 470"/>
+
+        <text x="720" y="555" class="district-label">MILLSTONE RIVER</text>
+
+        <rect class="industrial-block" x="28" y="38" width="250" height="175" rx="8"/>
+        <rect class="industrial-block" x="310" y="38" width="220" height="175" rx="8"/>
+        <rect class="commercial-block" x="585" y="40" width="278" height="160" rx="8"/>
+        <rect class="yard-fill" x="35" y="300" width="285" height="150" rx="6"/>
+        <rect class="industrial-block" x="355" y="325" width="210" height="130" rx="8"/>
+        <rect class="commercial-block" x="625" y="295" width="220" height="145" rx="8"/>
+
+        <text x="153" y="59" text-anchor="middle" class="district-label">HEAVY INDUSTRIAL</text>
+        <text x="420" y="59" text-anchor="middle" class="district-label">FREIGHT DISTRICT</text>
+        <text x="724" y="60" text-anchor="middle" class="district-label">NORTH MILLSTONE</text>
+        <text x="170" y="322" text-anchor="middle" class="district-label">RAIL &amp; SERVICE YARD</text>
+        <text x="460" y="347" text-anchor="middle" class="district-label">WORKS DISTRICT</text>
+        <text x="735" y="316" text-anchor="middle" class="district-label">SOUTH MILLSTONE</text>
+
+        <path
+          class="highway"
+          d="M520 -30 C555 85 610 160 695 230 C765 290 820 360 920 420"/>
+
+        <path
+          class="highway-line"
+          d="M520 -30 C555 85 610 160 695 230 C765 290 820 360 920 420"/>
+
+        <path class="secondary-road" d="M650 205 C610 230 610 270 660 295"/>
+        <path class="secondary-road" d="M705 220 C745 200 780 215 800 252"/>
+        <path class="secondary-line" d="M650 205 C610 230 610 270 660 295"/>
+        <path class="secondary-line" d="M705 220 C745 200 780 215 800 252"/>
+
+        <text
+          x="785"
+          y="240"
+          class="road-label"
+          transform="rotate(34 785 240)">
+          NORTH MILLSTONE INTERCHANGE
+        </text>
+
+        <path class="secondary-road" d="M20 250 L610 250"/>
+        <path class="secondary-line" d="M20 250 L610 250"/>
+        <text x="315" y="239" text-anchor="middle" class="road-label">INDUSTRIAL AVENUE</text>
+
+        <path class="secondary-road" d="M335 280 L335 475"/>
+        <path class="secondary-line" d="M335 280 L335 475"/>
+
+        <text
+          x="324"
+          y="392"
+          transform="rotate(-90 324 392)"
+          text-anchor="middle"
+          class="road-label">
+          FOUNDRY ROAD
+        </text>
+
+        <path class="rail-tie" d="M15 365 L315 365"/>
+        <path class="rail" d="M15 359 L315 359"/>
+        <path class="rail" d="M15 371 L315 371"/>
+
+        <path class="rail-tie" d="M15 397 L315 397"/>
+        <path class="rail" d="M15 391 L315 391"/>
+        <path class="rail" d="M15 403 L315 403"/>
+
+        <text x="170" y="425" text-anchor="middle" class="map-note">FREIGHT SIDINGS</text>
+
+        <rect
+          class="runway"
+          x="610"
+          y="92"
+          width="225"
+          height="38"
+          rx="4"
+          transform="rotate(-8 722 111)"/>
+
+        <line class="runway-center" x1="625" y1="125" x2="820" y2="98"/>
+
+        <text x="720" y="155" text-anchor="middle" class="map-note">MILLSTONE REGIONAL AIRFIELD</text>
+
+        <g opacity=".75">
+          <rect
+            x="392"
+            y="370"
+            width="115"
+            height="58"
+            rx="4"
+            fill="#382d22"
+            stroke="#8f6335"
+            stroke-width="1.5"/>
+
+          <line
+            x1="402"
+            y1="380"
+            x2="497"
+            y2="418"
+            stroke="#a26d35"
+            stroke-width="3"
+            stroke-dasharray="7 6"/>
+
+          <line
+            x1="497"
+            y1="380"
+            x2="402"
+            y2="418"
+            stroke="#a26d35"
+            stroke-width="3"
+            stroke-dasharray="7 6"/>
+        </g>
+
+        <g class="pin-group" data-id="millstone_plant" filter="url(#pinShadow)">
+          <circle cx="105" cy="128" r="25" fill="#a34f28"/>
+          <text x="105" y="136" text-anchor="middle" font-size="21">🏭</text>
+          <text x="105" y="166" text-anchor="middle" class="location-label">
+            <tspan x="105">MANUFACTURING</tspan>
+            <tspan x="105" dy="11">PLANT</tspan>
+          </text>
+        </g>
+
+        <g class="pin-group" data-id="millstone_warehouse" filter="url(#pinShadow)">
+          <circle cx="405" cy="132" r="25" fill="#8c6239"/>
+          <text x="405" y="140" text-anchor="middle" font-size="21">📦</text>
+          <text x="405" y="170" text-anchor="middle" class="location-label">
+            <tspan x="405">DISTRIBUTION</tspan>
+            <tspan x="405" dy="11">WAREHOUSE</tspan>
+          </text>
+        </g>
+
+        <g class="pin-group" data-id="millstone_truck_stop" filter="url(#pinShadow)">
+          <circle cx="650" cy="175" r="25" fill="#b4682d"/>
+          <text x="650" y="183" text-anchor="middle" font-size="21">🚛</text>
+          <text x="650" y="213" text-anchor="middle" class="location-label">TRUCK STOP</text>
+        </g>
+
+        <g class="pin-group" data-id="millstone_interchange" filter="url(#pinShadow)">
+          <circle cx="750" cy="265" r="25" fill="#b15e32"/>
+          <text x="750" y="273" text-anchor="middle" font-size="21">🛣️</text>
+          <text x="750" y="303" text-anchor="middle" class="location-label">
+            <tspan x="750">NORTH MILLSTONE</tspan>
+            <tspan x="750" dy="11">INTERCHANGE</tspan>
+          </text>
+        </g>
+
+        <g class="pin-group" data-id="millstone_rail_yard" filter="url(#pinShadow)">
+          <circle cx="155" cy="365" r="25" fill="#705d4c"/>
+          <text x="155" y="373" text-anchor="middle" font-size="21">🚂</text>
+          <text x="155" y="338" text-anchor="middle" class="location-label">RAIL YARD</text>
+        </g>
+
+        <g class="pin-group" data-id="millstone_construction" filter="url(#pinShadow)">
+          <circle cx="450" cy="400" r="25" fill="#c07927"/>
+          <text x="450" y="408" text-anchor="middle" font-size="21">🏗️</text>
+          <text x="450" y="443" text-anchor="middle" class="location-label">CONSTRUCTION SITE</text>
+        </g>
+
+        <g class="pin-group" data-id="millstone_fire_training" filter="url(#pinShadow)">
+          <circle cx="540" cy="330" r="25" fill="#a94335"/>
+          <text x="540" y="338" text-anchor="middle" font-size="21">🚒</text>
+          <text x="540" y="368" text-anchor="middle" class="location-label">
+            <tspan x="540">FIRE &amp; RESCUE</tspan>
+            <tspan x="540" dy="11">TRAINING</tspan>
+          </text>
+        </g>
+
+        <g class="pin-group" data-id="millstone_airfield" filter="url(#pinShadow)">
+          <circle cx="770" cy="110" r="25" fill="#5c6d76"/>
+          <text x="770" y="118" text-anchor="middle" font-size="21">✈️</text>
+          <text x="770" y="72" text-anchor="middle" class="location-label">REGIONAL AIRFIELD</text>
+        </g>
+
+        <g class="pin-group" data-id="millstone_riverside" filter="url(#pinShadow)">
+          <circle cx="690" cy="500" r="25" fill="#367287"/>
+          <text x="690" y="508" text-anchor="middle" font-size="21">🚤</text>
+          <text x="690" y="468" text-anchor="middle" class="location-label">
+            <tspan x="690">RIVERSIDE</tspan>
+            <tspan x="690" dy="11">BOAT RAMP</tspan>
+          </text>
+        </g>
+
+        <g class="pin-group" data-id="millstone_motor_inn" filter="url(#pinShadow)">
+          <circle cx="775" cy="375" r="25" fill="#765785"/>
+          <text x="775" y="383" text-anchor="middle" font-size="21">🏨</text>
+          <text x="775" y="415" text-anchor="middle" class="location-label">MOTOR INN</text>
+        </g>
+
+        <g class="pin-group" data-id="millstone_apartments" filter="url(#pinShadow)">
+          <circle cx="665" cy="370" r="25" fill="#596b5d"/>
+          <text x="665" y="378" text-anchor="middle" font-size="21">🏢</text>
+          <text x="665" y="410" text-anchor="middle" class="location-label">
+            <tspan x="665">WORKER</tspan>
+            <tspan x="665" dy="11">APARTMENTS</tspan>
+          </text>
+        </g>
+
+        <g class="pin-group" data-id="millstone_auto_shop" filter="url(#pinShadow)">
+          <circle cx="265" cy="320" r="25" fill="#78634a"/>
+          <text x="265" y="328" text-anchor="middle" font-size="21">🔧</text>
+          <text x="265" y="357" text-anchor="middle" class="location-label">
+            <tspan x="265">AUTO &amp;</tspan>
+            <tspan x="265" dy="11">MACHINE SHOP</tspan>
+          </text>
+        </g>
+
+      </svg>
+    </div>
+
+    <div class="map-help">
+      Drag to move • Pinch or use + / − to zoom • Tap a location
+    </div>
+
+    <div class="map-controls">
+      <button class="map-control-btn" id="zoomIn" aria-label="Zoom in">+</button>
+      <button class="map-control-btn" id="zoomOut" aria-label="Zoom out">−</button>
+      <button class="map-control-btn reset" id="resetMap" aria-label="Reset map">⌂</button>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+(() => {
+  const params = new URLSearchParams(window.location.search);
+  const level = params.get('level') || 'emtb';
+
+  const levelLabels = {
+    emtb:'EMT-B',
+    aemt:'AEMT',
+    medic:'PARAMEDIC'
+  };
+
+  const badge = document.getElementById('levelBadge');
+  badge.textContent = levelLabels[level] || 'EMT-B';
+  badge.className = 'header-badge ' + level;
+
+  document.getElementById('backToTowns').addEventListener('click', () => {
+    window.location.href =
+      'towns.html?level=' + encodeURIComponent(level);
+  });
+
+  document.querySelectorAll('.pin-group').forEach(pin => {
+    pin.addEventListener('click', event => {
+      event.stopPropagation();
+
+      const locationId =
+        pin.dataset.id;
+
+      window.location.href =
+        `scenario.html?town=millstone&level=${encodeURIComponent(level)}&location=${encodeURIComponent(locationId)}`;
+    });
+  });
+
+  const wrap = document.getElementById('mapWrap');
+  const viewport = document.getElementById('mapViewport');
+
+  let scale = 1;
+  let x = 0;
+  let y = 0;
+
+  const MIN_SCALE = 1;
+  const MAX_SCALE = 3.5;
+
+  function applyTransform() {
+    viewport.style.transform =
+      `translate(${x}px, ${y}px) scale(${scale})`;
+  }
+
+  function clampPan() {
+    const rect = wrap.getBoundingClientRect();
+
+    const scaledW = rect.width * scale;
+    const scaledH = rect.height * scale;
+
+    const minX = Math.min(0, rect.width - scaledW);
+    const minY = Math.min(0, rect.height - scaledH);
+
+    x = Math.min(0, Math.max(minX, x));
+    y = Math.min(0, Math.max(minY, y));
+  }
+
+  function zoomAt(factor, cx, cy) {
+    const oldScale = scale;
+
+    const newScale = Math.max(
+      MIN_SCALE,
+      Math.min(
+        MAX_SCALE,
+        oldScale * factor
+      )
+    );
+
+    if (newScale === oldScale) return;
+
+    const ratio = newScale / oldScale;
+
+    x = cx - (cx - x) * ratio;
+    y = cy - (cy - y) * ratio;
+
+    scale = newScale;
+
+    clampPan();
+    applyTransform();
+  }
+
+  document.getElementById('zoomIn').addEventListener('click', () => {
+    const r = wrap.getBoundingClientRect();
+    zoomAt(1.3, r.width/2, r.height/2);
+  });
+
+  document.getElementById('zoomOut').addEventListener('click', () => {
+    const r = wrap.getBoundingClientRect();
+    zoomAt(1/1.3, r.width/2, r.height/2);
+  });
+
+  document.getElementById('resetMap').addEventListener('click', () => {
+    scale = 1;
+    x = 0;
+    y = 0;
+    applyTransform();
+  });
+
+  let dragging = false;
+  let lastX = 0;
+  let lastY = 0;
+
+  wrap.addEventListener('pointerdown', e => {
+    if (
+      e.target.closest?.('.pin-group') ||
+      e.target.closest?.('.map-controls') ||
+      e.target.closest?.('.map-control-btn')
+    ) {
+      return;
+    }
+
+    dragging = true;
+    lastX = e.clientX;
+    lastY = e.clientY;
+
+    wrap.setPointerCapture?.(e.pointerId);
+  });
+
+  wrap.addEventListener('pointermove', e => {
+    if (!dragging || scale <= 1) return;
+
+    x += e.clientX - lastX;
+    y += e.clientY - lastY;
+
+    lastX = e.clientX;
+    lastY = e.clientY;
+
+    clampPan();
+    applyTransform();
+  });
+
+  wrap.addEventListener('pointerup', () => dragging = false);
+  wrap.addEventListener('pointercancel', () => dragging = false);
+
+  wrap.addEventListener('wheel', e => {
+    e.preventDefault();
+
+    const rect = wrap.getBoundingClientRect();
+
+    zoomAt(
+      e.deltaY < 0 ? 1.18 : 1/1.18,
+      e.clientX - rect.left,
+      e.clientY - rect.top
+    );
+  }, { passive:false });
+
+  let pinchStartDistance = null;
+  let pinchStartScale = 1;
+
+  wrap.addEventListener('touchstart', e => {
+    if (e.touches.length === 2) {
+      const [a,b] = e.touches;
+
+      pinchStartDistance = Math.hypot(
+        a.clientX-b.clientX,
+        a.clientY-b.clientY
+      );
+
+      pinchStartScale = scale;
+    }
+  }, { passive:false });
+
+  wrap.addEventListener('touchmove', e => {
+    if (e.touches.length === 2 && pinchStartDistance) {
+      e.preventDefault();
+
+      const [a,b] = e.touches;
+
+      const currentDistance = Math.hypot(
+        a.clientX-b.clientX,
+        a.clientY-b.clientY
+      );
+
+      const rect = wrap.getBoundingClientRect();
+
+      const cx =
+        ((a.clientX+b.clientX)/2) - rect.left;
+
+      const cy =
+        ((a.clientY+b.clientY)/2) - rect.top;
+
+      const targetScale = Math.max(
+        MIN_SCALE,
+        Math.min(
+          MAX_SCALE,
+          pinchStartScale *
+          (currentDistance/pinchStartDistance)
+        )
+      );
+
+      zoomAt(
+        targetScale/scale,
+        cx,
+        cy
+      );
+    }
+  }, { passive:false });
+
+  wrap.addEventListener('touchend', e => {
+    if (e.touches.length < 2) {
+      pinchStartDistance = null;
+    }
+  });
+
+  applyTransform();
+})();
+</script>
+
+</body>
+</html>

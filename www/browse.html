@@ -405,6 +405,10 @@
 <script src="js/scenarios-cedar-aemt.js"></script>
 <script src="js/scenarios-cedar-medic.js"></script>
 
+<script src="js/scenarios-millstone-emtb.js"></script>
+<script src="js/scenarios-millstone-aemt.js"></script>
+<script src="js/scenarios-millstone-medic.js"></script>
+
 <script>
 
 (() => {
@@ -428,26 +432,62 @@
 
     emtb: {
       label: 'EMT-B',
-      bank:
-        typeof SCENARIOS_CEDAR_EMTB !== 'undefined'
-          ? SCENARIOS_CEDAR_EMTB
-          : {}
+      banks: [
+        {
+          town: 'cedar_hollow',
+          bank:
+            typeof SCENARIOS_CEDAR_EMTB !== 'undefined'
+              ? SCENARIOS_CEDAR_EMTB
+              : {}
+        },
+        {
+          town: 'millstone',
+          bank:
+            typeof SCENARIOS_MILLSTONE_EMTB !== 'undefined'
+              ? SCENARIOS_MILLSTONE_EMTB
+              : {}
+        }
+      ]
     },
 
     aemt: {
       label: 'AEMT',
-      bank:
-        typeof SCENARIOS_CEDAR_AEMT !== 'undefined'
-          ? SCENARIOS_CEDAR_AEMT
-          : {}
+      banks: [
+        {
+          town: 'cedar_hollow',
+          bank:
+            typeof SCENARIOS_CEDAR_AEMT !== 'undefined'
+              ? SCENARIOS_CEDAR_AEMT
+              : {}
+        },
+        {
+          town: 'millstone',
+          bank:
+            typeof SCENARIOS_MILLSTONE_AEMT !== 'undefined'
+              ? SCENARIOS_MILLSTONE_AEMT
+              : {}
+        }
+      ]
     },
 
     medic: {
       label: 'PARAMEDIC',
-      bank:
-        typeof SCENARIOS_CEDAR_MEDIC !== 'undefined'
-          ? SCENARIOS_CEDAR_MEDIC
-          : {}
+      banks: [
+        {
+          town: 'cedar_hollow',
+          bank:
+            typeof SCENARIOS_CEDAR_MEDIC !== 'undefined'
+              ? SCENARIOS_CEDAR_MEDIC
+              : {}
+        },
+        {
+          town: 'millstone',
+          bank:
+            typeof SCENARIOS_MILLSTONE_MEDIC !== 'undefined'
+              ? SCENARIOS_MILLSTONE_MEDIC
+              : {}
+        }
+      ]
     }
 
   };
@@ -456,8 +496,8 @@
   const active =
     LEVELS[level] || LEVELS.emtb;
 
-  const bank =
-    active.bank;
+  const banks =
+    active.banks;
 
 
   document
@@ -503,26 +543,45 @@
     cedar_quick_mart: 'Quick Mart',
     cedar_market: 'Cedar Market',
     cedar_motor_lodge: 'Cedar Motor Lodge',
-    cedar_grill: 'Cedar Grill'
+    cedar_grill: 'Cedar Grill',
+
+    millstone_plant: 'Millstone Manufacturing Plant',
+    millstone_warehouse: 'Millstone Distribution Warehouse',
+    millstone_truck_stop: 'Millstone Truck Stop',
+    millstone_interchange: 'North Millstone Interchange',
+    millstone_rail_yard: 'Millstone Rail Yard',
+    millstone_construction: 'Millstone Construction Site',
+    millstone_fire_training: 'Millstone Fire & Rescue Training Grounds',
+    millstone_airfield: 'Millstone Regional Airfield',
+    millstone_riverside: 'Riverside Campground & Boat Ramp',
+    millstone_motor_inn: 'Millstone Motor Inn',
+    millstone_apartments: 'Millstone Worker Apartments',
+    millstone_auto_shop: 'Millstone Auto & Machine Shop'
   };
 
 
   const scenarios = [];
 
-  Object.entries(bank)
-    .forEach(([location, pool]) => {
+  banks.forEach(({ town, bank }) => {
 
-      pool.forEach((scenario, index) => {
+    Object.entries(bank)
+      .forEach(([location, pool]) => {
 
-        scenarios.push({
-          ...scenario,
-          __location: location,
-          __index: index
+        pool.forEach((scenario, index) => {
+
+          scenarios.push({
+            ...scenario,
+            __town:
+              scenario.town || town,
+            __location: location,
+            __index: index
+          });
+
         });
 
       });
 
-    });
+  });
 
 
   const categories = {};
@@ -892,6 +951,7 @@
 
           <button
             class="scenario-choice"
+            data-town="${escapeHtml(scenario.__town)}"
             data-location="${escapeHtml(scenario.__location)}"
             data-index="${scenario.__index}">
 
@@ -956,6 +1016,11 @@
             scenarioParams.set(
               'level',
               level
+            );
+
+            scenarioParams.set(
+              'town',
+              button.dataset.town
             );
 
             scenarioParams.set(

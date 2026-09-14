@@ -357,28 +357,31 @@
       </a>
 
 
-      <div class="town-card future-card">
+      <a
+        class="town-card active"
+        id="millstone"
+        href="#">
 
         <div class="town-icon">
-          ＋
+          🏭
         </div>
 
         <div class="town-name">
-          More Communities
+          Millstone
         </div>
 
         <div class="town-description">
-          Additional training environments can be added
-          without changing the existing Cedar Hollow
-          scenario experience.
+          An industrial and highway community with
+          manufacturing, freight, rail, construction,
+          public-safety, and transportation environments.
         </div>
 
         <div class="town-meta">
-          <span>Future Expansion</span>
-          <span>Coming Later</span>
+          <span>12 Locations</span>
+          <span>Explore →</span>
         </div>
 
-      </div>
+      </a>
 
     </section>
 
@@ -438,6 +441,15 @@
     .href =
       'map.html?' +
       'town=cedar_hollow' +
+      '&level=' +
+      encodeURIComponent(level);
+
+
+  document
+    .getElementById('millstone')
+    .href =
+      'millstone-map.html?' +
+      'town=millstone' +
       '&level=' +
       encodeURIComponent(level);
 

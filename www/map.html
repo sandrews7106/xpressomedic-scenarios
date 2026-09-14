@@ -136,7 +136,10 @@
 <body>
 <div class="map-screen">
   <div class="app-header">
-    <button class="header-back" onclick="goBackToHub()" aria-label="Back">←</button>
+    <button
+      class="header-back"
+      onclick="window.location.href='towns.html?level=' + encodeURIComponent(new URLSearchParams(window.location.search).get('level') || 'emtb')"
+      aria-label="Back to communities">←</button>
     <div class="header-center">
       <div class="header-title">🌲 Cedar Hollow</div>
       <div class="header-sub">Choose a location for your next scenario</div>
