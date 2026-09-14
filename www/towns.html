@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8"/>
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  />
+
+  <meta
+    name="apple-mobile-web-app-capable"
+    content="yes"
+  />
+
+  <title>Choose a Community — XpressoMedic</title>
+
+  <script>
+    (() => {
+      const saved =
+        localStorage.getItem('xm-theme') ||
+        (
+          window.matchMedia('(prefers-color-scheme: light)').matches
+            ? 'light'
+            : 'dark'
+        );
+
+      document.documentElement.setAttribute(
+        'data-theme',
+        saved
+      );
+    })();
+  </script>
+
+  <link rel="stylesheet" href="css/style.css"/>
+
+  <script src="js/theme.js"></script>
+  <script src="js/nav.js"></script>
+
+  <style>
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      overflow-x: hidden;
+      overflow-y: auto;
+      background: #0d1117;
+    }
+
+    body {
+      min-height: 100vh;
+      min-height: 100dvh;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    [data-theme="light"] body {
+      background: #f5f0e8;
+    }
+
+    .towns-screen {
+      min-height: 100vh;
+      min-height: 100dvh;
+      background:
+        radial-gradient(
+          circle at top,
+          rgba(216,170,53,.07),
+          transparent 28%
+        ),
+        #0d1117;
+    }
+
+    [data-theme="light"] .towns-screen {
+      background:
+        radial-gradient(
+          circle at top,
+          rgba(180,130,20,.07),
+          transparent 28%
+        ),
+        #f5f0e8;
+    }
+
+    .towns-main {
+      width: 100%;
+      max-width: 760px;
+      margin: 0 auto;
+      padding:
+        24px
+        18px
+        calc(34px + env(safe-area-inset-bottom));
+      box-sizing: border-box;
+    }
+
+    .towns-intro {
+      margin-bottom: 22px;
+      text-align: center;
+    }
+
+    .towns-eyebrow {
+      color: #d8aa35;
+      font-size: 11px;
+      font-weight: 850;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      margin-bottom: 8px;
+    }
+
+    .towns-title {
+      margin: 0;
+      color: #f6f8fa;
+      font-size: 29px;
+      line-height: 1.15;
+      font-weight: 850;
+    }
+
+    [data-theme="light"] .towns-title {
+      color: #1d1a16;
+    }
+
+    .towns-subtitle {
+      margin: 10px auto 0;
+      max-width: 540px;
+      color: #93a2b5;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    [data-theme="light"] .towns-subtitle {
+      color: #655f57;
+    }
+
+    .town-grid {
+      display: grid;
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .town-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-height: 240px;
+      padding: 20px;
+      box-sizing: border-box;
+      border-radius: 20px;
+      text-decoration: none;
+      overflow: hidden;
+      color: #f6f8fa;
+      background:
+        linear-gradient(
+          145deg,
+          #161e28,
+          #111821
+        );
+      border:
+        1px solid
+        rgba(255,255,255,.08);
+      box-shadow:
+        0 10px 26px
+        rgba(0,0,0,.20);
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    [data-theme="light"] .town-card {
+      color: #1d1a16;
+      background:
+        linear-gradient(
+          145deg,
+          #ffffff,
+          #eee9e0
+        );
+      border-color:
+        rgba(0,0,0,.08);
+      box-shadow:
+        0 8px 20px
+        rgba(0,0,0,.08);
+    }
+
+    .town-card.active:active {
+      transform: scale(.985);
+    }
+
+    .town-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: #d8aa35;
+    }
+
+    .town-icon {
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 16px;
+      margin-bottom: 18px;
+      font-size: 27px;
+      background:
+        rgba(216,170,53,.12);
+      border:
+        1px solid
+        rgba(216,170,53,.22);
+    }
+
+    .town-name {
+      font-size: 22px;
+      font-weight: 850;
+      line-height: 1.2;
+    }
+
+    .town-description {
+      margin-top: 8px;
+      color: #91a0b2;
+      font-size: 13px;
+      line-height: 1.5;
+      flex: 1;
+    }
+
+    [data-theme="light"] .town-description {
+      color: #665f57;
+    }
+
+    .town-meta {
+      margin-top: 18px;
+      padding-top: 13px;
+      border-top:
+        1px solid
+        rgba(255,255,255,.07);
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      color: #d8aa35;
+      font-size: 11px;
+      font-weight: 780;
+    }
+
+    [data-theme="light"] .town-meta {
+      border-top-color:
+        rgba(0,0,0,.08);
+    }
+
+    .future-card {
+      opacity: .52;
+      cursor: default;
+    }
+
+    .future-card::before {
+      background: #64748b;
+    }
+
+    .future-card .town-icon {
+      background:
+        rgba(100,116,139,.10);
+      border-color:
+        rgba(100,116,139,.20);
+    }
+
+    .future-card .town-meta {
+      color: #7f8b9a;
+    }
+
+    @media(max-width:600px) {
+
+      .town-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .town-card {
+        min-height: 205px;
+      }
+
+      .towns-main {
+        padding-top: 18px;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+<div class="towns-screen">
+
+  <div class="app-header">
+
+    <button
+      class="header-back"
+      id="backButton"
+      aria-label="Back to Training Hub">
+      ←
+    </button>
+
+    <div class="header-center">
+      <div class="header-title">Explore Town</div>
+      <div class="header-sub">Choose a training community</div>
+    </div>
+
+    <div
+      class="header-badge"
+      id="levelBadge">
+      EMT-B
+    </div>
+
+  </div>
+
+  <main class="towns-main">
+
+    <section class="towns-intro">
+
+      <div class="towns-eyebrow">
+        Training Communities
+      </div>
+
+      <h1 class="towns-title">
+        Choose a community
+      </h1>
+
+      <div class="towns-subtitle">
+        Each community contains its own locations,
+        calls, and scenario environment.
+      </div>
+
+    </section>
+
+    <section class="town-grid">
+
+      <a
+        class="town-card active"
+        id="cedarHollow"
+        href="#">
+
+        <div class="town-icon">
+          🏘️
+        </div>
+
+        <div class="town-name">
+          Cedar Hollow
+        </div>
+
+        <div class="town-description">
+          A mixed residential and commercial community
+          with schools, public spaces, healthcare
+          facilities, businesses, and neighborhoods.
+        </div>
+
+        <div class="town-meta">
+          <span>12 Locations</span>
+          <span>Explore →</span>
+        </div>
+
+      </a>
+
+
+      <div class="town-card future-card">
+
+        <div class="town-icon">
+          ＋
+        </div>
+
+        <div class="town-name">
+          More Communities
+        </div>
+
+        <div class="town-description">
+          Additional training environments can be added
+          without changing the existing Cedar Hollow
+          scenario experience.
+        </div>
+
+        <div class="town-meta">
+          <span>Future Expansion</span>
+          <span>Coming Later</span>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+</div>
+
+
+<script>
+
+(() => {
+
+  const params =
+    new URLSearchParams(
+      window.location.search
+    );
+
+  const level =
+    params.get('level') || 'emtb';
+
+
+  const LEVELS = {
+    emtb: 'EMT-B',
+    aemt: 'AEMT',
+    medic: 'PARAMEDIC'
+  };
+
+
+  const badge =
+    document.getElementById(
+      'levelBadge'
+    );
+
+  badge.textContent =
+    LEVELS[level] || LEVELS.emtb;
+
+  badge.className =
+    'header-badge ' + level;
+
+
+  document
+    .getElementById('backButton')
+    .addEventListener(
+      'click',
+      () => {
+
+        window.location.href =
+          'hub.html?level=' +
+          encodeURIComponent(level);
+
+      }
+    );
+
+
+  document
+    .getElementById('cedarHollow')
+    .href =
+      'map.html?' +
+      'town=cedar_hollow' +
+      '&level=' +
+      encodeURIComponent(level);
+
+})();
+
+</script>
+
+</body>
+</html>
