@@ -7,6 +7,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
   <title>Cedar Hollow — XpressoMedic</title>
   <link rel="stylesheet" href="css/style.css"/>
+  <script src="js/theme.js"></script>
   <style>
     html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#0d1117}
     body{overscroll-behavior:none}
@@ -22,7 +23,113 @@
     .pin-group:active{opacity:.75;transform:scale(.96)}
     .location-label{fill:#e3ebf4;font:700 9.2px Inter,system-ui,sans-serif;letter-spacing:.25px;paint-order:stroke;stroke:#0d1420;stroke-width:3px;stroke-linejoin:round;pointer-events:none}
     .district-label{fill:#314253;font:700 9px Inter,system-ui,sans-serif;letter-spacing:1.2px}
-    @media(max-width:700px){.header-sub{display:none}.header-title{font-size:17px}.map-help{max-width:205px;font-size:11px}}
+    @media(max-width:700px){
+      .header-sub{display:none}
+      .header-title{font-size:17px}
+      .map-help{
+        left:50%;
+        right:auto;
+        top:8px;
+        bottom:auto;
+        transform:translateX(-50%);
+        max-width:none;
+        width:max-content;
+        padding:6px 9px;
+        font-size:10px;
+        line-height:1.2;
+        white-space:nowrap;
+        pointer-events:none
+      }
+      .map-help{font-size:0}
+      .map-help::after{
+        content:"Drag • Pinch to zoom • Tap a location";
+        font-size:10px
+      }
+      .map-controls{
+        right:10px;
+        bottom:calc(12px + env(safe-area-inset-bottom))
+      }
+      .map-control-btn{
+        width:44px;
+        height:44px
+      }
+      .location-label{
+        font-size:8.6px;
+        stroke-width:2.6px
+      }
+    }
+  
+    /* ── CEDAR HOLLOW LIGHT MODE ───────────────────────── */
+    [data-theme="light"] html,
+    [data-theme="light"] body,
+    [data-theme="light"] .map-screen,
+    [data-theme="light"] .cedar-map-wrap {
+      background:#f5f0e8;
+    }
+
+    /* Main map canvas */
+    [data-theme="light"] #town > rect[fill="#0d1420"] {
+      fill:#f5f0e8;
+    }
+
+    /* Neighborhood blocks */
+    [data-theme="light"] #town > rect[fill="#111c25"] {
+      fill:#e8e2d8;
+    }
+
+    /* Park */
+    [data-theme="light"] #town > rect[fill="#0a2614"] {
+      fill:#dcebd8;
+    }
+
+    [data-theme="light"] #town ellipse[stroke="#1e6230"] {
+      stroke:#5f9b62;
+    }
+
+    /* Roads */
+    [data-theme="light"] #town line[stroke="#2a3a4a"] {
+      stroke:#c7d0d8;
+    }
+
+    [data-theme="light"] #town line[stroke="#45617d"] {
+      stroke:#8796a5;
+    }
+
+    /* District and road names */
+    [data-theme="light"] .district-label {
+      fill:#7b746c;
+    }
+
+    [data-theme="light"] #town text[fill="#6c8298"] {
+      fill:#6b7280;
+    }
+
+    [data-theme="light"] #town text[fill="#3ea75a"] {
+      fill:#347a43;
+    }
+
+    /* Location labels */
+    [data-theme="light"] .location-label {
+      fill:#1f2937;
+      stroke:#f5f0e8;
+    }
+
+    /* Help strip */
+    [data-theme="light"] .map-help {
+      background:rgba(255,255,255,.92);
+      border-color:#d1c9be;
+      color:#4b5563;
+      box-shadow:0 4px 12px rgba(0,0,0,.08);
+    }
+
+    /* Zoom / reset controls */
+    [data-theme="light"] .map-control-btn {
+      background:rgba(255,255,255,.96);
+      border-color:#c8c1b7;
+      color:#29313a;
+      box-shadow:0 5px 16px rgba(0,0,0,.12);
+    }
+
   </style>
 </head>
 <body>
