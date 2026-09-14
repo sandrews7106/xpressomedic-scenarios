@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8"/>
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  />
+
+  <meta
+    name="apple-mobile-web-app-capable"
+    content="yes"
+  />
+
+  <title>Browse by Emergency — XpressoMedic</title>
+
+  <script>
+    (() => {
+      const saved =
+        localStorage.getItem('xm-theme') ||
+        (
+          window.matchMedia('(prefers-color-scheme: light)').matches
+            ? 'light'
+            : 'dark'
+        );
+
+      document.documentElement.setAttribute(
+        'data-theme',
+        saved
+      );
+    })();
+  </script>
+
+  <link rel="stylesheet" href="css/style.css"/>
+
+  <script src="js/theme.js"></script>
+  <script src="js/nav.js"></script>
+
+  <style>
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      overflow-x: hidden;
+      overflow-y: auto;
+      background: #0d1117;
+    }
+
+    body {
+      min-height: 100vh;
+      min-height: 100dvh;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    [data-theme="light"] body {
+      background: #f5f0e8;
+    }
+
+    .browse-screen {
+      min-height: 100vh;
+      min-height: 100dvh;
+      background:
+        radial-gradient(
+          circle at top,
+          rgba(216,170,53,.07),
+          transparent 28%
+        ),
+        #0d1117;
+    }
+
+    [data-theme="light"] .browse-screen {
+      background:
+        radial-gradient(
+          circle at top,
+          rgba(180,130,20,.07),
+          transparent 28%
+        ),
+        #f5f0e8;
+    }
+
+    .browse-main {
+      width: 100%;
+      max-width: 760px;
+      margin: 0 auto;
+      padding:
+        22px
+        18px
+        calc(34px + env(safe-area-inset-bottom));
+      box-sizing: border-box;
+    }
+
+    .browse-intro {
+      margin-bottom: 22px;
+    }
+
+    .browse-eyebrow {
+      color: #d8aa35;
+      font-size: 11px;
+      font-weight: 850;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      margin-bottom: 7px;
+    }
+
+    .browse-title {
+      margin: 0;
+      color: #f6f8fa;
+      font-size: 28px;
+      line-height: 1.15;
+      font-weight: 850;
+    }
+
+    [data-theme="light"] .browse-title {
+      color: #1d1a16;
+    }
+
+    .browse-subtitle {
+      margin-top: 9px;
+      color: #93a2b5;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    [data-theme="light"] .browse-subtitle {
+      color: #655f57;
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .category-card,
+    .subcategory-card {
+      appearance: none;
+      border: 1px solid rgba(255,255,255,.08);
+      width: 100%;
+      text-align: left;
+      color: #f6f8fa;
+      background:
+        linear-gradient(
+          145deg,
+          #161e28,
+          #111821
+        );
+      border-radius: 17px;
+      padding: 17px;
+      box-sizing: border-box;
+      cursor: pointer;
+      font: inherit;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    [data-theme="light"] .category-card,
+    [data-theme="light"] .subcategory-card {
+      color: #1d1a16;
+      background:
+        linear-gradient(
+          145deg,
+          #ffffff,
+          #eee9e0
+        );
+      border-color: rgba(0,0,0,.08);
+    }
+
+    .category-card:active,
+    .subcategory-card:active {
+      transform: scale(.985);
+    }
+
+    .category-icon {
+      width: 42px;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 13px;
+      margin-bottom: 13px;
+      font-size: 21px;
+      background: rgba(216,170,53,.11);
+      border: 1px solid rgba(216,170,53,.2);
+    }
+
+    .category-name,
+    .subcategory-name {
+      font-weight: 820;
+      line-height: 1.25;
+    }
+
+    .category-name {
+      font-size: 16px;
+    }
+
+    .subcategory-name {
+      font-size: 15px;
+    }
+
+    .category-count,
+    .subcategory-count {
+      margin-top: 5px;
+      color: #8392a5;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    [data-theme="light"] .category-count,
+    [data-theme="light"] .subcategory-count {
+      color: #766f65;
+    }
+
+    .section-back {
+      appearance: none;
+      border: 0;
+      background: none;
+      color: #d8aa35;
+      font: inherit;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 4px 0;
+      margin-bottom: 14px;
+      cursor: pointer;
+    }
+
+    .subcategory-list {
+      display: grid;
+      gap: 11px;
+    }
+
+    .subcategory-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 72px;
+    }
+
+    .subcategory-arrow {
+      color: #d8aa35;
+      font-size: 20px;
+      margin-left: 14px;
+    }
+
+    .selected-category {
+      margin-bottom: 18px;
+      padding: 15px;
+      border-radius: 15px;
+      background: rgba(216,170,53,.08);
+      border: 1px solid rgba(216,170,53,.18);
+    }
+
+    .selected-category-name {
+      color: #e4bd55;
+      font-weight: 850;
+      font-size: 19px;
+    }
+
+    .selected-category-help {
+      color: #8c9bad;
+      font-size: 12px;
+      margin-top: 5px;
+      line-height: 1.45;
+    }
+
+    [data-theme="light"] .selected-category-help {
+      color: #706960;
+    }
+
+    .browse-empty {
+      color: #93a2b5;
+      text-align: center;
+      padding: 40px 15px;
+    }
+
+    .scenario-list {
+      display: grid;
+      gap: 11px;
+    }
+
+    .scenario-choice {
+      appearance: none;
+      width: 100%;
+      text-align: left;
+      border: 1px solid rgba(255,255,255,.08);
+      background:
+        linear-gradient(
+          145deg,
+          #161e28,
+          #111821
+        );
+      color: #f6f8fa;
+      border-radius: 16px;
+      padding: 16px;
+      cursor: pointer;
+      font: inherit;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    [data-theme="light"] .scenario-choice {
+      color: #1d1a16;
+      background:
+        linear-gradient(
+          145deg,
+          #ffffff,
+          #eee9e0
+        );
+      border-color: rgba(0,0,0,.08);
+    }
+
+    .scenario-choice:active {
+      transform: scale(.985);
+    }
+
+    .scenario-choice-title {
+      font-size: 15px;
+      font-weight: 820;
+      line-height: 1.35;
+    }
+
+    .scenario-choice-location {
+      margin-top: 7px;
+      color: #d8aa35;
+      font-size: 11px;
+      font-weight: 780;
+      letter-spacing: .2px;
+    }
+
+    .scenario-choice-tags {
+      margin-top: 8px;
+      color: #8291a4;
+      font-size: 11px;
+      line-height: 1.4;
+    }
+
+    [data-theme="light"] .scenario-choice-tags {
+      color: #746e65;
+    }
+
+    @media(max-width:560px) {
+
+      .category-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .browse-main {
+        padding-top: 17px;
+      }
+
+      .category-card {
+        display: grid;
+        grid-template-columns: 48px 1fr;
+        grid-template-rows: auto auto;
+        column-gap: 12px;
+      }
+
+      .category-icon {
+        grid-row: 1 / 3;
+        margin: 0;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+<div class="browse-screen">
+
+  <div class="app-header">
+
+    <button
+      class="header-back"
+      onclick="goBackToHub()"
+      aria-label="Back to Training Hub">
+      ←
+    </button>
+
+    <div class="header-center">
+      <div class="header-title">Browse by Emergency</div>
+      <div class="header-sub" id="headerSub">
+        Choose an emergency category
+      </div>
+    </div>
+
+    <div
+      class="header-badge"
+      id="levelBadge">
+      EMT-B
+    </div>
+
+  </div>
+
+  <main class="browse-main">
+
+    <div id="browseRoot"></div>
+
+  </main>
+
+</div>
+
+<script src="js/scenarios-cedar-emtb.js"></script>
+<script src="js/scenarios-cedar-aemt.js"></script>
+<script src="js/scenarios-cedar-medic.js"></script>
+
+<script>
+
+(() => {
+
+  const params =
+    new URLSearchParams(
+      window.location.search
+    );
+
+  const level =
+    params.get('level') || 'emtb';
+
+  let selectedCategory =
+    params.get('category') || '';
+
+  const selectedSubcategory =
+    params.get('subcategory') || '';
+
+
+  const LEVELS = {
+
+    emtb: {
+      label: 'EMT-B',
+      bank:
+        typeof SCENARIOS_CEDAR_EMTB !== 'undefined'
+          ? SCENARIOS_CEDAR_EMTB
+          : {}
+    },
+
+    aemt: {
+      label: 'AEMT',
+      bank:
+        typeof SCENARIOS_CEDAR_AEMT !== 'undefined'
+          ? SCENARIOS_CEDAR_AEMT
+          : {}
+    },
+
+    medic: {
+      label: 'PARAMEDIC',
+      bank:
+        typeof SCENARIOS_CEDAR_MEDIC !== 'undefined'
+          ? SCENARIOS_CEDAR_MEDIC
+          : {}
+    }
+
+  };
+
+
+  const active =
+    LEVELS[level] || LEVELS.emtb;
+
+  const bank =
+    active.bank;
+
+
+  document
+    .getElementById('levelBadge')
+    .textContent =
+      active.label;
+
+
+  document
+    .getElementById('levelBadge')
+    .className =
+      'header-badge ' + level;
+
+
+  const ICONS = {
+
+    'Neurologic': '🧠',
+    'Allergic / Anaphylaxis': '⚠️',
+    'Toxicology / Overdose': '💊',
+    'Airway': '🫁',
+    'Respiratory': '🫁',
+    'Trauma': '🩹',
+    'Resuscitation': '⚡',
+    'Environmental': '🌡️',
+    'Cardiac': '❤️',
+    'Shock / Sepsis': '🩸',
+    'Endocrine': '🧪',
+    'OB / GYN': '🤰',
+    'Behavioral': '🧩'
+
+  };
+
+
+  const LOCATION_NAMES = {
+    cedar_school: 'Cedar Hollow High School',
+    cedar_pool: 'Community Pool',
+    cedar_park: 'Cedar Hollow Park',
+    cedar_athletics: 'Athletic Complex',
+    cedar_care: 'Cedar Care Nursing & Rehab',
+    cedar_family_medicine: 'Cedar Family Medicine',
+    cedar_apartments: 'Cedar Hollow Apartments',
+    oakwood_estates: 'Oakwood Estates',
+    cedar_quick_mart: 'Quick Mart',
+    cedar_market: 'Cedar Market',
+    cedar_motor_lodge: 'Cedar Motor Lodge',
+    cedar_grill: 'Cedar Grill'
+  };
+
+
+  const scenarios = [];
+
+  Object.entries(bank)
+    .forEach(([location, pool]) => {
+
+      pool.forEach((scenario, index) => {
+
+        scenarios.push({
+          ...scenario,
+          __location: location,
+          __index: index
+        });
+
+      });
+
+    });
+
+
+  const categories = {};
+
+  scenarios.forEach(scenario => {
+
+    const category =
+      scenario.category || 'Other';
+
+    const subcategory =
+      scenario.subcategory || 'General';
+
+    if (!categories[category]) {
+      categories[category] = {};
+    }
+
+    if (!categories[category][subcategory]) {
+      categories[category][subcategory] = [];
+    }
+
+    categories[category][subcategory]
+      .push(scenario);
+
+  });
+
+
+  const root =
+    document.getElementById('browseRoot');
+
+
+  function escapeHtml(value) {
+
+    return String(value ?? '')
+      .replaceAll('&', '&amp;')
+      .replaceAll('<', '&lt;')
+      .replaceAll('>', '&gt;')
+      .replaceAll('"', '&quot;')
+      .replaceAll("'", '&#039;');
+
+  }
+
+
+  function categoryTotal(category) {
+
+    return Object.values(
+      categories[category] || {}
+    )
+      .reduce(
+        (sum, list) =>
+          sum + list.length,
+        0
+      );
+
+  }
+
+
+  function updateUrl(category = '') {
+
+    const next =
+      new URLSearchParams();
+
+    next.set(
+      'level',
+      level
+    );
+
+    if (category) {
+      next.set(
+        'category',
+        category
+      );
+    }
+
+    history.replaceState(
+      null,
+      '',
+      'browse.html?' +
+      next.toString()
+    );
+
+  }
+
+
+  function renderCategories() {
+
+    selectedCategory = '';
+
+    updateUrl();
+
+    document
+      .getElementById('headerSub')
+      .textContent =
+        'Choose an emergency category';
+
+
+    const names =
+      Object.keys(categories)
+        .sort((a, b) =>
+          a.localeCompare(b)
+        );
+
+
+    root.innerHTML = `
+
+      <section class="browse-intro">
+
+        <div class="browse-eyebrow">
+          Emergency Categories
+        </div>
+
+        <h1 class="browse-title">
+          Choose an emergency
+        </h1>
+
+        <div class="browse-subtitle">
+          Select a category, then choose the type of
+          emergency you want to practice.
+        </div>
+
+      </section>
+
+      <section class="category-grid">
+
+        ${names.map(category => `
+
+          <button
+            class="category-card"
+            data-category="${escapeHtml(category)}">
+
+            <div class="category-icon">
+              ${ICONS[category] || '🚑'}
+            </div>
+
+            <div class="category-name">
+              ${escapeHtml(category)}
+            </div>
+
+            <div class="category-count">
+              ${categoryTotal(category)}
+              ${
+                categoryTotal(category) === 1
+                  ? 'scenario'
+                  : 'scenarios'
+              }
+            </div>
+
+          </button>
+
+        `).join('')}
+
+      </section>
+
+    `;
+
+
+    root
+      .querySelectorAll(
+        '.category-card'
+      )
+      .forEach(button => {
+
+        button.addEventListener(
+          'click',
+          () => {
+
+            selectedCategory =
+              button.dataset.category;
+
+            renderSubcategories(
+              selectedCategory
+            );
+
+          }
+        );
+
+      });
+
+  }
+
+
+  function renderSubcategories(category) {
+
+    if (!categories[category]) {
+      renderCategories();
+      return;
+    }
+
+    selectedCategory =
+      category;
+
+    updateUrl(category);
+
+    document
+      .getElementById('headerSub')
+      .textContent =
+        category;
+
+
+    const subs =
+      Object.keys(
+        categories[category]
+      )
+        .sort((a, b) =>
+          a.localeCompare(b)
+        );
+
+
+    root.innerHTML = `
+
+      <button
+        class="section-back"
+        id="backCategories">
+        ← All Emergency Categories
+      </button>
+
+      <div class="selected-category">
+
+        <div class="selected-category-name">
+          ${escapeHtml(category)}
+        </div>
+
+        <div class="selected-category-help">
+          Choose an emergency type below.
+          A matching scenario will be selected from
+          the ${active.label} bank.
+        </div>
+
+      </div>
+
+      <section class="subcategory-list">
+
+        ${subs.map(sub => {
+
+          const count =
+            categories[category][sub]
+              .length;
+
+          return `
+
+            <button
+              class="subcategory-card"
+              data-subcategory="${escapeHtml(sub)}">
+
+              <div>
+
+                <div class="subcategory-name">
+                  ${escapeHtml(sub)}
+                </div>
+
+                <div class="subcategory-count">
+                  ${count}
+                  ${
+                    count === 1
+                      ? 'scenario'
+                      : 'scenarios'
+                  }
+                </div>
+
+              </div>
+
+              <div class="subcategory-arrow">
+                →
+              </div>
+
+            </button>
+
+          `;
+
+        }).join('')}
+
+      </section>
+
+    `;
+
+
+    document
+      .getElementById(
+        'backCategories'
+      )
+      .addEventListener(
+        'click',
+        renderCategories
+      );
+
+
+    root
+      .querySelectorAll(
+        '.subcategory-card'
+      )
+      .forEach(button => {
+
+        button.addEventListener(
+          'click',
+          () => {
+
+            const sub =
+              button.dataset.subcategory;
+
+            renderScenarioList(
+              category,
+              sub
+            );
+
+          }
+        );
+
+      });
+
+  }
+
+
+  function renderScenarioList(
+    category,
+    subcategory
+  ) {
+
+    const choices =
+      categories?.[category]?.[subcategory] || [];
+
+    if (!choices.length) {
+      renderSubcategories(category);
+      return;
+    }
+
+    const next =
+      new URLSearchParams();
+
+    next.set('level', level);
+    next.set('category', category);
+    next.set('subcategory', subcategory);
+
+    history.replaceState(
+      null,
+      '',
+      'browse.html?' + next.toString()
+    );
+
+    document
+      .getElementById('headerSub')
+      .textContent =
+        subcategory;
+
+
+    root.innerHTML = `
+
+      <button
+        class="section-back"
+        id="backSubcategories">
+        ← ${escapeHtml(category)}
+      </button>
+
+      <div class="selected-category">
+
+        <div class="selected-category-name">
+          ${escapeHtml(subcategory)}
+        </div>
+
+        <div class="selected-category-help">
+          Choose the scenario you want to run.
+        </div>
+
+      </div>
+
+      <section class="scenario-list">
+
+        ${choices.map(scenario => `
+
+          <button
+            class="scenario-choice"
+            data-location="${escapeHtml(scenario.__location)}"
+            data-index="${scenario.__index}">
+
+            <div class="scenario-choice-title">
+              ${escapeHtml(
+                scenario.chief_complaint ||
+                scenario.dispatch_line ||
+                'Training Scenario'
+              )}
+            </div>
+
+            <div class="scenario-choice-location">
+              ${
+                escapeHtml(
+                  LOCATION_NAMES[scenario.__location] ||
+                  scenario.__location
+                )
+              }
+            </div>
+
+            ${
+              Array.isArray(scenario.tags) &&
+              scenario.tags.length
+                ? `
+                  <div class="scenario-choice-tags">
+                    ${scenario.tags
+                      .map(tag => escapeHtml(tag))
+                      .join(' · ')}
+                  </div>
+                `
+                : ''
+            }
+
+          </button>
+
+        `).join('')}
+
+      </section>
+
+    `;
+
+
+    document
+      .getElementById('backSubcategories')
+      .addEventListener(
+        'click',
+        () => renderSubcategories(category)
+      );
+
+
+    root
+      .querySelectorAll('.scenario-choice')
+      .forEach(button => {
+
+        button.addEventListener(
+          'click',
+          () => {
+
+            const scenarioParams =
+              new URLSearchParams();
+
+            scenarioParams.set(
+              'level',
+              level
+            );
+
+            scenarioParams.set(
+              'location',
+              button.dataset.location
+            );
+
+            scenarioParams.set(
+              'scenario',
+              button.dataset.index
+            );
+
+            scenarioParams.set(
+              'from',
+              'browse'
+            );
+
+            scenarioParams.set(
+              'category',
+              category
+            );
+
+            scenarioParams.set(
+              'subcategory',
+              subcategory
+            );
+
+            window.location.href =
+              'scenario.html?' +
+              scenarioParams.toString();
+
+          }
+        );
+
+      });
+
+  }
+
+    const selected =
+      choices[
+        Math.floor(
+          Math.random() *
+          choices.length
+        )
+      ];
+
+
+    const next =
+      new URLSearchParams();
+
+    next.set(
+      'level',
+      level
+    );
+
+    next.set(
+      'location',
+      selected.__location
+    );
+
+    next.set(
+      'scenario',
+      selected.__index
+    );
+
+    next.set(
+      'from',
+      'browse'
+    );
+
+    next.set(
+      'category',
+      category
+    );
+
+    if (subcategory) {
+      next.set(
+        'subcategory',
+        subcategory
+      );
+    }
+
+
+    window.location.href =
+      'scenario.html?' +
+      next.toString();
+
+  }
+
+
+  if (
+    selectedCategory &&
+    selectedSubcategory &&
+    categories?.[selectedCategory]?.[selectedSubcategory]
+  ) {
+
+    renderScenarioList(
+      selectedCategory,
+      selectedSubcategory
+    );
+
+  } else if (
+    selectedCategory &&
+    categories[selectedCategory]
+  ) {
+
+    renderSubcategories(
+      selectedCategory
+    );
+
+  } else {
+
+    renderCategories();
+
+  }
+
+})();
+
+</script>
+
+</body>
+</html>

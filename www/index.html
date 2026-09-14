@@ -218,7 +218,9 @@
         <div class="footer-sub">Scenarios · EMS Training</div>
       </div>
     </div>
-    <div class="footer-version">v1.0.3 · Never Stop Learning</div>
+    <div class="footer-version">
+      v<span id="appVersion"></span> · Never Stop Learning
+    </div>
   </div>
 
   <script>
@@ -235,5 +237,11 @@
       applyTheme(next);
     });
   </script>
+<script src="js/version.js"></script>
+<script>
+  document.getElementById('appVersion').textContent =
+    window.XPRESSOMEDIC_VERSION || '';
+</script>
+
 </body>
 </html>

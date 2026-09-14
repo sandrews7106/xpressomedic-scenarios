@@ -537,7 +537,7 @@
       >
 
         <div class="hub-card-icon">
-          🌲
+          🏘️
         </div>
 
         <div class="hub-card-title">
@@ -565,9 +565,10 @@
       </a>
 
 
-      <div
-        class="hub-card emergency coming-soon"
-        aria-disabled="true"
+      <a
+        class="hub-card emergency active"
+        id="browseEmergency"
+        href="#"
       >
 
         <div class="hub-card-icon">
@@ -586,17 +587,17 @@
 
         <div class="hub-card-footer">
 
-          <span class="coming-badge">
-            Next Feature
+          <span>
+            12 Categories
           </span>
 
           <span>
-            Coming Soon
+            Browse →
           </span>
 
         </div>
 
-      </div>
+      </a>
 
     </section>
 
@@ -689,6 +690,14 @@ function goBack() {
       'map.html?' +
       'town=cedar_hollow' +
       '&level=' +
+      encodeURIComponent(level);
+
+
+  document
+    .getElementById('browseEmergency')
+    .href =
+      'browse.html?' +
+      'level=' +
       encodeURIComponent(level);
 
 })();

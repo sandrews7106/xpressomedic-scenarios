@@ -1629,6 +1629,45 @@ function randomScenario() {
 
 function goBackToMap() {
 
+  const source =
+    params.get('from');
+
+  if (source === 'browse') {
+
+    const category =
+      params.get('category') || '';
+
+    const subcategory =
+      params.get('subcategory') || '';
+
+    const browseParams =
+      new URLSearchParams();
+
+    browseParams.set(
+      'level',
+      level
+    );
+
+    if (category) {
+      browseParams.set(
+        'category',
+        category
+      );
+    }
+
+    if (subcategory) {
+      browseParams.set(
+        'subcategory',
+        subcategory
+      );
+    }
+
+    window.location.href =
+      `browse.html?${browseParams.toString()}`;
+
+    return;
+  }
+
   window.location.href =
     `map.html?level=${encodeURIComponent(level)}`;
 }
