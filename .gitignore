@@ -15,3 +15,11 @@ codemagic-before-*.yaml
 www/*-before-*.html
 www/*-broken-*.html
 www/js/*-before-*.js
+
+# Signing / local provisioning files
+*.mobileprovision
+
+# Local development archives and backups
+backups/
+*-before-*
+*-broken-*

@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8"/>
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  />
+
+  <meta
+    name="apple-mobile-web-app-capable"
+    content="yes"
+  />
+
+  <meta
+    name="apple-mobile-web-app-status-bar-style"
+    content="black-translucent"
+  />
+
+  <title>Training Hub — XpressoMedic</title>
+
+  <script>
+    (() => {
+      const saved =
+        localStorage.getItem('xm-theme') ||
+        (
+          window.matchMedia('(prefers-color-scheme: light)').matches
+            ? 'light'
+            : 'dark'
+        );
+
+      document.documentElement.setAttribute(
+        'data-theme',
+        saved
+      );
+    })();
+  </script>
+
+  <link
+    rel="stylesheet"
+    href="css/style.css"
+  />
+
+  <script src="js/theme.js"></script>
+  <script src="js/nav.js"></script>
+
+  <style>
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      background: #0d1117;
+    }
+
+    html {
+      overflow-y: auto;
+    }
+
+    body {
+      min-height: 100vh;
+      min-height: 100dvh;
+      overflow-y: auto;
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .hub-screen {
+      min-height: 100vh;
+      min-height: 100dvh;
+
+      display: flex;
+      flex-direction: column;
+
+      background:
+        radial-gradient(
+          circle at top,
+          rgba(240,192,64,.08),
+          transparent 32%
+        ),
+        #0d1117;
+    }
+
+    [data-theme="light"] .hub-screen {
+      background:
+        radial-gradient(
+          circle at top,
+          rgba(196,145,28,.08),
+          transparent 32%
+        ),
+        #f5f0e8;
+    }
+
+    .hub-main {
+      flex: 1;
+
+      width: 100%;
+      max-width: 720px;
+
+      margin: 0 auto;
+
+      padding:
+        28px
+        18px
+        calc(30px + env(safe-area-inset-bottom));
+
+      box-sizing: border-box;
+    }
+
+    .hub-intro {
+      text-align: center;
+
+      margin:
+        8px auto
+        28px;
+
+      max-width: 570px;
+    }
+
+    .hub-eyebrow {
+      color: #d8aa35;
+
+      font-size: 11px;
+      font-weight: 800;
+
+      letter-spacing: 1.7px;
+
+      text-transform: uppercase;
+
+      margin-bottom: 9px;
+    }
+
+    .hub-title {
+      margin: 0;
+
+      color: #f7f8fa;
+
+      font-size: clamp(
+        27px,
+        6vw,
+        38px
+      );
+
+      line-height: 1.08;
+
+      font-weight: 850;
+    }
+
+    [data-theme="light"] .hub-title {
+      color: #1c1a16;
+    }
+
+    .hub-description {
+      margin:
+        13px auto
+        0;
+
+      max-width: 500px;
+
+      color: #94a3b8;
+
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    [data-theme="light"] .hub-description {
+      color: #625d55;
+    }
+
+    .hub-level {
+      display: inline-flex;
+
+      margin-top: 16px;
+
+      padding:
+        7px
+        13px;
+
+      border-radius: 999px;
+
+      font-size: 11px;
+      font-weight: 850;
+
+      letter-spacing: 1px;
+
+      text-transform: uppercase;
+    }
+
+    .hub-level.emtb {
+      color: #4ade80;
+      background: rgba(46,160,67,.12);
+      border: 1px solid rgba(46,160,67,.35);
+    }
+
+    .hub-level.aemt {
+      color: #7ab8f5;
+      background: rgba(56,139,253,.12);
+      border: 1px solid rgba(56,139,253,.35);
+    }
+
+    .hub-level.medic {
+      color: #f87171;
+      background: rgba(233,69,96,.12);
+      border: 1px solid rgba(233,69,96,.35);
+    }
+
+    [data-theme="light"] .hub-level.emtb {
+      color: #15803d;
+    }
+
+    [data-theme="light"] .hub-level.aemt {
+      color: #1a5cb8;
+    }
+
+    [data-theme="light"] .hub-level.medic {
+      color: #c0293e;
+    }
+
+    .hub-options {
+      display: grid;
+
+      grid-template-columns:
+        repeat(
+          2,
+          minmax(0,1fr)
+        );
+
+      gap: 16px;
+    }
+
+    .hub-card {
+      position: relative;
+
+      display: flex;
+      flex-direction: column;
+
+      min-height: 235px;
+
+      padding: 22px;
+
+      box-sizing: border-box;
+
+      border-radius: 22px;
+
+      text-decoration: none;
+
+      overflow: hidden;
+
+      background:
+        linear-gradient(
+          145deg,
+          #161d27,
+          #111821
+        );
+
+      border:
+        1px solid
+        rgba(255,255,255,.08);
+
+      box-shadow:
+        0 12px 30px
+        rgba(0,0,0,.22);
+
+      color: white;
+
+      -webkit-tap-highlight-color:
+        transparent;
+    }
+
+    [data-theme="light"] .hub-card {
+      background:
+        linear-gradient(
+          145deg,
+          #ffffff,
+          #ece7de
+        );
+
+      border-color:
+        rgba(0,0,0,.08);
+
+      box-shadow:
+        0 9px 22px
+        rgba(0,0,0,.09);
+
+      color: #1c1a16;
+    }
+
+    .hub-card.active {
+      cursor: pointer;
+    }
+
+    .hub-card.active:active {
+      transform: scale(.985);
+    }
+
+    .hub-card::before {
+      content: "";
+
+      position: absolute;
+
+      top: 0;
+      left: 0;
+      right: 0;
+
+      height: 4px;
+    }
+
+    .hub-card.town::before {
+      background: #d8aa35;
+    }
+
+    .hub-card.emergency::before {
+      background: #e94560;
+    }
+
+    .hub-card-icon {
+      width: 58px;
+      height: 58px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      margin-bottom: 20px;
+
+      border-radius: 17px;
+
+      font-size: 29px;
+    }
+
+    .town .hub-card-icon {
+      background:
+        rgba(216,170,53,.13);
+
+      border:
+        1px solid
+        rgba(216,170,53,.26);
+    }
+
+    .emergency .hub-card-icon {
+      background:
+        rgba(233,69,96,.12);
+
+      border:
+        1px solid
+        rgba(233,69,96,.25);
+    }
+
+    .hub-card-title {
+      font-size: 23px;
+      font-weight: 850;
+
+      margin-bottom: 8px;
+    }
+
+    .hub-card-description {
+      color: #9aa8b7;
+
+      font-size: 13px;
+      line-height: 1.5;
+
+      flex: 1;
+    }
+
+    [data-theme="light"] .hub-card-description {
+      color: #615c55;
+    }
+
+    .hub-card-footer {
+      display: flex;
+
+      align-items: center;
+      justify-content: space-between;
+
+      margin-top: 22px;
+
+      padding-top: 14px;
+
+      border-top:
+        1px solid
+        rgba(255,255,255,.07);
+
+      font-size: 12px;
+      font-weight: 750;
+    }
+
+    [data-theme="light"] .hub-card-footer {
+      border-top-color:
+        rgba(0,0,0,.08);
+    }
+
+    .town .hub-card-footer {
+      color: #e4bd55;
+    }
+
+    .emergency .hub-card-footer {
+      color: #f87171;
+    }
+
+    .coming-soon {
+      opacity: .72;
+    }
+
+    .coming-badge {
+      display: inline-block;
+
+      padding: 4px 8px;
+
+      border-radius: 999px;
+
+      background:
+        rgba(233,69,96,.12);
+
+      border:
+        1px solid
+        rgba(233,69,96,.25);
+
+      color: #f87171;
+
+      font-size: 9px;
+      font-weight: 850;
+
+      letter-spacing: .8px;
+
+      text-transform: uppercase;
+    }
+
+    .hub-note {
+      margin-top: 22px;
+
+      text-align: center;
+
+      color: #64748b;
+
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    [data-theme="light"] .hub-note {
+      color: #777067;
+    }
+
+    @media(max-width:600px) {
+
+      .hub-main {
+        padding-top: 18px;
+      }
+
+      .hub-options {
+        grid-template-columns: 1fr;
+      }
+
+      .hub-card {
+        min-height: 190px;
+      }
+
+      .hub-intro {
+        margin-bottom: 20px;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+<div class="hub-screen">
+
+  <div class="app-header">
+
+    <button
+      class="header-back"
+      onclick="goHome()"
+      aria-label="Back"
+    >
+      ←
+    </button>
+
+    <div class="header-center">
+
+      <div class="header-title">
+        Training Hub
+      </div>
+
+      <div class="header-sub">
+        Choose how you want to train
+      </div>
+
+    </div>
+
+    <div
+      class="header-badge"
+      id="levelBadge"
+    >
+      EMT-B
+    </div>
+
+  </div>
+
+
+  <main class="hub-main">
+
+    <section class="hub-intro">
+
+      <div class="hub-eyebrow">
+        XpressoMedic Scenarios
+      </div>
+
+      <h1 class="hub-title">
+        How do you want to train?
+      </h1>
+
+      <p class="hub-description">
+        Explore realistic calls throughout a training
+        community or target a specific emergency type.
+      </p>
+
+      <div
+        class="hub-level emtb"
+        id="hubLevel"
+      >
+        EMT-BASIC
+      </div>
+
+    </section>
+
+
+    <section class="hub-options">
+
+      <a
+        class="hub-card town active"
+        id="exploreTown"
+        href="#"
+      >
+
+        <div class="hub-card-icon">
+          🌲
+        </div>
+
+        <div class="hub-card-title">
+          Explore Town
+        </div>
+
+        <div class="hub-card-description">
+          Enter a training community, choose a location
+          from the map, and respond to whatever call
+          dispatch sends your way.
+        </div>
+
+        <div class="hub-card-footer">
+
+          <span>
+            Cedar Hollow
+          </span>
+
+          <span>
+            Explore →
+          </span>
+
+        </div>
+
+      </a>
+
+
+      <div
+        class="hub-card emergency coming-soon"
+        aria-disabled="true"
+      >
+
+        <div class="hub-card-icon">
+          🚑
+        </div>
+
+        <div class="hub-card-title">
+          Browse by Emergency
+        </div>
+
+        <div class="hub-card-description">
+          Practice by category, complaint, or emergency
+          type — Cardiac, Respiratory, Trauma, Neuro,
+          Toxicology, Environmental, and more.
+        </div>
+
+        <div class="hub-card-footer">
+
+          <span class="coming-badge">
+            Next Feature
+          </span>
+
+          <span>
+            Coming Soon
+          </span>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <div class="hub-note">
+      Your selected certification level follows you
+      throughout the training experience.
+    </div>
+
+  </main>
+
+</div>
+
+
+<script>
+
+function goBack() {
+  if (window.history.length > 1) {
+    window.history.back();
+  } else {
+    window.location.href = 'index.html';
+  }
+}
+
+(() => {
+
+  const params =
+    new URLSearchParams(
+      window.location.search
+    );
+
+  const level =
+    params.get('level') || 'emtb';
+
+  const levels = {
+
+    emtb: {
+      name: 'EMT-BASIC',
+      badge: 'EMT-B',
+      cls: 'emtb'
+    },
+
+    aemt: {
+      name: 'AEMT',
+      badge: 'AEMT',
+      cls: 'aemt'
+    },
+
+    medic: {
+      name: 'PARAMEDIC',
+      badge: 'PARAMEDIC',
+      cls: 'medic'
+    }
+
+  };
+
+  const selected =
+    levels[level] || levels.emtb;
+
+
+  const badge =
+    document.getElementById(
+      'levelBadge'
+    );
+
+  badge.textContent =
+    selected.badge;
+
+  badge.className =
+    'header-badge ' +
+    selected.cls;
+
+
+  const hubLevel =
+    document.getElementById(
+      'hubLevel'
+    );
+
+  hubLevel.textContent =
+    selected.name;
+
+  hubLevel.className =
+    'hub-level ' +
+    selected.cls;
+
+
+  document
+    .getElementById('exploreTown')
+    .href =
+      'map.html?' +
+      'town=cedar_hollow' +
+      '&level=' +
+      encodeURIComponent(level);
+
+})();
+
+</script>
+
+</body>
+</html>
