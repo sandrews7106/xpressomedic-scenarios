@@ -331,14 +331,17 @@ html, body {
   height: 100vh;
   height: -webkit-fill-available;
   overflow: hidden;
-  padding-top: var(--safe-top);
 }
 
 /* Header */
 .app-header {
   background: linear-gradient(90deg, #0d1117 0%, #1a1a2e 50%, #0d1117 100%);
   border-bottom: 2px solid var(--gold);
-  padding: 8px 14px;
+  padding:
+    calc(8px + var(--safe-top))
+    calc(14px + var(--safe-right))
+    8px
+    calc(14px + var(--safe-left));
   display: flex;
   align-items: center;
   gap: 12px;
