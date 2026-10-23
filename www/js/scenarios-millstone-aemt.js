@@ -91,34 +91,31 @@ const SCENARIOS_MILLSTONE_AEMT = {
       "teaching_points": "1. Electrical injury can produce dysrhythmias and significant internal injury despite limited external burns. Place the patient on cardiac monitoring when available and assess for associated fall trauma. 2. Establish vascular access as indicated, treat associated burns and shock, and transport for continued cardiac and trauma evaluation."
     },
     {
-      "dispatch_line": "Medic 12, Millstone Manufacturing Plant — heavy industrial equipment overturned onto a worker, now freed but complaining of chest and pelvic pain.",
-      "chief_complaint": "Heavy machinery rollover with multisystem trauma",
+      "dispatch_line": "Medic 12, Millstone Manufacturing Plant — 58-year-old worker with chest pressure and weakness.",
+      "chief_complaint": "Acute coronary syndrome with cardiogenic deterioration",
       "id": "millstone_plant_04",
       "town": "millstone",
       "location": "millstone_plant",
       "level": "aemt",
-      "category": "Trauma",
-      "subcategory": "Multisystem Trauma",
+      "category": "Cardiac",
+      "subcategory": "ACS / Cardiogenic Shock",
       "tags": [
         "Industrial",
-        "Machinery",
-        "Crush Injury",
-        "Entrapment",
-        "High-Energy Trauma",
-        "Shock"
+        "ACS",
+        "Cardiogenic Shock"
       ],
-      "sceneSizeUp": "BSI taken. Scene safety: plant operations are stopped and the overturned equipment has been stabilized by rescue personnel. One patient. Mechanism of injury: heavy powered cart rolled onto the patient's lower torso and pelvis before coworkers lifted it away. C-spine: high-energy mechanism; spinal injury should be considered. Resources available: fire/rescue and plant safety personnel. You find a 52-year-old male supine on the concrete floor, pale, diaphoretic, and complaining of severe pelvic and left chest pain.",
-      "primarySurvey": "General Impression: Adult male with high-energy multisystem trauma and signs of shock. AVPU: Alert but anxious and slow to answer. Airway: Patent. Breathing: Tachypneic with decreased movement of the left chest because of pain. Circulation: Rapid weak radial pulse; skin pale, cool, and diaphoretic. Patient Priority: High.",
-      "historySecondary": "52-year-old male. OPQRST: Severe pelvic and left-sided chest pain began immediately after equipment rolled across him. SAMPLE: PMH hypertension, takes antihypertensive medication, no known allergies. Secondary exam: Pelvic tenderness without repeated manipulation, left lateral chest tenderness, bruising across lower abdomen, no major external bleeding.",
+      "sceneSizeUp": "Plant floor is safe and machinery is stopped. Coworkers report the patient became pale and sat down during his shift.",
+      "primarySurvey": "Alert but ill appearing, cool and diaphoretic, chest pressure, initially adequate airway/breathing, weak pulse.",
+      "historySecondary": "History of CAD. Pain began with exertion. BP and mental status worsen during reassessment with signs of poor perfusion, creating a cardiogenic-shock problem rather than another trauma case.",
       "vitals": {
-        "bp": "88/58",
-        "hr": "126",
-        "rr": "28",
-        "spo2": "92%",
-        "gcs": "14",
-        "temp": "97.5°F"
+        "bp": "102/66",
+        "hr": "104",
+        "rr": "22",
+        "spo2": "94%",
+        "gcs": "15",
+        "temp": "98.2°F"
       },
-      "teaching_points": "1. Hypotension following high-energy chest, abdominal, or pelvic trauma should raise concern for internal hemorrhage. Control external bleeding, maintain warmth, and minimize scene time. 2. Establish vascular access according to trauma protocol, use fluids judiciously according to local guidelines, provide appropriate oxygen or ventilatory support, and transport rapidly to a trauma-capable facility."
+      "teaching_points": "Establish vascular access and support perfusion per protocol while avoiding delays in cardiac transport."
     }
   ],
   "millstone_warehouse": [
@@ -183,33 +180,31 @@ const SCENARIOS_MILLSTONE_AEMT = {
       "teaching_points": "1. Significant fall height with altered mental status, head injury, or midline spinal tenderness requires careful spinal-motion management and repeated neurologic assessment. 2. Establish vascular access as indicated, monitor for deterioration, manage oxygenation and ventilation, and avoid delaying transport for nonessential procedures."
     },
     {
-      "dispatch_line": "Medic 12, Millstone Distribution Warehouse — employee collapsed during shift, CPR in progress.",
-      "chief_complaint": "Sudden cardiac arrest during warehouse shift",
+      "dispatch_line": "Medic 12, Millstone Distribution Warehouse — worker with palpitations, chest pressure and near-syncope.",
+      "chief_complaint": "Unstable wide-complex tachycardia with a pulse",
       "id": "millstone_warehouse_03",
       "town": "millstone",
       "location": "millstone_warehouse",
       "level": "aemt",
-      "category": "Resuscitation",
-      "subcategory": "Cardiac Arrest",
+      "category": "Cardiac",
+      "subcategory": "Ventricular Tachycardia",
       "tags": [
-        "Workplace",
-        "Cardiac Arrest",
-        "CPR",
-        "AED",
-        "Sudden Cardiac Arrest"
+        "VT",
+        "Cardioversion",
+        "Warehouse"
       ],
-      "sceneSizeUp": "BSI taken. Scene is safe and warehouse machinery has been stopped around the patient. One patient. Nature of illness: witnessed sudden collapse with immediate bystander CPR. C-spine: no traumatic mechanism reported. Resources available: warehouse AED, trained coworkers, fire/rescue. You find a 57-year-old male supine on the floor with a coworker performing chest compressions.",
-      "primarySurvey": "General Impression: Adult male in cardiac arrest with CPR in progress. AVPU: Unresponsive. Airway: Not self-maintained; airway positioning and adjunct indicated. Breathing: Apneic; ventilations required. Circulation: No palpable pulse; continuous high-quality CPR required. Patient Priority: Immediate resuscitation.",
-      "historySecondary": "57-year-old male. History from coworkers: patient complained briefly of pressure in his chest, then collapsed. SAMPLE: Known hypertension and high cholesterol, medications unknown, allergies unknown. Secondary exam is limited by active resuscitation; no evidence of major trauma.",
+      "sceneSizeUp": "Scene safe. Patient is seated against shelving after nearly collapsing.",
+      "primarySurvey": "Pale, diaphoretic and confused with a very rapid regular pulse and hypotension. Airway patent; breathing rapid.",
+      "historySecondary": "At paramedic level monitor shows regular wide-complex tachycardia about 190/min with a pulse. Instability is present from hypotension and altered mental status.",
       "vitals": {
-        "bp": "N/A",
-        "hr": "Pulseless",
-        "rr": "Apneic",
-        "spo2": "N/A",
-        "gcs": "3",
-        "temp": "98.1°F"
+        "bp": "76/48",
+        "hr": "190",
+        "rr": "26",
+        "spo2": "94%",
+        "gcs": "13",
+        "temp": "98.4°F"
       },
-      "teaching_points": "1. High-quality CPR and rapid defibrillation remain the priorities. Minimize interruptions while coordinating airway management, ventilation, and AED/monitor use. 2. At the AEMT level, establish vascular or intraosseous access and administer resuscitation medications only as authorized by local cardiac-arrest protocol while continuing excellent basic resuscitation."
+      "teaching_points": "Establish vascular access without delaying definitive rhythm treatment and prepare for deterioration/arrest."
     },
     {
       "dispatch_line": "Medic 12, Millstone Distribution Warehouse — several employees coughing after mixing cleaning chemicals; one worker has severe wheezing.",
@@ -423,33 +418,31 @@ const SCENARIOS_MILLSTONE_AEMT = {
       "teaching_points": "1. Rollover with partial ejection represents a high-risk mechanism for multisystem trauma, head injury, and spinal injury. Perform repeated neurologic assessments and protect the spine when indicated. 2. Establish vascular access as appropriate, support oxygenation and ventilation, control hemorrhage, and minimize scene time."
     },
     {
-      "dispatch_line": "Medic 12, North Millstone Interchange — motorcycle crash, rider down with significant extremity and chest injuries.",
-      "chief_complaint": "Motorcycle crash with major trauma",
+      "dispatch_line": "Medic 12, Millstone Interchange — motorist stopped on shoulder, confused and vomiting.",
+      "chief_complaint": "DKA discovered after roadside stop",
       "id": "millstone_interchange_03",
       "town": "millstone",
       "location": "millstone_interchange",
       "level": "aemt",
-      "category": "Trauma",
-      "subcategory": "Motorcycle Crash",
+      "category": "Endocrine",
+      "subcategory": "DKA",
       "tags": [
-        "Motorcycle",
-        "MVC",
-        "High-Energy Trauma",
-        "Helmet",
-        "Multisystem Trauma"
+        "DKA",
+        "Highway",
+        "Metabolic"
       ],
-      "sceneSizeUp": "BSI taken. Scene safety: traffic is stopped by law enforcement and fire personnel. One patient. Mechanism of injury: motorcycle struck a guardrail at highway speed, throwing the rider approximately 30 feet. C-spine injury is suspected. Resources available: fire/rescue and law enforcement. You find a 42-year-old male lying supine, helmet still in place, complaining of chest and right leg pain.",
-      "primarySurvey": "General Impression: Adult male with high-energy motorcycle trauma. AVPU: Alert but distressed. Airway: Patent. Breathing: Tachypneic with pain on inspiration and decreased movement of the right chest wall. Circulation: Radial pulse rapid; skin pale and cool. External bleeding from the right lower leg is controlled. Patient Priority: High.",
-      "historySecondary": "42-year-old male. OPQRST: Severe right-sided chest and leg pain since crash. SAMPLE: No known significant history, medications unknown, no known allergies. Secondary exam: Right chest tenderness, deformity of right lower leg, abrasions to both arms, helmet intact without obvious damage.",
+      "sceneSizeUp": "Vehicle is safely off the roadway and traffic control is established. No crash occurred.",
+      "primarySurvey": "Drowsy, dehydrated, tachycardic with deep rapid respirations and clear lungs. No traumatic findings.",
+      "historySecondary": "Type 1 diabetic traveling for work, missed insulin and has had polyuria, thirst and vomiting. Glucose reads HIGH. The respiratory pattern is metabolic compensation.",
       "vitals": {
-        "bp": "100/66",
-        "hr": "120",
-        "rr": "28",
-        "spo2": "91%",
-        "gcs": "15",
-        "temp": "97.7°F"
+        "bp": "96/60",
+        "hr": "122",
+        "rr": "30",
+        "spo2": "98%",
+        "gcs": "14",
+        "temp": "99.0°F"
       },
-      "teaching_points": "1. Motorcycle crashes frequently cause multiple simultaneous injuries. Perform a systematic trauma assessment while addressing airway, breathing, and hemorrhage first. 2. Establish vascular access according to protocol, provide analgesia when authorized, support oxygenation, and transport promptly to an appropriate trauma facility."
+      "teaching_points": "Establish vascular access and give protocol-directed isotonic fluid with reassessment."
     },
     {
       "dispatch_line": "Medic 12, North Millstone Interchange — tanker rollover with driver injured and possible hazardous material leak.",
@@ -573,33 +566,31 @@ const SCENARIOS_MILLSTONE_AEMT = {
       "teaching_points": "1. Do not approach a leaking freight car until HazMat has established control zones and cleared the patient for EMS care. 2. Support airway and breathing, provide oxygen and bronchodilator therapy when indicated, establish vascular access as appropriate, monitor neurologic status, and obtain product information for the receiving facility."
     },
     {
-      "dispatch_line": "Medic 12, Millstone Rail Yard — older worker with sudden chest pressure while switching rail cars.",
-      "chief_complaint": "Exertional chest pain suspicious for ACS",
+      "dispatch_line": "Medic 12, Millstone Rail Yard — worker weak and lightheaded, missed dialysis.",
+      "chief_complaint": "Dialysis patient with suspected hyperkalemia",
       "id": "millstone_rail_yard_04",
       "town": "millstone",
       "location": "millstone_rail_yard",
       "level": "aemt",
-      "category": "Cardiac",
-      "subcategory": "Chest Pain / ACS",
+      "category": "GI / GU / Renal",
+      "subcategory": "Hyperkalemia",
       "tags": [
-        "Chest Pain",
-        "ACS",
-        "Exertion",
-        "Occupational",
-        "Older Adult"
+        "Dialysis",
+        "Hyperkalemia",
+        "ECG"
       ],
-      "sceneSizeUp": "BSI taken. Scene is safe and rail movement has been stopped. One patient. Nature of illness: nontraumatic chest pain during exertion. C-spine is not indicated. Resources available: rail-yard personnel and fire responders. You find a 63-year-old male seated beside a service building, pale and diaphoretic.",
-      "primarySurvey": "General Impression: Older adult male with concerning chest pressure and diaphoresis. AVPU: Alert and oriented. Airway: Patent. Breathing: Mildly tachypneic. Circulation: Radial pulse regular; skin cool and diaphoretic. Patient Priority: High.",
-      "historySecondary": "63-year-old male. OPQRST: Substernal pressure began while walking between rail cars, radiates to jaw, 7/10, associated nausea. SAMPLE: History of hypertension and previous coronary artery disease, medications include aspirin and antihypertensive medication, no known allergies. Secondary exam: Lungs clear, no reproducible chest-wall pain, no trauma.",
+      "sceneSizeUp": "Rail operations are stopped around the patient. No traumatic mechanism.",
+      "primarySurvey": "Alert but weak, airway patent, breathing adequate, pulse slow/irregular and perfusion borderline.",
+      "historySecondary": "End-stage renal disease; missed dialysis. Progressive generalized weakness and nausea. Paramedic ECG shows findings concerning for hyperkalemia such as peaked T waves and QRS widening.",
       "vitals": {
-        "bp": "148/90",
-        "hr": "94",
+        "bp": "94/58",
+        "hr": "48",
         "rr": "20",
         "spo2": "96%",
         "gcs": "15",
-        "temp": "98.1°F"
+        "temp": "98.3°F"
       },
-      "teaching_points": "1. Exertional substernal pressure with radiation, nausea, and diaphoresis is highly concerning for ACS. Keep the patient at rest and begin cardiac-focused assessment. 2. Administer aspirin when indicated, establish vascular access, obtain ECG/cardiac monitoring resources when available, and administer other protocol-authorized medications as appropriate."
+      "teaching_points": "Establish vascular access and prepare for bradycardia/dysrhythmia deterioration within local scope."
     }
   ],
   "millstone_construction": [
@@ -784,8 +775,8 @@ const SCENARIOS_MILLSTONE_AEMT = {
       "teaching_points": "1. Smoke-inhalation patients can deteriorate despite initially acceptable pulse oximetry. Assess for soot, hoarseness, facial burns, wheezing, and increasing work of breathing. 2. Administer high-concentration oxygen as indicated, provide bronchodilator therapy when appropriate, establish vascular access, monitor closely for airway deterioration, and transport promptly."
     },
     {
-      "dispatch_line": "Medic 12, Millstone Fire & Rescue Training Grounds — firefighter collapsed during strenuous drills.",
-      "chief_complaint": "Exertional collapse during firefighter training",
+      "dispatch_line": "Medic 12, Millstone Fire Training Center — 22-year-old recruit collapsed during drills.",
+      "chief_complaint": "Exertional syncope from suspected hypertrophic cardiomyopathy",
       "id": "millstone_fire_training_03",
       "town": "millstone",
       "location": "millstone_fire_training",
@@ -793,86 +784,79 @@ const SCENARIOS_MILLSTONE_AEMT = {
       "category": "Cardiac",
       "subcategory": "Exertional Syncope",
       "tags": [
-        "Firefighter",
-        "Exertion",
         "Syncope",
-        "Cardiac",
-        "Heat",
-        "Occupational"
+        "HCM",
+        "Dysrhythmia"
       ],
-      "sceneSizeUp": "BSI taken. Scene is safe. One patient. Nature of illness: sudden collapse during strenuous firefighter training. C-spine should be considered only if injury occurred during the fall. Resources available: fire personnel and AED. You find a 46-year-old firefighter supine on the training pad, now awake but pale and diaphoretic.",
-      "primarySurvey": "General Impression: Adult male following exertional syncope, pale and weak appearing. AVPU: Alert and oriented after brief loss of consciousness. Airway: Patent. Breathing: Mildly tachypneic. Circulation: Radial pulse rapid and regular; skin cool and diaphoretic. Patient Priority: High.",
-      "historySecondary": "46-year-old male. OPQRST: Reports sudden lightheadedness and pressure in the center of his chest immediately before collapsing. SAMPLE: History of hypertension, takes lisinopril, no known allergies. Secondary exam: No major traumatic injury from fall, no reproducible chest pain, lungs clear.",
+      "sceneSizeUp": "Training has stopped and scene is safe. Recruit had brief exertional syncope without significant trauma.",
+      "primarySurvey": "Now alert but pale with chest tightness and palpitations. Airway/breathing adequate; pulse mildly rapid.",
+      "historySecondary": "No known history but reports a relative died suddenly at a young age. Symptoms occurred during exertion. ECG at paramedic level may show LVH/repolarization abnormalities but is not itself diagnostic of HCM.",
       "vitals": {
-        "bp": "104/68",
+        "bp": "112/70",
         "hr": "108",
-        "rr": "22",
-        "spo2": "96%",
+        "rr": "20",
+        "spo2": "98%",
         "gcs": "15",
-        "temp": "99.4°F"
+        "temp": "99.1°F"
       },
-      "teaching_points": "1. Syncope during exertion with chest discomfort should be treated as potentially cardiac rather than simple fatigue or dehydration. Obtain a focused cardiac assessment and appropriate monitoring resources. 2. Establish vascular access, administer aspirin when indicated, treat associated heat illness if present, and transport for definitive cardiac evaluation."
+      "teaching_points": "Establish vascular access if indicated and monitor for dysrhythmia or recurrent syncope."
     },
     {
-      "dispatch_line": "Medic 12, Millstone Fire & Rescue Training Grounds — firefighter struck during training with severe chest pain and difficulty breathing.",
-      "chief_complaint": "Blunt chest trauma during rescue training",
+      "dispatch_line": "Medic 12, Millstone Fire Training Center — visitor with severe asthma attack, inhaler not working.",
+      "chief_complaint": "Severe status asthmaticus",
       "id": "millstone_fire_training_04",
       "town": "millstone",
       "location": "millstone_fire_training",
       "level": "aemt",
-      "category": "Trauma",
-      "subcategory": "Blunt Chest Trauma",
+      "category": "Respiratory",
+      "subcategory": "Status Asthmaticus",
       "tags": [
-        "Firefighter",
-        "Training",
-        "Chest Trauma",
-        "Blunt Trauma",
-        "Occupational"
+        "Asthma",
+        "Magnesium",
+        "ETCO2",
+        "BVM"
       ],
-      "sceneSizeUp": "BSI taken. Scene safety: training activity has stopped and equipment is secured. One patient. Mechanism of injury: heavy training prop swung unexpectedly and struck the patient in the right chest. C-spine is not indicated unless additional trauma is identified. Resources available: fire personnel. You find a 33-year-old firefighter seated against a wall, holding the right side of his chest.",
-      "primarySurvey": "General Impression: Adult male with significant blunt chest trauma and respiratory discomfort. AVPU: Alert. Airway: Patent. Breathing: Tachypneic with shallow respirations and decreased movement on the right due to pain. Circulation: Radial pulse rapid; skin pale. Patient Priority: High.",
-      "historySecondary": "33-year-old male. OPQRST: Sharp right-sided chest pain began immediately after impact and worsens with inspiration, rated 8/10. SAMPLE: No significant history, no medications, no known allergies. Secondary exam: Tenderness and bruising over right lateral ribs, no open chest wound, no other obvious trauma.",
+      "sceneSizeUp": "Scene safe. Patient is tripod-positioned, exhausted and struggling to speak.",
+      "primarySurvey": "Severe respiratory distress with initially loud wheeze that becomes quieter as aeration worsens. Marked retractions and tachycardia.",
+      "historySecondary": "Known severe asthma. Repeated bronchodilator treatment gives little improvement. Increasing fatigue, rising ETCO₂ and decreasing air movement indicate impending ventilatory failure.",
       "vitals": {
-        "bp": "118/76",
-        "hr": "110",
-        "rr": "26",
-        "spo2": "92%",
+        "bp": "146/86",
+        "hr": "138",
+        "rr": "36",
+        "spo2": "88%",
         "gcs": "15",
-        "temp": "98.3°F"
+        "temp": "98.8°F"
       },
-      "teaching_points": "1. Significant blunt chest trauma requires repeated assessment for worsening respiratory compromise, including changes in breath sounds, oxygenation, and work of breathing. 2. Support oxygenation and ventilation, establish vascular access when indicated, provide protocol-authorized analgesia, and transport promptly if respiratory status is abnormal."
+      "teaching_points": "Continue protocol-directed bronchodilators, establish vascular access and escalate respiratory support as permitted. Prepare BVM if ventilation fails."
     }
   ],
   "millstone_airfield": [
     {
-      "dispatch_line": "Medic 12, Millstone Regional Airfield — ground-crew employee struck by an airport service vehicle.",
-      "chief_complaint": "Ground worker struck by service vehicle",
+      "dispatch_line": "Medic 12, Millstone Airfield — ground worker weak, confused and febrile.",
+      "chief_complaint": "Sepsis with evolving shock",
       "id": "millstone_airfield_01",
       "town": "millstone",
       "location": "millstone_airfield",
       "level": "aemt",
-      "category": "Trauma",
-      "subcategory": "Pedestrian Struck",
+      "category": "Shock / Sepsis",
+      "subcategory": "Sepsis",
       "tags": [
         "Airfield",
-        "Ground Crew",
-        "Pedestrian Struck",
-        "Vehicle",
-        "Occupational",
-        "High-Energy Trauma"
+        "Sepsis",
+        "Shock"
       ],
-      "sceneSizeUp": "BSI taken. Scene safety: aircraft and ground vehicle movement in the immediate area has been stopped by airfield operations. One patient. Mechanism of injury: pedestrian struck by a baggage/service vehicle traveling approximately 20 mph. C-spine injury should be considered. Resources available: airfield operations and fire/rescue. You find a 40-year-old male lying on the ramp with left hip and shoulder pain.",
-      "primarySurvey": "General Impression: Adult male after vehicle impact, pale but awake. AVPU: Alert. Airway: Patent. Breathing: Adequate with equal chest rise. Circulation: Radial pulse rapid; skin pale and cool. No major external hemorrhage. Patient Priority: High.",
-      "historySecondary": "40-year-old male. OPQRST: Left hip and shoulder pain began immediately after being struck, rated 8/10. SAMPLE: No significant medical history, no medications, no known allergies. Secondary exam: Left pelvic and hip tenderness, abrasion over left shoulder, mild lower-back pain, no obvious long-bone deformity.",
+      "sceneSizeUp": "Ramp operations are halted around the patient. No aircraft-related trauma.",
+      "primarySurvey": "Confused, febrile, tachycardic and tachypneic with borderline hypotension. Airway patent.",
+      "historySecondary": "Several days of painful urination and flank discomfort with poor intake. Findings suggest infection with evolving shock. Repeat BP worsens despite rest.",
       "vitals": {
-        "bp": "110/72",
-        "hr": "106",
-        "rr": "20",
-        "spo2": "97%",
-        "gcs": "15",
-        "temp": "98.1°F"
+        "bp": "92/56",
+        "hr": "122",
+        "rr": "28",
+        "spo2": "94%",
+        "gcs": "14",
+        "temp": "103.0°F"
       },
-      "teaching_points": "1. Airfield access requires coordination with airport operations so aircraft and ground vehicles are controlled before EMS enters the ramp. 2. Treat pedestrian-versus-vehicle trauma as potentially multisystem, establish vascular access as indicated, monitor for occult hemorrhage, provide analgesia when authorized, and transport appropriately."
+      "teaching_points": "Establish vascular access and provide protocol-directed crystalloid with reassessment."
     },
     {
       "dispatch_line": "Medic 12, Millstone Regional Airfield — worker injured by aircraft propeller with severe arm trauma.",
@@ -1085,33 +1069,31 @@ const SCENARIOS_MILLSTONE_AEMT = {
   ],
   "millstone_motor_inn": [
     {
-      "dispatch_line": "Medic 12, respond to Millstone Motor Inn for an unresponsive adult in a guest room, possible overdose.",
-      "chief_complaint": "Suspected overdose with respiratory depression",
+      "dispatch_line": "Medic 12, Millstone Motor Inn — adult acting bizarrely, yelling and barricaded in hallway.",
+      "chief_complaint": "Acute psychosis with severe agitation",
       "id": "millstone_motor_inn_01",
       "town": "millstone",
       "location": "millstone_motor_inn",
       "level": "aemt",
-      "category": "Toxicology / Overdose",
-      "subcategory": "Overdose",
+      "category": "Behavioral",
+      "subcategory": "Acute Agitation / Psychosis",
       "tags": [
-        "Overdose",
-        "Unresponsive",
-        "Respiratory Depression",
-        "Altered Mental Status",
-        "Hotel"
+        "Behavioral",
+        "Agitation",
+        "De-escalation"
       ],
-      "sceneSizeUp": "BSI taken. Scene safety: law enforcement has cleared the room and no immediate hazards are identified. One patient. Nature of illness: suspected drug overdose. C-spine is not indicated unless trauma is identified. Resources available: law enforcement and fire personnel. You find a 39-year-old male lying supine beside the bed, minimally responsive with slow shallow respirations.",
-      "primarySurvey": "General Impression: Adult male with depressed mental status and inadequate respirations. AVPU: Pain — responds only to painful stimulus. Airway: Partially obstructed by relaxed soft tissue; repositioning and airway adjunct indicated. Breathing: Slow and shallow at 6 breaths per minute; assisted ventilations required. Circulation: Radial pulse present and regular; skin pale and cool. Patient Priority: High.",
-      "historySecondary": "39-year-old male. History from companion is limited. SAMPLE: Unknown medical history and medications. Companion reports recreational drug use earlier in the evening. Secondary exam: No significant trauma, pupils small, drug paraphernalia noted nearby.",
+      "sceneSizeUp": "Law enforcement is present and scene safety must be maintained. One 33-year-old is pacing, paranoid and intermittently threatening but not currently physically restrained.",
+      "primarySurvey": "Airway/breathing/circulation appear intact from a distance. Patient is highly agitated and difficult to assess; avoid rushing into hands-on contact.",
+      "historySecondary": "Roommate reports several days without sleep and escalating paranoia. Glucose, temperature, substance exposure, trauma and medical causes must be considered once safe assessment is possible.",
       "vitals": {
-        "bp": "98/62",
-        "hr": "64",
-        "rr": "6",
-        "spo2": "80%",
-        "gcs": "6",
-        "temp": "97.4°F"
+        "bp": "156/92",
+        "hr": "124",
+        "rr": "24",
+        "spo2": "98%",
+        "gcs": "14",
+        "temp": "99.3°F"
       },
-      "teaching_points": "1. Airway and ventilation remain the priority in overdose with respiratory depression. Begin effective BVM ventilation before relying on reversal medication. 2. Administer naloxone by an approved route, establish vascular access when indicated, reassess respiratory effort and mental status frequently, and titrate treatment toward adequate ventilation rather than complete arousal."
+      "teaching_points": "When safe, obtain glucose/vitals and vascular access only if clinically necessary and feasible. Continue de-escalation and monitor for excited/agitated physiology."
     },
     {
       "dispatch_line": "Medic 12, Millstone Motor Inn — guest threatening self-harm and refusing to leave the room.",
@@ -1173,33 +1155,31 @@ const SCENARIOS_MILLSTONE_AEMT = {
       "teaching_points": "1. Carbon monoxide poisoning may produce serious toxicity despite a normal conventional pulse-oximeter reading. Evaluate all exposed occupants and maintain a high index of suspicion. 2. Remove patients from the source, administer high-concentration oxygen, establish vascular access in symptomatic patients, monitor neurologic status, and transport patients with significant symptoms or exposure."
     },
     {
-      "dispatch_line": "Medic 12, Millstone Motor Inn — traveler with sudden shortness of breath and sharp chest pain.",
-      "chief_complaint": "Sudden dyspnea and pleuritic chest pain",
+      "dispatch_line": "Medic 12, Millstone Motor Inn — 45-year-old with vomiting, profound weakness and near-syncope.",
+      "chief_complaint": "Adrenal crisis with refractory hypotension",
       "id": "millstone_motor_inn_04",
       "town": "millstone",
       "location": "millstone_motor_inn",
       "level": "aemt",
-      "category": "Respiratory",
-      "subcategory": "Pulmonary Embolism",
+      "category": "Endocrine",
+      "subcategory": "Adrenal Crisis",
       "tags": [
-        "Pulmonary Embolism",
-        "Dyspnea",
-        "Pleuritic Chest Pain",
-        "Traveler",
-        "Hypoxia"
+        "Adrenal Insufficiency",
+        "Shock",
+        "Steroids"
       ],
-      "sceneSizeUp": "BSI taken. Scene is safe. One patient. Nature of illness: sudden nontraumatic shortness of breath with pleuritic chest pain. C-spine is not indicated. Resources available: hotel staff and family. You find a 58-year-old female seated upright on the bed, anxious and tachypneic.",
-      "primarySurvey": "General Impression: Older adult female with acute respiratory distress and pleuritic chest pain. AVPU: Alert and oriented. Airway: Patent. Breathing: Rapid and shallow with clear breath sounds. Circulation: Radial pulse rapid and regular; skin pale and slightly diaphoretic. Patient Priority: High.",
-      "historySecondary": "58-year-old female. OPQRST: Sudden sharp right-sided chest pain began 20 minutes ago, worse with deep inspiration, associated with shortness of breath. SAMPLE: Recent long-distance travel, history of previous DVT, takes anticoagulant medication inconsistently, no known allergies. Secondary exam: Lungs clear, mild swelling of left calf, no trauma.",
+      "sceneSizeUp": "Scene safe. Patient is on the bathroom floor, awake but very weak, with no traumatic injury.",
+      "primarySurvey": "Airway patent, tachycardic, cool and pale with significant hypotension and generalized weakness.",
+      "historySecondary": "History of adrenal insufficiency on chronic steroid replacement; several days of GI illness and inability to keep medication down. Persistent hypotension despite initial fluid raises concern for adrenal crisis.",
       "vitals": {
-        "bp": "118/74",
-        "hr": "122",
-        "rr": "30",
-        "spo2": "88%",
+        "bp": "78/46",
+        "hr": "118",
+        "rr": "22",
+        "spo2": "97%",
         "gcs": "15",
-        "temp": "98.4°F"
+        "temp": "100.2°F"
       },
-      "teaching_points": "1. Sudden dyspnea, pleuritic pain, hypoxia, tachycardia, and thromboembolic risk factors should raise concern for pulmonary embolism. Keep the patient at rest and reassess frequently. 2. Support oxygenation, establish vascular access, obtain cardiac monitoring when available, and transport promptly for definitive evaluation."
+      "teaching_points": "Establish vascular access and give protocol-directed isotonic fluid; treat hypoglycemia if present."
     }
   ],
   "millstone_apartments": [
@@ -1233,91 +1213,85 @@ const SCENARIOS_MILLSTONE_AEMT = {
       "teaching_points": "1. Severe asthma with markedly diminished air movement, hypoxia, or inability to speak normally may represent impending respiratory failure. Reassess breath sounds and mental status frequently. 2. Administer bronchodilator therapy according to local protocol, provide oxygen, establish vascular access when indicated, and prepare for assisted ventilation if tidal volume or mental status declines."
     },
     {
-      "dispatch_line": "Medic 12, Millstone Worker Apartments — diabetic patient confused and difficult to awaken.",
-      "chief_complaint": "Hypoglycemia with altered mental status",
+      "dispatch_line": "Medic 12, Millstone Apartments — older diabetic patient confused and extremely weak.",
+      "chief_complaint": "Hyperosmolar hyperglycemic state",
       "id": "millstone_apartments_02",
       "town": "millstone",
       "location": "millstone_apartments",
       "level": "aemt",
       "category": "Endocrine",
-      "subcategory": "Hypoglycemia",
+      "subcategory": "HHS",
       "tags": [
         "Diabetes",
-        "Hypoglycemia",
-        "Altered Mental Status",
-        "Glucose"
+        "HHS",
+        "Dehydration"
       ],
-      "sceneSizeUp": "BSI taken. Scene is safe. One patient. Nature of illness: altered mental status in patient with diabetes. C-spine is not indicated unless trauma occurred. Resources available: family and patient's diabetic supplies. You find a 54-year-old male lying on the couch, confused and diaphoretic.",
-      "primarySurvey": "General Impression: Adult male with altered mental status and diaphoresis. AVPU: Verbal — responds to questions but is confused. Airway: Patent. Breathing: Normal rate and effort. Circulation: Radial pulse regular; skin cool and diaphoretic. Patient Priority: High.",
-      "historySecondary": "54-year-old male. Family reports he took insulin but skipped dinner. SAMPLE: Type 1 diabetes, insulin use, hypertension, no known allergies. Secondary exam: No signs of trauma, no focal neurologic deficit identified, generalized weakness.",
+      "sceneSizeUp": "Scene safe. Family reports several days of excessive thirst, urination and progressive lethargy.",
+      "primarySurvey": "Drowsy, profoundly dehydrated, tachycardic and hypotensive without the deep Kussmaul respirations typical of severe DKA.",
+      "historySecondary": "Type 2 diabetes. Glucose reads HIGH. No focal neurologic deficit. Presentation suggests severe hyperglycemic dehydration/HHS while acknowledging definitive diagnosis requires laboratory testing.",
       "vitals": {
-        "bp": "126/78",
-        "hr": "96",
-        "rr": "18",
-        "spo2": "97%",
+        "bp": "88/54",
+        "hr": "116",
+        "rr": "22",
+        "spo2": "96%",
         "gcs": "13",
-        "temp": "97.8°F",
-        "glucose": "42 mg/dL"
+        "temp": "100.0°F"
       },
-      "teaching_points": "1. Check blood glucose early in unexplained altered mental status. Hypoglycemia should be corrected promptly while protecting the airway. 2. If oral glucose is unsafe or ineffective, establish vascular access and administer protocol-authorized dextrose or glucagon according to local scope, then reassess glucose and neurologic status."
+      "teaching_points": "Establish vascular access and provide protocol-directed isotonic fluid with frequent perfusion/mental-status reassessment."
     },
     {
-      "dispatch_line": "Medic 12, Millstone Worker Apartments — assault victim with facial and arm injuries.",
-      "chief_complaint": "Assault with facial and extremity trauma",
+      "dispatch_line": "Medic 12, Millstone Apartments — 30-year-old with heavy vaginal bleeding after recent delivery.",
+      "chief_complaint": "Postpartum hemorrhage",
       "id": "millstone_apartments_03",
       "town": "millstone",
       "location": "millstone_apartments",
       "level": "aemt",
-      "category": "Trauma",
-      "subcategory": "Assault",
+      "category": "OB / GYN",
+      "subcategory": "Postpartum Hemorrhage",
       "tags": [
-        "Assault",
-        "Facial Trauma",
-        "Extremity Injury",
+        "Postpartum",
         "Hemorrhage",
-        "Scene Safety"
+        "Shock"
       ],
-      "sceneSizeUp": "BSI taken. Scene safety: law enforcement has secured the apartment and separated involved parties. One patient. Mechanism of injury: blunt assault with fists and an unknown object. C-spine should be considered if indicated by mechanism or findings. Resources available: law enforcement. You find a 31-year-old male seated on the floor with facial swelling and deformity of the left forearm.",
-      "primarySurvey": "General Impression: Adult male with moderate facial and extremity trauma. AVPU: Alert. Airway: Patent with blood in the mouth from a lip laceration; patient managing secretions. Breathing: Normal rate and effort. Circulation: Radial pulse rapid; bleeding controlled. Patient Priority: Moderate to high.",
-      "historySecondary": "31-year-old male. OPQRST: Facial and left arm pain since assault, 8/10. SAMPLE: No significant medical history, no medications, no known allergies. Secondary exam: Swollen left cheek, lip laceration, left forearm deformity, abrasions to chest, no major torso tenderness.",
+      "sceneSizeUp": "Scene safe. Patient delivered several days ago and is now weak and dizzy with heavy bleeding and clots.",
+      "primarySurvey": "Alert but pale, cool and tachycardic with falling blood pressure. Airway/breathing intact.",
+      "historySecondary": "Bleeding has increased over the last hour. Assess amount of bleeding, delivery history and associated pain/fever. Treat as potentially significant postpartum hemorrhage and shock.",
       "vitals": {
-        "bp": "138/84",
-        "hr": "108",
-        "rr": "20",
+        "bp": "92/58",
+        "hr": "122",
+        "rr": "24",
         "spo2": "98%",
         "gcs": "15",
-        "temp": "98.2°F"
+        "temp": "98.9°F"
       },
-      "teaching_points": "1. Confirm scene control before entering an assault environment and perform a systematic trauma assessment rather than focusing only on obvious injuries. 2. Control hemorrhage, reassess the airway for facial swelling or bleeding, establish vascular access if indicated, provide protocol-authorized analgesia, and transport based on injury severity."
+      "teaching_points": "Establish vascular access and provide protocol-directed resuscitation while monitoring ongoing blood loss."
     },
     {
-      "dispatch_line": "Medic 12, Millstone Worker Apartments — toddler may have swallowed an unknown quantity of medication.",
-      "chief_complaint": "Pediatric medication ingestion",
+      "dispatch_line": "Medic 12, Millstone Apartments — 20-month-old had a seizure and is now sleepy.",
+      "chief_complaint": "Pediatric febrile seizure",
       "id": "millstone_apartments_04",
       "town": "millstone",
       "location": "millstone_apartments",
       "level": "aemt",
-      "category": "Toxicology / Overdose",
-      "subcategory": "Pediatric Ingestion",
+      "category": "Neurologic",
+      "subcategory": "Febrile Seizure",
       "tags": [
         "Pediatric",
-        "Ingestion",
-        "Poisoning",
-        "Altered Mental Status",
-        "Toxicology"
+        "Fever",
+        "Seizure"
       ],
-      "sceneSizeUp": "BSI taken. Scene is safe. One patient. Nature of illness: suspected accidental pediatric ingestion. C-spine is not indicated. Resources available: parent and medication containers. You find a 3-year-old child sitting in a parent's lap, drowsier than usual but responsive.",
-      "primarySurvey": "General Impression: Toddler with possible toxic ingestion and mild altered mental status. AVPU: Verbal — sleepy but responds to parent and EMS. Airway: Patent. Breathing: Normal rate and effort. Circulation: Peripheral pulses present; skin warm and dry. Patient Priority: High because of potential toxic ingestion.",
-      "historySecondary": "Parent found the child beside an open prescription medication bottle approximately 20 minutes ago. Exact number of tablets missing is unknown. No vomiting reported. SAMPLE: No medical history, no routine medications, no known allergies. Secondary exam: No trauma, pupils equal, child increasingly sleepy.",
+      "sceneSizeUp": "Scene safe. Parent reports a generalized seizure lasting about two minutes during a febrile illness; seizure stopped before EMS arrival.",
+      "primarySurvey": "Postictal but arousable toddler, airway patent, breathing adequate, skin hot. No ongoing seizure.",
+      "historySecondary": "Fever and URI symptoms began today. Glucose normal. No known seizure disorder. Assess for red flags, prolonged/recurrent seizure, meningismus, toxic appearance and age-appropriate history.",
       "vitals": {
         "bp": "92/58",
-        "hr": "104",
-        "rr": "22",
-        "spo2": "98%",
-        "gcs": "14",
-        "temp": "98.3°F"
+        "hr": "142",
+        "rr": "28",
+        "spo2": "97%",
+        "gcs": "13",
+        "temp": "103.1°F"
       },
-      "teaching_points": "1. Pediatric ingestions can deteriorate quickly and may initially have minimal findings. Identify the substance, amount, timing, and formulation whenever possible. 2. Protect the airway, check glucose when indicated, establish vascular access if clinically necessary, avoid inducing emesis, and contact poison control or medical direction according to local protocol."
+      "teaching_points": "Establish access only if clinically indicated; treat recurrent/prolonged seizure within local scope and continue supportive care."
     }
   ],
   "millstone_auto_shop": [
@@ -1411,34 +1385,31 @@ const SCENARIOS_MILLSTONE_AEMT = {
       "teaching_points": "1. Solvent exposure can cause respiratory irritation and central nervous system depression. Ensure ventilation and responder protection before treatment. 2. Move the patient to fresh air when safe, support oxygenation and ventilation, establish vascular access in symptomatic patients, monitor neurologic status, and obtain product information for the receiving facility."
     },
     {
-      "dispatch_line": "Medic 12, Millstone Auto & Machine Shop — vehicle lift collapsed onto mechanic, patient trapped beneath vehicle.",
-      "chief_complaint": "Vehicle-lift failure with crush injury",
+      "dispatch_line": "Medic 12, Millstone Auto Shop — employee with sudden severe headache, vomiting and weakness.",
+      "chief_complaint": "Intracranial hemorrhage with acute neurologic deficit",
       "id": "millstone_auto_shop_04",
       "town": "millstone",
       "location": "millstone_auto_shop",
       "level": "aemt",
-      "category": "Trauma",
-      "subcategory": "Crush Injury",
+      "category": "Neurologic",
+      "subcategory": "Intracranial Hemorrhage",
       "tags": [
-        "Industrial",
-        "Vehicle Lift",
-        "Entrapment",
-        "Crush Injury",
-        "Occupational",
-        "Shock"
+        "ICH",
+        "Hypertension",
+        "Stroke"
       ],
-      "sceneSizeUp": "BSI taken. Scene safety: fire/rescue is stabilizing the vehicle and lift before EMS access. One patient. Mechanism of injury: passenger vehicle fell from lift and compressed the mechanic's pelvis and lower torso. C-spine injury is possible depending on the collapse mechanism. Resources available: technical rescue and shop personnel. You gain access to a 46-year-old male who is conscious but pale and trapped beneath the vehicle.",
-      "primarySurvey": "General Impression: Adult male with major crush entrapment and signs of shock. AVPU: Alert but anxious and increasingly weak. Airway: Patent. Breathing: Rapid and shallow. Circulation: Radial pulse rapid and weak; skin pale, cool, and diaphoretic. Patient Priority: High.",
-      "historySecondary": "46-year-old male. Coworkers report entrapment for approximately 15 minutes. SAMPLE: History of hypertension, medication unknown, no known allergies. Secondary exam: Severe pelvic and lower-abdominal pain, bilateral thigh pain, decreased sensation in legs, no major external hemorrhage.",
+      "sceneSizeUp": "Shop machinery is stopped and scene is safe. No trauma occurred.",
+      "primarySurvey": "Drowsy but responsive with unilateral weakness, vomiting and severe headache. Airway currently patent; markedly hypertensive.",
+      "historySecondary": "Symptoms began abruptly while working. Anticoagulant use is possible/confirmed in the level-specific history. Progressive decline in GCS requires airway readiness while avoiding reflexive BP treatment outside protocol.",
       "vitals": {
-        "bp": "88/56",
-        "hr": "130",
-        "rr": "28",
+        "bp": "214/118",
+        "hr": "88",
+        "rr": "20",
         "spo2": "95%",
-        "gcs": "14",
-        "temp": "97.3°F"
+        "gcs": "13",
+        "temp": "98.4°F"
       },
-      "teaching_points": "1. Do not enter beneath an unstable vehicle until rescue personnel have stabilized the load. Coordinate medical access and extrication with technical rescue. 2. Establish vascular access before release when feasible, treat for shock, anticipate deterioration after prolonged crush injury, provide analgesia when authorized, maintain warmth, and expedite transport after extrication."
+      "teaching_points": "Establish vascular access without delaying transport and perform serial neurologic reassessment."
     }
   ]
 };
