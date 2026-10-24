@@ -46,11 +46,19 @@
       background: #0d1117;
     }
 
+    html {
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+
     body {
       min-height: 100vh;
       min-height: 100dvh;
+      height: auto;
       overflow-x: hidden;
+      overflow-y: auto;
       -webkit-overflow-scrolling: touch;
+      overscroll-behavior-y: auto;
     }
 
     [data-theme="light"] body {
@@ -58,10 +66,13 @@
     }
 
     .age-screen {
+      width: 100%;
       min-height: 100vh;
       min-height: 100dvh;
+      height: auto;
       display: flex;
       flex-direction: column;
+      overflow: visible;
       background:
         radial-gradient(
           circle at top,
@@ -82,8 +93,9 @@
     }
 
     .age-main {
-      flex: 1;
+      flex: 1 0 auto;
       width: 100%;
+      overflow: visible;
       max-width: 720px;
       margin: 0 auto;
       padding:
