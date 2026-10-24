@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  />
+  <meta
+    name="apple-mobile-web-app-capable"
+    content="yes"
+  />
+  <meta
+    name="apple-mobile-web-app-status-bar-style"
+    content="black-translucent"
+  />
+
+  <title>Choose Patient Group — XpressoMedic</title>
+
+  <script>
+    (() => {
+      const saved =
+        localStorage.getItem('xm-theme') ||
+        (
+          window.matchMedia('(prefers-color-scheme: light)').matches
+            ? 'light'
+            : 'dark'
+        );
+
+      document.documentElement.setAttribute(
+        'data-theme',
+        saved
+      );
+    })();
+  </script>
+
+  <link rel="stylesheet" href="css/style.css"/>
+  <script src="js/theme.js"></script>
+  <script src="js/nav.js"></script>
+
+  <style>
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      background: #0d1117;
+    }
+
+    body {
+      min-height: 100vh;
+      min-height: 100dvh;
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    [data-theme="light"] body {
+      background: #f5f0e8;
+    }
+
+    .age-screen {
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      background:
+        radial-gradient(
+          circle at top,
+          rgba(216,170,53,.07),
+          transparent 28%
+        ),
+        #0d1117;
+    }
+
+    [data-theme="light"] .age-screen {
+      background:
+        radial-gradient(
+          circle at top,
+          rgba(180,130,20,.07),
+          transparent 28%
+        ),
+        #f5f0e8;
+    }
+
+    .age-main {
+      flex: 1;
+      width: 100%;
+      max-width: 720px;
+      margin: 0 auto;
+      padding:
+        26px
+        18px
+        calc(34px + env(safe-area-inset-bottom));
+      box-sizing: border-box;
+    }
+
+    .age-intro {
+      text-align: center;
+      margin: 8px auto 26px;
+      max-width: 560px;
+    }
+
+    .age-eyebrow {
+      color: #d8aa35;
+      font-size: 11px;
+      font-weight: 850;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .age-title {
+      margin: 0;
+      color: #f6f8fa;
+      font-size: 29px;
+      line-height: 1.15;
+      font-weight: 850;
+    }
+
+    [data-theme="light"] .age-title {
+      color: #1d1a16;
+    }
+
+    .age-description {
+      margin: 10px auto 0;
+      max-width: 510px;
+      color: #93a2b5;
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    [data-theme="light"] .age-description {
+      color: #655f57;
+    }
+
+    .age-level {
+      display: inline-flex;
+      margin-top: 15px;
+      padding: 7px 13px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 850;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .age-level.emtb {
+      color: #4ade80;
+      background: rgba(46,160,67,.12);
+      border: 1px solid rgba(46,160,67,.35);
+    }
+
+    .age-level.aemt {
+      color: #7ab8f5;
+      background: rgba(56,139,253,.12);
+      border: 1px solid rgba(56,139,253,.35);
+    }
+
+    .age-level.medic {
+      color: #f87171;
+      background: rgba(233,69,96,.12);
+      border: 1px solid rgba(233,69,96,.35);
+    }
+
+    [data-theme="light"] .age-level.emtb {
+      color: #15803d;
+    }
+
+    [data-theme="light"] .age-level.aemt {
+      color: #1a5cb8;
+    }
+
+    [data-theme="light"] .age-level.medic {
+      color: #c0293e;
+    }
+
+    .age-grid {
+      display: grid;
+      grid-template-columns:
+        repeat(2, minmax(0,1fr));
+      gap: 14px;
+    }
+
+    .age-card {
+      appearance: none;
+      position: relative;
+      width: 100%;
+      min-height: 245px;
+      padding: 22px;
+      box-sizing: border-box;
+
+      display: flex;
+      flex-direction: column;
+
+      text-align: left;
+      font: inherit;
+      color: #f6f8fa;
+
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,.08);
+
+      background:
+        linear-gradient(
+          145deg,
+          #161e28,
+          #111821
+        );
+
+      cursor: pointer;
+      overflow: hidden;
+      -webkit-tap-highlight-color: transparent;
+
+      box-shadow:
+        0 10px 26px
+        rgba(0,0,0,.20);
+    }
+
+    [data-theme="light"] .age-card {
+      color: #1d1a16;
+      background:
+        linear-gradient(
+          145deg,
+          #ffffff,
+          #eee9e0
+        );
+      border-color: rgba(0,0,0,.08);
+      box-shadow:
+        0 8px 20px
+        rgba(0,0,0,.08);
+    }
+
+    .age-card:active {
+      transform: scale(.985);
+    }
+
+    .age-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: #d8aa35;
+    }
+
+    .age-icon {
+      width: 58px;
+      height: 58px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      margin-bottom: 20px;
+
+      border-radius: 17px;
+
+      font-size: 29px;
+
+      background: rgba(216,170,53,.12);
+      border: 1px solid rgba(216,170,53,.22);
+    }
+
+    .age-name {
+      font-size: 23px;
+      font-weight: 850;
+      line-height: 1.2;
+    }
+
+    .age-copy {
+      margin-top: 9px;
+      color: #91a0b2;
+      font-size: 13px;
+      line-height: 1.5;
+      flex: 1;
+    }
+
+    [data-theme="light"] .age-copy {
+      color: #665f57;
+    }
+
+    .age-action {
+      margin-top: 19px;
+      padding-top: 13px;
+
+      border-top:
+        1px solid
+        rgba(255,255,255,.07);
+
+      color: #d8aa35;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    [data-theme="light"] .age-action {
+      border-top-color: rgba(0,0,0,.08);
+    }
+
+    @media (max-width: 560px) {
+      .age-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .age-card {
+        min-height: 190px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="age-screen">
+
+    <div class="app-header">
+      <button
+        class="header-back"
+        id="backButton"
+        aria-label="Back">←</button>
+
+      <div class="header-center">
+        <div class="header-title">Patient Group</div>
+        <div class="header-sub" id="headerSub">
+          Choose Adult or Pediatrics
+        </div>
+      </div>
+
+      <div class="header-badge" id="levelBadge">
+        EMT-B
+      </div>
+    </div>
+
+    <main class="age-main">
+
+      <section class="age-intro">
+        <div class="age-eyebrow" id="eyebrow">
+          Scenario Training
+        </div>
+
+        <h1 class="age-title">
+          Choose Patient Group
+        </h1>
+
+        <p class="age-description" id="description">
+          Select the patient population you want to train with.
+        </p>
+
+        <div class="age-level emtb" id="levelPill">
+          EMT-B
+        </div>
+      </section>
+
+      <section class="age-grid">
+
+        <button
+          class="age-card"
+          type="button"
+          data-age="adult">
+
+          <div class="age-icon">🧑</div>
+
+          <div class="age-name">
+            Adult
+          </div>
+
+          <div class="age-copy">
+            Adult patient scenarios across medical,
+            trauma, cardiac, respiratory, and other
+            emergencies.
+          </div>
+
+          <div class="age-action">
+            Browse Adult Scenarios →
+          </div>
+        </button>
+
+        <button
+          class="age-card"
+          type="button"
+          data-age="pediatric">
+
+          <div class="age-icon">🧒</div>
+
+          <div class="age-name">
+            Pediatrics
+          </div>
+
+          <div class="age-copy">
+            Pediatric and adolescent patient scenarios
+            across medical, trauma, airway, respiratory,
+            and other emergencies.
+          </div>
+
+          <div class="age-action">
+            Browse Pediatric Scenarios →
+          </div>
+        </button>
+
+      </section>
+    </main>
+  </div>
+
+<script>
+(() => {
+  const params =
+    new URLSearchParams(window.location.search);
+
+  const level =
+    params.get('level') || 'emtb';
+
+  const mode =
+    params.get('mode') || 'emergency';
+
+  const town =
+    params.get('town') || '';
+
+  const levelLabels = {
+    emtb: 'EMT-B',
+    aemt: 'AEMT',
+    medic: 'PARAMEDIC'
+  };
+
+  const label =
+    levelLabels[level] || 'EMT-B';
+
+  document.getElementById('levelBadge').textContent =
+    label;
+
+  const pill =
+    document.getElementById('levelPill');
+
+  pill.textContent = label;
+  pill.className =
+    'age-level ' +
+    (
+      ['emtb','aemt','medic'].includes(level)
+        ? level
+        : 'emtb'
+    );
+
+  if (mode === 'location') {
+    document.getElementById('eyebrow').textContent =
+      'Browse by Location';
+
+    document.getElementById('description').textContent =
+      'Choose the patient population, then select a location in the community.';
+
+    document.getElementById('headerSub').textContent =
+      'Choose a patient group before selecting a location';
+  } else {
+    document.getElementById('eyebrow').textContent =
+      'Browse by Emergency';
+
+    document.getElementById('description').textContent =
+      'Choose the patient population, then browse scenarios by emergency category.';
+
+    document.getElementById('headerSub').textContent =
+      'Choose a patient group before selecting an emergency';
+  }
+
+  document.getElementById('backButton')
+    .addEventListener('click', () => {
+
+      if (mode === 'location') {
+        window.location.href =
+          'towns.html?level=' +
+          encodeURIComponent(level);
+      } else {
+        window.location.href =
+          'hub.html?level=' +
+          encodeURIComponent(level);
+      }
+    });
+
+  document.querySelectorAll('.age-card')
+    .forEach(card => {
+
+      card.addEventListener('click', () => {
+        const age =
+          card.dataset.age;
+
+        if (mode === 'location') {
+          if (!town) {
+            window.location.href =
+              'towns.html?level=' +
+              encodeURIComponent(level);
+            return;
+          }
+
+          const destination =
+            town === 'millstone'
+              ? 'millstone-map.html'
+              : 'map.html';
+
+          const next =
+            new URLSearchParams();
+
+          next.set('level', level);
+          next.set('age', age);
+
+          window.location.href =
+            destination + '?' +
+            next.toString();
+
+          return;
+        }
+
+        const next =
+          new URLSearchParams();
+
+        next.set('level', level);
+        next.set('age', age);
+
+        window.location.href =
+          'browse.html?' +
+          next.toString();
+      });
+    });
+})();
+</script>
+
+</body>
+</html>

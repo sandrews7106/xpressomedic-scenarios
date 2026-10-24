@@ -606,6 +606,7 @@
 (() => {
   const params = new URLSearchParams(window.location.search);
   const level = params.get('level') || 'emtb';
+  const age = params.get('age') || 'adult';
 
   const levelLabels = {
     emtb:'EMT-B',
@@ -619,7 +620,9 @@
 
   document.getElementById('backToTowns').addEventListener('click', () => {
     window.location.href =
-      'towns.html?level=' + encodeURIComponent(level);
+      'age.html?mode=location' +
+      '&town=millstone' +
+      '&level=' + encodeURIComponent(level);
   });
 
   document.querySelectorAll('.pin-group').forEach(pin => {
@@ -630,7 +633,7 @@
         pin.dataset.id;
 
       window.location.href =
-        `scenario.html?town=millstone&level=${encodeURIComponent(level)}&location=${encodeURIComponent(locationId)}`;
+        `scenario.html?town=millstone&level=${encodeURIComponent(level)}&age=${encodeURIComponent(age)}&location=${encodeURIComponent(locationId)}`;
     });
   });
 

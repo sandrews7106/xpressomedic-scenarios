@@ -138,7 +138,7 @@
   <div class="app-header">
     <button
       class="header-back"
-      onclick="window.location.href='towns.html?level=' + encodeURIComponent(new URLSearchParams(window.location.search).get('level') || 'emtb')"
+      onclick="window.location.href='age.html?mode=location&amp;town=cedar_hollow&amp;level=' + encodeURIComponent(new URLSearchParams(window.location.search).get('level') || 'emtb')"
       aria-label="Back to communities">←</button>
     <div class="header-center">
       <div class="header-title">🌲 Cedar Hollow</div>
@@ -251,6 +251,7 @@
 (() => {
   const params = new URLSearchParams(window.location.search);
   const level = params.get('level') || 'emtb';
+  const age = params.get('age') || 'adult';
   const levelLabels = { emtb:'EMT-B', aemt:'AEMT', medic:'PARAMEDIC' };
   document.getElementById('levelBadge').textContent = levelLabels[level] || 'EMT-B';
 
@@ -259,7 +260,7 @@
       event.stopPropagation();
       const locationId = pin.dataset.id;
       window.location.href =
-        `scenario.html?town=cedar_hollow&level=${encodeURIComponent(level)}&location=${encodeURIComponent(locationId)}`;
+        `scenario.html?town=cedar_hollow&level=${encodeURIComponent(level)}&age=${encodeURIComponent(age)}&location=${encodeURIComponent(locationId)}`;
     });
   });
 

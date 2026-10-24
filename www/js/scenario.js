@@ -10,6 +10,14 @@ const params = new URLSearchParams(window.location.search);
 const level = params.get('level') || 'emtb';
 const town = params.get('town') || 'cedar_hollow';
 
+const requestedAge =
+  params.get('age');
+
+const age =
+  requestedAge === 'pediatric'
+    ? 'pediatric'
+    : 'adult';
+
 const defaultLocation =
   town === 'millstone'
     ? 'millstone_plant'
@@ -285,8 +293,35 @@ if (headerTitle) {
 }
 
 
-const pool =
+const allLocationScenarios =
   SCENARIOS_ACTIVE[locationId] || [];
+
+function isPediatricScenario(scenario) {
+
+  return (
+    Array.isArray(scenario?.tags) &&
+    scenario.tags.some(
+      tag =>
+        String(tag)
+          .trim()
+          .toLowerCase() ===
+        'pediatric'
+    )
+  );
+}
+
+const pool =
+  allLocationScenarios.filter(
+    scenario => {
+
+      const pediatric =
+        isPediatricScenario(scenario);
+
+      return age === 'pediatric'
+        ? pediatric
+        : !pediatric;
+    }
+  );
 
 
 const root =
@@ -344,6 +379,24 @@ let scenarioIndex =
 
 
 function getInitialScenarioIndex() {
+
+  const requestedId =
+    params.get('scenarioId');
+
+  if (requestedId) {
+
+    const matchedIndex =
+      pool.findIndex(
+        scenario =>
+          scenario.id === requestedId
+      );
+
+    if (matchedIndex >= 0) {
+      return matchedIndex;
+    }
+
+  }
+
 
   const requested =
     Number(params.get('scenario'));
@@ -1795,6 +1848,11 @@ function goBackToMap() {
       level
     );
 
+    browseParams.set(
+      'age',
+      age
+    );
+
     if (category) {
       browseParams.set(
         'category',
@@ -1821,7 +1879,7 @@ function goBackToMap() {
       : 'map.html';
 
   window.location.href =
-    `${mapPage}?town=${encodeURIComponent(town)}&level=${encodeURIComponent(level)}`;
+    `${mapPage}?town=${encodeURIComponent(town)}&level=${encodeURIComponent(level)}&age=${encodeURIComponent(age)}`;
 }
 
 

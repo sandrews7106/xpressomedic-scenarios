@@ -373,8 +373,8 @@
 
     <button
       class="header-back"
-      onclick="goBackToHub()"
-      aria-label="Back to Training Hub">
+      id="backToAge"
+      aria-label="Back to Patient Group">
       ←
     </button>
 
@@ -420,6 +420,29 @@
 
   const level =
     params.get('level') || 'emtb';
+
+  const requestedAge =
+    params.get('age');
+
+  const age =
+    requestedAge === 'pediatric'
+      ? 'pediatric'
+      : 'adult';
+
+  const backToAge =
+    document.getElementById('backToAge');
+
+  if (backToAge) {
+    backToAge.addEventListener(
+      'click',
+      () => {
+        window.location.href =
+          'age.html?mode=emergency' +
+          '&level=' +
+          encodeURIComponent(level);
+      }
+    );
+  }
 
   let selectedCategory =
     params.get('category') || '';
@@ -584,9 +607,40 @@
   });
 
 
+  function isPediatricScenario(scenario) {
+
+    return (
+      Array.isArray(scenario?.tags) &&
+      scenario.tags.some(
+        tag =>
+          String(tag)
+            .trim()
+            .toLowerCase() ===
+          'pediatric'
+      )
+    );
+
+  }
+
+
+  const filteredScenarios =
+    scenarios.filter(
+      scenario => {
+
+        const pediatric =
+          isPediatricScenario(scenario);
+
+        return age === 'pediatric'
+          ? pediatric
+          : !pediatric;
+
+      }
+    );
+
+
   const categories = {};
 
-  scenarios.forEach(scenario => {
+  filteredScenarios.forEach(scenario => {
 
     const category =
       scenario.category || 'Other';
@@ -646,6 +700,11 @@
     next.set(
       'level',
       level
+    );
+
+    next.set(
+      'age',
+      age
     );
 
     if (category) {
@@ -910,6 +969,7 @@
       new URLSearchParams();
 
     next.set('level', level);
+    next.set('age', age);
     next.set('category', category);
     next.set('subcategory', subcategory);
 
@@ -953,6 +1013,7 @@
             class="scenario-choice"
             data-town="${escapeHtml(scenario.__town)}"
             data-location="${escapeHtml(scenario.__location)}"
+            data-scenario-id="${escapeHtml(scenario.id)}"
             data-index="${scenario.__index}">
 
             <div class="scenario-choice-title">
@@ -1019,6 +1080,11 @@
             );
 
             scenarioParams.set(
+              'age',
+              age
+            );
+
+            scenarioParams.set(
               'town',
               button.dataset.town
             );
@@ -1026,6 +1092,11 @@
             scenarioParams.set(
               'location',
               button.dataset.location
+            );
+
+            scenarioParams.set(
+              'scenarioId',
+              button.dataset.scenarioId
             );
 
             scenarioParams.set(
