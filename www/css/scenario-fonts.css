@@ -1,0 +1,277 @@
+/* XpressoMedic Scenarios — Accessible Text Sizing */
+
+:root {
+  --scenario-font-size: 22px;
+  --scenario-scale: 1;
+}
+
+.scenario-font-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  margin: 12px 0 16px;
+  background: var(--card, #172638);
+  color: var(--text, #ffffff);
+  border: 1px solid var(--border, #536070);
+  border-radius: 12px;
+}
+
+.scenario-font-label {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.scenario-font-actions {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.scenario-font-actions button {
+  min-width: 48px;
+  min-height: 44px;
+  padding: 6px 10px;
+  border-radius: 9px;
+  border: 1px solid var(--border, #536070);
+  background: var(--panel, #26374a);
+  color: var(--text, #ffffff);
+  font-size: 20px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.scenario-font-actions button:disabled {
+  opacity: 0.4;
+}
+
+.scenario-font-value {
+  min-width: 42px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+/* Dispatch */
+.dispatch-text,
+.content-text,
+.content-value,
+.ps-value,
+.tp-text {
+  font-size: var(--scenario-font-size) !important;
+  line-height: 1.55 !important;
+  overflow-wrap: anywhere;
+}
+
+/* Assessment and section headings */
+.reveal-btn-label {
+  font-size: calc(21px * var(--scenario-scale)) !important;
+  line-height: 1.3 !important;
+}
+
+.reveal-btn-sub {
+  font-size: calc(18px * var(--scenario-scale)) !important;
+  line-height: 1.45 !important;
+  overflow-wrap: anywhere;
+}
+
+.dispatch-label,
+.content-label,
+.ps-label {
+  font-size: calc(18px * var(--scenario-scale)) !important;
+  line-height: 1.4 !important;
+  letter-spacing: 0.5px !important;
+}
+
+/* Vital signs */
+.vital .val {
+  font-size: calc(24px * var(--scenario-scale)) !important;
+  line-height: 1.3 !important;
+  overflow-wrap: anywhere;
+}
+
+.vital .lbl {
+  font-size: calc(17px * var(--scenario-scale)) !important;
+  line-height: 1.3 !important;
+  letter-spacing: 0 !important;
+}
+
+/* Scenario navigation */
+.reveal-all-btn {
+  font-size: calc(19px * var(--scenario-scale)) !important;
+  min-height: 48px;
+}
+
+.btn-row .btn {
+  font-size: calc(18px * var(--scenario-scale)) !important;
+  min-height: 48px;
+  overflow-wrap: anywhere;
+}
+
+/* Other scenario details */
+.scenario-location-name,
+.loc-name {
+  font-size: calc(21px * var(--scenario-scale)) !important;
+}
+
+.scenario-location-meta,
+.loc-addr,
+.scenario-counter,
+.scenario-tag {
+  font-size: calc(17px * var(--scenario-scale)) !important;
+  line-height: 1.4 !important;
+}
+
+.priority-badge {
+  font-size: calc(16px * var(--scenario-scale)) !important;
+}
+
+/* Prevent clipping */
+.reveal-btn,
+.reveal-btn-left,
+.reveal-content,
+.ps-content {
+  min-width: 0;
+}
+
+.reveal-btn {
+  height: auto !important;
+  min-height: 70px;
+  gap: 10px;
+}
+
+.reveal-btn-left {
+  flex: 1;
+}
+
+.reveal-btn-label,
+.reveal-btn-sub {
+  white-space: normal !important;
+}
+
+.reveal-content,
+.dispatch-block,
+.teaching-block,
+.ps-row {
+  height: auto !important;
+}
+
+.vitals-grid {
+  grid-template-columns: repeat(2, minmax(0,1fr)) !important;
+}
+
+@media (max-width: 380px) {
+  .scenario-font-controls {
+    padding: 10px;
+  }
+
+  .scenario-font-label {
+    font-size: 14px;
+  }
+
+  .vitals-grid {
+    grid-template-columns: minmax(0,1fr) !important;
+  }
+}
+
+/* ==========================================
+   HISTORY AND SECONDARY ASSESSMENT
+   ========================================== */
+
+.history-card-value {
+  font-size: var(--scenario-font-size) !important;
+  line-height: 1.55 !important;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+.history-card-label {
+  font-size: calc(18px * var(--scenario-scale)) !important;
+  line-height: 1.4 !important;
+  letter-spacing: 0.5px !important;
+}
+
+.history-card-header {
+  min-height: 44px;
+  height: auto !important;
+}
+
+.history-card,
+.history-grid {
+  min-width: 0;
+  height: auto !important;
+}
+
+.history-card-value,
+.history-card-label {
+  overflow-wrap: anywhere;
+}
+
+/* ==========================================
+   MOBILE NAVIGATION SPACING
+   ========================================== */
+
+@media (max-width: 768px) {
+
+  .scenario-wrap {
+    padding-bottom: calc(
+      160px + env(safe-area-inset-bottom, 0px)
+    ) !important;
+  }
+
+  .btn-row {
+    gap: 6px;
+  }
+
+  .btn-row .btn {
+    min-width: 0;
+    padding: 12px 5px;
+    line-height: 1.3;
+  }
+
+}
+
+/* ==========================================
+   IMPROVED TEXT CONTRAST
+   ========================================== */
+
+.history-card-label,
+.ps-label,
+.content-label,
+.reveal-btn-sub,
+.vital .lbl {
+  opacity: 1;
+}
+
+
+/* ==========================================
+   MOBILE SCENARIO NAVIGATION — FINAL FIX
+   ========================================== */
+
+@media (max-width: 768px) {
+
+  .scenario-page-body {
+    padding-bottom: calc(
+      150px + env(safe-area-inset-bottom, 0px)
+    ) !important;
+  }
+
+  .scenario-nav-row {
+    display: flex;
+    gap: 7px;
+    box-sizing: border-box;
+  }
+
+  .scenario-nav-row .btn {
+    flex: 1 1 0;
+    min-width: 0;
+    min-height: 50px;
+    padding: 10px 5px;
+    font-size: 16px !important;
+    line-height: 1.25;
+    white-space: normal;
+  }
+
+}
+
