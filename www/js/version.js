@@ -1,1 +1,1 @@
-window.XPRESSOMEDIC_VERSION = "1.0.7";
+window.XPRESSOMEDIC_VERSION = "1.0.8";
