@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <title>Big Daddyville — XpressoMedic</title>
+
+  <link rel="stylesheet" href="css/style.css"/>
+  <script src="js/theme.js"></script>
+
+  <style>
+    html,body{
+      margin:0;
+      width:100%;
+      height:100%;
+      overflow:hidden;
+      background:#101214;
+    }
+
+    body{
+      overscroll-behavior:none;
+    }
+
+    .map-screen{
+      height:100vh;
+      height:100dvh;
+      display:flex;
+      flex-direction:column;
+      background:#101214;
+    }
+
+    .millstone-map-wrap{
+      position:relative;
+      flex:1;
+      min-height:0;
+      overflow:hidden;
+      touch-action:none;
+      background:#16191c;
+    }
+
+    #mapViewport{
+      position:absolute;
+      inset:0;
+      transform-origin:0 0;
+      will-change:transform;
+    }
+
+    #town{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      user-select:none;
+      -webkit-user-select:none;
+    }
+
+    .map-controls{
+      position:absolute;
+      right:14px;
+      bottom:calc(18px + env(safe-area-inset-bottom));
+      z-index:30;
+      display:grid;
+      gap:8px;
+    }
+
+    .map-control-btn{
+      width:46px;
+      height:46px;
+      border:1px solid #4c4f52;
+      border-radius:12px;
+      background:rgba(20,22,24,.95);
+      color:#fff;
+      font-size:24px;
+      font-weight:800;
+      cursor:pointer;
+      box-shadow:0 6px 18px rgba(0,0,0,.38);
+    }
+
+    .map-control-btn.reset{
+      font-size:18px;
+    }
+
+    .map-help{
+      position:absolute;
+      left:12px;
+      bottom:calc(14px + env(safe-area-inset-bottom));
+      z-index:25;
+      max-width:290px;
+      padding:9px 11px;
+      border:1px solid #48433d;
+      border-radius:10px;
+      background:rgba(22,24,26,.92);
+      color:#b7b2aa;
+      font:600 12px/1.35 Inter,system-ui,sans-serif;
+      backdrop-filter:blur(8px);
+    }
+
+    .pin-group{
+      cursor:pointer;
+      transition:opacity .15s ease,transform .12s ease;
+      transform-box:fill-box;
+      transform-origin:center;
+    }
+
+    .pin-group:active{
+      opacity:.75;
+      transform:scale(.96);
+    }
+
+    .location-label{
+      fill:#f0ebe3;
+      font:700 8.8px Inter,system-ui,sans-serif;
+      letter-spacing:.2px;
+      paint-order:stroke;
+      stroke:#16191c;
+      stroke-width:3px;
+      stroke-linejoin:round;
+      pointer-events:none;
+    }
+
+    .district-label{
+      fill:#665f57;
+      font:800 9px Inter,system-ui,sans-serif;
+      letter-spacing:1.5px;
+    }
+
+    .road-label{
+      fill:#8b8175;
+      font:700 8px Inter,system-ui,sans-serif;
+      letter-spacing:1.2px;
+    }
+
+    .industrial-block{
+      fill:#202428;
+      stroke:#30353a;
+      stroke-width:1;
+    }
+
+    .commercial-block{
+      fill:#1d2225;
+      stroke:#30353a;
+      stroke-width:1;
+    }
+
+    .yard-fill{
+      fill:#262522;
+    }
+
+    .river-fill{
+      fill:#102a34;
+    }
+
+    .river-edge{
+      fill:none;
+      stroke:#29576b;
+      stroke-width:3;
+    }
+
+    .highway{
+      fill:none;
+      stroke:#35383b;
+      stroke-width:38;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+    }
+
+    .highway-line{
+      fill:none;
+      stroke:#c08a48;
+      stroke-width:1.6;
+      stroke-dasharray:18 13;
+      opacity:.85;
+    }
+
+    .secondary-road{
+      fill:none;
+      stroke:#303438;
+      stroke-width:22;
+      stroke-linecap:round;
+    }
+
+    .secondary-line{
+      fill:none;
+      stroke:#686e74;
+      stroke-width:1.2;
+      stroke-dasharray:14 11;
+    }
+
+    .rail{
+      fill:none;
+      stroke:#7a7065;
+      stroke-width:3;
+    }
+
+    .rail-tie{
+      fill:none;
+      stroke:#4d4944;
+      stroke-width:7;
+      stroke-dasharray:4 7;
+    }
+
+    .runway{
+      fill:#292d30;
+      stroke:#50555a;
+      stroke-width:1;
+    }
+
+    .runway-center{
+      stroke:#a7a7a3;
+      stroke-width:1.5;
+      stroke-dasharray:16 12;
+    }
+
+    .map-note{
+      fill:#776d62;
+      font:700 8px Inter,system-ui,sans-serif;
+      letter-spacing:1px;
+    }
+
+    @media(max-width:700px){
+      .header-sub{display:none}
+      .header-title{font-size:17px}
+
+      .map-help{
+        left:50%;
+        right:auto;
+        top:8px;
+        bottom:auto;
+        transform:translateX(-50%);
+        max-width:none;
+        width:max-content;
+        padding:6px 9px;
+        font-size:0;
+        line-height:1.2;
+        white-space:nowrap;
+        pointer-events:none;
+      }
+
+      .map-help::after{
+        content:"Drag • Pinch to zoom • Tap a location";
+        font-size:10px;
+      }
+
+      .map-controls{
+        right:10px;
+        bottom:calc(12px + env(safe-area-inset-bottom));
+      }
+
+      .map-control-btn{
+        width:44px;
+        height:44px;
+      }
+
+      .location-label{
+        font-size:8.1px;
+        stroke-width:2.5px;
+      }
+    }
+
+    [data-theme="light"] html,
+    [data-theme="light"] body,
+    [data-theme="light"] .map-screen,
+    [data-theme="light"] .millstone-map-wrap{
+      background:#eeeae3;
+    }
+
+    [data-theme="light"] #town .map-background{
+      fill:#eeeae3;
+    }
+
+    [data-theme="light"] .industrial-block{
+      fill:#d8d6d1;
+      stroke:#c1bdb6;
+    }
+
+    [data-theme="light"] .commercial-block{
+      fill:#e1ddd6;
+      stroke:#c8c3ba;
+    }
+
+    [data-theme="light"] .yard-fill{
+      fill:#d5d0c6;
+    }
+
+    [data-theme="light"] .river-fill{
+      fill:#cfe4ea;
+    }
+
+    [data-theme="light"] .river-edge{
+      stroke:#79a9b8;
+    }
+
+    [data-theme="light"] .highway{
+      stroke:#b6b8ba;
+    }
+
+    [data-theme="light"] .secondary-road{
+      stroke:#c2c4c5;
+    }
+
+    [data-theme="light"] .rail{
+      stroke:#786f66;
+    }
+
+    [data-theme="light"] .rail-tie{
+      stroke:#aaa39b;
+    }
+
+    [data-theme="light"] .runway{
+      fill:#bfc2c3;
+      stroke:#a9adaf;
+    }
+
+    [data-theme="light"] .district-label,
+    [data-theme="light"] .road-label,
+    [data-theme="light"] .map-note{
+      fill:#716a62;
+    }
+
+    [data-theme="light"] .location-label{
+      fill:#252525;
+      stroke:#eeeae3;
+    }
+
+    [data-theme="light"] .map-help{
+      background:rgba(255,255,255,.94);
+      border-color:#c9c3ba;
+      color:#4b5563;
+      box-shadow:0 4px 12px rgba(0,0,0,.08);
+    }
+
+    [data-theme="light"] .map-control-btn{
+      background:rgba(255,255,255,.96);
+      border-color:#c4beb5;
+      color:#29313a;
+      box-shadow:0 5px 16px rgba(0,0,0,.12);
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="map-screen">
+
+  <div class="app-header">
+    <button class="header-back" id="backToTowns" aria-label="Back to communities">←</button>
+
+    <div class="header-center">
+      <div class="header-title">⛰️ Big Daddyville</div>
+      <div class="header-sub">Choose a location for your next scenario</div>
+    </div>
+
+    <div class="header-badge" id="levelBadge">EMT-B</div>
+  </div>
+
+  <div class="millstone-map-wrap" id="mapWrap">
+
+    <div id="mapViewport">
+
+      
+<svg id="town" viewBox="0 0 900 600"
+ xmlns="http://www.w3.org/2000/svg"
+ preserveAspectRatio="xMidYMid meet">
+<defs>
+ <linearGradient id="forest" x2="0" y2="1">
+  <stop stop-color="#263e38"/>
+  <stop offset="1" stop-color="#152721"/>
+ </linearGradient>
+ <filter id="pinShadow" x="-50%" y="-50%"
+  width="200%" height="200%">
+  <feDropShadow dx="0" dy="2" stdDeviation="3"
+   flood-opacity=".6"/>
+ </filter>
+</defs>
+
+<rect width="900" height="600" fill="url(#forest)"/>
+
+<!-- Appalachian ridgelines -->
+<path d="M0 130 L65 35 125 95 205 15 285 105
+ 360 30 440 125 525 20 610 115 705 35
+ 790 115 850 40 900 95 V0 H0Z"
+ fill="#405f50" opacity=".75"/>
+
+<path d="M0 195 L90 90 185 175 275 75
+ 370 175 465 80 555 175 660 85
+ 765 175 850 95 900 145 V0 H0Z"
+ fill="#304e41" opacity=".8"/>
+
+<path d="M0 460 L100 345 200 415 320 320
+ 430 415 535 315 650 425 750 320
+ 900 425 V600 H0Z"
+ fill="#203b30" opacity=".65"/>
+
+<!-- New River -->
+<path d="M360 -20 C290 100 485 155 390 255
+ C315 340 545 390 485 480
+ C440 545 530 570 550 620"
+ fill="none" stroke="#163b53"
+ stroke-width="64" opacity=".9"/>
+
+<path d="M360 -20 C290 100 485 155 390 255
+ C315 340 545 390 485 480
+ C440 545 530 570 550 620"
+ fill="none" stroke="#3b8199"
+ stroke-width="42" opacity=".8"/>
+
+<!-- Mountain highway -->
+<path d="M-30 170 C130 125 240 270 365 210
+ S625 155 930 235"
+ fill="none" stroke="#343638"
+ stroke-width="35"/>
+
+<path d="M-30 170 C130 125 240 270 365 210
+ S625 155 930 235"
+ fill="none" stroke="#bca56c"
+ stroke-width="2.5" stroke-dasharray="17 13"/>
+
+<!-- Rural roads -->
+<g fill="none" stroke="#696456"
+ stroke-width="12" stroke-linecap="round">
+ <path d="M175 175 Q95 310 165 560"/>
+ <path d="M735 200 Q825 345 735 555"/>
+ <path d="M175 385 Q440 345 735 385"/>
+ <path d="M165 520 Q440 480 735 520"/>
+ <path d="M425 220 Q455 340 455 520"/>
+</g>
+
+<g fill="none" stroke="#b7a77c"
+ stroke-width="1.5" stroke-dasharray="8 9">
+ <path d="M175 175 Q95 310 165 560"/>
+ <path d="M735 200 Q825 345 735 555"/>
+ <path d="M175 385 Q440 345 735 385"/>
+ <path d="M165 520 Q440 480 735 520"/>
+ <path d="M425 220 Q455 340 455 520"/>
+</g>
+
+<g fill="#d9ceaa" font-size="13"
+ font-weight="700" letter-spacing="2">
+ <text x="35" y="42">LAUREL RIDGE</text>
+ <text x="570" y="45">COAL COUNTRY</text>
+ <text x="44" y="335">POSSUM CREEK</text>
+ <text x="555" y="585">MOUNTAIN VALLEY</text>
+</g>
+
+<text x="525" y="320" fill="#83bfd1"
+ font-size="15" font-weight="700"
+ transform="rotate(64 525 320)">NEW RIVER</text>
+
+<g class="pin-group" data-id="bdv_truck"
+ filter="url(#pinShadow)">
+ <circle cx="155" cy="105" r="27"
+  fill="#946927" stroke="#f0c040"
+  stroke-width="2"/>
+ <text x="155" y="113" text-anchor="middle"
+  font-size="25">🚛</text>
+ <text x="155" y="150" text-anchor="middle"
+  class="location-label"
+  style="paint-order:stroke;stroke:#10251d;stroke-width:3px">
+  TRUCK STOP
+ </text>
+</g>
+
+<g class="pin-group" data-id="bdv_holler"
+ filter="url(#pinShadow)">
+ <circle cx="405" cy="90" r="27"
+  fill="#946927" stroke="#f0c040"
+  stroke-width="2"/>
+ <text x="405" y="98" text-anchor="middle"
+  font-size="25">🏡</text>
+ <text x="405" y="135" text-anchor="middle"
+  class="location-label"
+  style="paint-order:stroke;stroke:#10251d;stroke-width:3px">
+  THE HOLLER
+ </text>
+</g>
+
+<g class="pin-group" data-id="bdv_coal"
+ filter="url(#pinShadow)">
+ <circle cx="735" cy="110" r="27"
+  fill="#946927" stroke="#f0c040"
+  stroke-width="2"/>
+ <text x="735" y="118" text-anchor="middle"
+  font-size="25">⛏️</text>
+ <text x="735" y="155" text-anchor="middle"
+  class="location-label"
+  style="paint-order:stroke;stroke:#10251d;stroke-width:3px">
+  COAL COMPANY
+ </text>
+</g>
+
+<g class="pin-group" data-id="bdv_school"
+ filter="url(#pinShadow)">
+ <circle cx="175" cy="245" r="27"
+  fill="#946927" stroke="#f0c040"
+  stroke-width="2"/>
+ <text x="175" y="253" text-anchor="middle"
+  font-size="25">🏫</text>
+ <text x="175" y="290" text-anchor="middle"
+  class="location-label"
+  style="paint-order:stroke;stroke:#10251d;stroke-width:3px">
+  HIGH SCHOOL
+ </text>
+</g>
+
+<g class="pin-group" data-id="bdv_river"
+ filter="url(#pinShadow)">
+ <circle cx="435" cy="240" r="27"
+  fill="#946927" stroke="#f0c040"
+  stroke-width="2"/>
+ <text x="435" y="248" text-anchor="middle"
+  font-size="25">🛶</text>
+ <text x="435" y="285" text-anchor="middle"
+  class="location-label"
+  style="paint-order:stroke;stroke:#10251d;stroke-width:3px">
+  RIVER OUTFITTERS
+ </text>
+</g>
+
+<g class="pin-group" data-id="bdv_smokehouse"
+ filter="url(#pinShadow)">
+ <circle cx="735" cy="245" r="27"
+  fill="#946927" stroke="#f0c040"
+  stroke-width="2"/>
+ <text x="735" y="253" text-anchor="middle"
+  font-size="25">🍖</text>
+ <text x="735" y="290" text-anchor="middle"
+  class="location-label"
+  style="paint-order:stroke;stroke:#10251d;stroke-width:3px">
+  SMOKEHOUSE
+ </text>
+</g>
+
+<g class="pin-group" data-id="bdv_store"
+ filter="url(#pinShadow)">
+ <circle cx="165" cy="385" r="27"
+  fill="#946927" stroke="#f0c040"
+  stroke-width="2"/>
+ <text x="165" y="393" text-anchor="middle"
+  font-size="25">🏪</text>
+ <text x="165" y="430" text-anchor="middle"
+  class="location-label"
+  style="paint-order:stroke;stroke:#10251d;stroke-width:3px">
+  GENERAL STORE
+ </text>
+</g>
+
+<g class="pin-group" data-id="bdv_nursing"
+ filter="url(#pinShadow)">
+ <circle cx="455" cy="385" r="27"
+  fill="#946927" stroke="#f0c040"
+  stroke-width="2"/>
+ <text x="455" y="393" text-anchor="middle"
+  font-size="25">🏥</text>
+ <text x="455" y="430" text-anchor="middle"
+  class="location-label"
+  style="paint-order:stroke;stroke:#10251d;stroke-width:3px">
+  NURSING &amp; REHAB
+ </text>
+</g>
+
+<g class="pin-group" data-id="bdv_atv"
+ filter="url(#pinShadow)">
+ <circle cx="735" cy="385" r="27"
+  fill="#946927" stroke="#f0c040"
+  stroke-width="2"/>
+ <text x="735" y="393" text-anchor="middle"
+  font-size="25">🏍️</text>
+ <text x="735" y="430" text-anchor="middle"
+  class="location-label"
+  style="paint-order:stroke;stroke:#10251d;stroke-width:3px">
+  ATV TRAILS
+ </text>
+</g>
+
+<g class="pin-group" data-id="bdv_lodge"
+ filter="url(#pinShadow)">
+ <circle cx="165" cy="520" r="27"
+  fill="#946927" stroke="#f0c040"
+  stroke-width="2"/>
+ <text x="165" y="528" text-anchor="middle"
+  font-size="25">🏕️</text>
+ <text x="165" y="565" text-anchor="middle"
+  class="location-label"
+  style="paint-order:stroke;stroke:#10251d;stroke-width:3px">
+  HUNTING LODGE
+ </text>
+</g>
+
+<g class="pin-group" data-id="bdv_camp"
+ filter="url(#pinShadow)">
+ <circle cx="455" cy="520" r="27"
+  fill="#946927" stroke="#f0c040"
+  stroke-width="2"/>
+ <text x="455" y="528" text-anchor="middle"
+  font-size="25">⛺</text>
+ <text x="455" y="565" text-anchor="middle"
+  class="location-label"
+  style="paint-order:stroke;stroke:#10251d;stroke-width:3px">
+  CAMPGROUND
+ </text>
+</g>
+
+<g class="pin-group" data-id="bdv_cabins"
+ filter="url(#pinShadow)">
+ <circle cx="735" cy="520" r="27"
+  fill="#946927" stroke="#f0c040"
+  stroke-width="2"/>
+ <text x="735" y="528" text-anchor="middle"
+  font-size="25">🏘️</text>
+ <text x="735" y="565" text-anchor="middle"
+  class="location-label"
+  style="paint-order:stroke;stroke:#10251d;stroke-width:3px">
+  MOUNTAIN CABINS
+ </text>
+</g>
+</svg>
+    </div>
+
+    <div class="map-help">
+      Drag to move • Pinch or use + / − to zoom • Tap a location
+    </div>
+
+    <div class="map-controls">
+      <button class="map-control-btn" id="zoomIn" aria-label="Zoom in">+</button>
+      <button class="map-control-btn" id="zoomOut" aria-label="Zoom out">−</button>
+      <button class="map-control-btn reset" id="resetMap" aria-label="Reset map">⌂</button>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+(() => {
+  const params = new URLSearchParams(window.location.search);
+  const level = params.get('level') || 'emtb';
+  const age = params.get('age') || 'adult';
+
+  const levelLabels = {
+    emtb:'EMT-B',
+    aemt:'AEMT',
+    medic:'PARAMEDIC'
+  };
+
+  const badge = document.getElementById('levelBadge');
+  badge.textContent = levelLabels[level] || 'EMT-B';
+  badge.className = 'header-badge ' + level;
+
+  document.getElementById('backToTowns').addEventListener('click', () => {
+    window.location.href =
+      'age.html?mode=location' +
+      '&town=big_daddyville' +
+      '&level=' + encodeURIComponent(level);
+  });
+
+  
+if (age === 'pediatric') {
+  const pediatricLocations = new Set(['bdv_school', 'bdv_camp']);
+  document.querySelectorAll('.pin-group').forEach(pin => {
+    if (!pediatricLocations.has(pin.dataset.id)) {
+      pin.style.opacity = '0.25';
+      pin.style.pointerEvents = 'none';
+    }
+  });
+}
+
+document.querySelectorAll('.pin-group').forEach(pin => {
+    pin.addEventListener('click', event => {
+      event.stopPropagation();
+
+      const locationId =
+        pin.dataset.id;
+
+      window.location.href =
+        `scenario.html?town=big_daddyville&level=${encodeURIComponent(level)}&age=${encodeURIComponent(age)}&location=${encodeURIComponent(locationId)}`;
+    });
+  });
+
+  const wrap = document.getElementById('mapWrap');
+  const viewport = document.getElementById('mapViewport');
+
+  let scale = 1;
+  let x = 0;
+  let y = 0;
+
+  const MIN_SCALE = 1;
+  const MAX_SCALE = 3.5;
+
+  function applyTransform() {
+    viewport.style.transform =
+      `translate(${x}px, ${y}px) scale(${scale})`;
+  }
+
+  function clampPan() {
+    const rect = wrap.getBoundingClientRect();
+
+    const scaledW = rect.width * scale;
+    const scaledH = rect.height * scale;
+
+    const minX = Math.min(0, rect.width - scaledW);
+    const minY = Math.min(0, rect.height - scaledH);
+
+    x = Math.min(0, Math.max(minX, x));
+    y = Math.min(0, Math.max(minY, y));
+  }
+
+  function zoomAt(factor, cx, cy) {
+    const oldScale = scale;
+
+    const newScale = Math.max(
+      MIN_SCALE,
+      Math.min(
+        MAX_SCALE,
+        oldScale * factor
+      )
+    );
+
+    if (newScale === oldScale) return;
+
+    const ratio = newScale / oldScale;
+
+    x = cx - (cx - x) * ratio;
+    y = cy - (cy - y) * ratio;
+
+    scale = newScale;
+
+    clampPan();
+    applyTransform();
+  }
+
+  document.getElementById('zoomIn').addEventListener('click', () => {
+    const r = wrap.getBoundingClientRect();
+    zoomAt(1.3, r.width/2, r.height/2);
+  });
+
+  document.getElementById('zoomOut').addEventListener('click', () => {
+    const r = wrap.getBoundingClientRect();
+    zoomAt(1/1.3, r.width/2, r.height/2);
+  });
+
+  document.getElementById('resetMap').addEventListener('click', () => {
+    scale = 1;
+    x = 0;
+    y = 0;
+    applyTransform();
+  });
+
+  let dragging = false;
+  let lastX = 0;
+  let lastY = 0;
+
+  wrap.addEventListener('pointerdown', e => {
+    if (
+      e.target.closest?.('.pin-group') ||
+      e.target.closest?.('.map-controls') ||
+      e.target.closest?.('.map-control-btn')
+    ) {
+      return;
+    }
+
+    dragging = true;
+    lastX = e.clientX;
+    lastY = e.clientY;
+
+    wrap.setPointerCapture?.(e.pointerId);
+  });
+
+  wrap.addEventListener('pointermove', e => {
+    if (!dragging || scale <= 1) return;
+
+    x += e.clientX - lastX;
+    y += e.clientY - lastY;
+
+    lastX = e.clientX;
+    lastY = e.clientY;
+
+    clampPan();
+    applyTransform();
+  });
+
+  wrap.addEventListener('pointerup', () => dragging = false);
+  wrap.addEventListener('pointercancel', () => dragging = false);
+
+  wrap.addEventListener('wheel', e => {
+    e.preventDefault();
+
+    const rect = wrap.getBoundingClientRect();
+
+    zoomAt(
+      e.deltaY < 0 ? 1.18 : 1/1.18,
+      e.clientX - rect.left,
+      e.clientY - rect.top
+    );
+  }, { passive:false });
+
+  let pinchStartDistance = null;
+  let pinchStartScale = 1;
+
+  wrap.addEventListener('touchstart', e => {
+    if (e.touches.length === 2) {
+      const [a,b] = e.touches;
+
+      pinchStartDistance = Math.hypot(
+        a.clientX-b.clientX,
+        a.clientY-b.clientY
+      );
+
+      pinchStartScale = scale;
+    }
+  }, { passive:false });
+
+  wrap.addEventListener('touchmove', e => {
+    if (e.touches.length === 2 && pinchStartDistance) {
+      e.preventDefault();
+
+      const [a,b] = e.touches;
+
+      const currentDistance = Math.hypot(
+        a.clientX-b.clientX,
+        a.clientY-b.clientY
+      );
+
+      const rect = wrap.getBoundingClientRect();
+
+      const cx =
+        ((a.clientX+b.clientX)/2) - rect.left;
+
+      const cy =
+        ((a.clientY+b.clientY)/2) - rect.top;
+
+      const targetScale = Math.max(
+        MIN_SCALE,
+        Math.min(
+          MAX_SCALE,
+          pinchStartScale *
+          (currentDistance/pinchStartDistance)
+        )
+      );
+
+      zoomAt(
+        targetScale/scale,
+        cx,
+        cy
+      );
+    }
+  }, { passive:false });
+
+  wrap.addEventListener('touchend', e => {
+    if (e.touches.length < 2) {
+      pinchStartDistance = null;
+    }
+  });
+
+  applyTransform();
+})();
+</script>
+
+</body>
+</html>

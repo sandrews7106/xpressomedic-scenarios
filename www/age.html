@@ -498,9 +498,11 @@
           }
 
           const destination =
-            town === 'millstone'
-              ? 'millstone-map.html'
-              : 'map.html';
+            town === 'big_daddyville'
+              ? 'big-daddyville-map.html'
+              : town === 'millstone'
+                ? 'millstone-map.html'
+                : 'map.html';
 
           const next =
             new URLSearchParams();

@@ -19,9 +19,11 @@ const age =
     : 'adult';
 
 const defaultLocation =
-  town === 'millstone'
-    ? 'millstone_plant'
-    : 'cedar_school';
+  town === 'big_daddyville'
+    ? 'bdv_truck'
+    : town === 'millstone'
+      ? 'millstone_plant'
+      : 'cedar_school';
 
 const locationId =
   params.get('location') || defaultLocation;
@@ -34,7 +36,8 @@ const LEVEL_LABELS = {
 
 const TOWN_LABELS = {
   cedar_hollow: 'Cedar Hollow',
-  millstone: 'Millstone'
+  millstone: 'Millstone',
+  big_daddyville: 'Big Daddyville'
 };
 
 const CEDAR_SCENARIO_MAP = {
@@ -71,9 +74,16 @@ const MILLSTONE_SCENARIO_MAP = {
       : {}
 };
 
+const BIG_DADDYVILLE_SCENARIO_MAP = {
+  emtb: typeof SCENARIOS_BIG_DADDYVILLE_EMTB !== 'undefined' ? SCENARIOS_BIG_DADDYVILLE_EMTB : {},
+  aemt: typeof SCENARIOS_BIG_DADDYVILLE_AEMT !== 'undefined' ? SCENARIOS_BIG_DADDYVILLE_AEMT : {},
+  medic: typeof SCENARIOS_BIG_DADDYVILLE_MEDIC !== 'undefined' ? SCENARIOS_BIG_DADDYVILLE_MEDIC : {}
+};
+
 const TOWN_SCENARIO_MAP = {
   cedar_hollow: CEDAR_SCENARIO_MAP,
-  millstone: MILLSTONE_SCENARIO_MAP
+  millstone: MILLSTONE_SCENARIO_MAP,
+  big_daddyville: BIG_DADDYVILLE_SCENARIO_MAP
 };
 
 const SCENARIO_MAP =
@@ -269,6 +279,83 @@ Object.assign(
 );
 
 
+const BIG_DADDYVILLE_LOCATIONS = {
+  "bdv_truck": {
+    "name": "Big Daddy's Truck Stop & Diner",
+    "shortName": "Truck Stop",
+    "icon": "🚛",
+    "address": "Mountain Highway"
+  },
+  "bdv_holler": {
+    "name": "Big Daddy's Holler",
+    "shortName": "The Holler",
+    "icon": "🏡",
+    "address": "Possum Creek Road"
+  },
+  "bdv_coal": {
+    "name": "Black Diamond Coal Company",
+    "shortName": "Coal Company",
+    "icon": "⛏️",
+    "address": "Coal Creek"
+  },
+  "bdv_school": {
+    "name": "Big Daddyville Mountaineer High School",
+    "shortName": "High School",
+    "icon": "🏫",
+    "address": "Mountaineer Drive"
+  },
+  "bdv_river": {
+    "name": "New River Outfitters",
+    "shortName": "River Outfitters",
+    "icon": "🛶",
+    "address": "New River Gorge"
+  },
+  "bdv_smokehouse": {
+    "name": "Big Daddy's Smokehouse",
+    "shortName": "Smokehouse",
+    "icon": "🍖",
+    "address": "Main Street"
+  },
+  "bdv_store": {
+    "name": "Big Daddy's Mountain General Store",
+    "shortName": "General Store",
+    "icon": "🏪",
+    "address": "Laurel Ridge Road"
+  },
+  "bdv_nursing": {
+    "name": "Coal Creek Nursing & Rehabilitation",
+    "shortName": "Nursing & Rehab",
+    "icon": "🏥",
+    "address": "Coal Creek"
+  },
+  "bdv_atv": {
+    "name": "Hatfield & McCoy ATV Trails",
+    "shortName": "ATV Trails",
+    "icon": "🏍️",
+    "address": "Mountain Trailhead"
+  },
+  "bdv_lodge": {
+    "name": "Big Daddy's Hunting & Fishing Lodge",
+    "shortName": "Hunting Lodge",
+    "icon": "🏕️",
+    "address": "Pine Ridge"
+  },
+  "bdv_camp": {
+    "name": "Almost Heaven Campground",
+    "shortName": "Campground",
+    "icon": "⛺",
+    "address": "Mountain Valley"
+  },
+  "bdv_cabins": {
+    "name": "Big Daddy's Mountain Cabins",
+    "shortName": "Mountain Cabins",
+    "icon": "🏘️",
+    "address": "Laurel Ridge"
+  }
+};
+
+Object.assign(LOCATIONS, BIG_DADDYVILLE_LOCATIONS);
+
 const townLabel =
   TOWN_LABELS[town] ||
   TOWN_LABELS.cedar_hollow;
@@ -289,7 +376,7 @@ const headerTitle =
 
 if (headerTitle) {
   headerTitle.textContent =
-    `${town === 'millstone' ? '🏭' : '🌲'} ${townLabel}`;
+    `${town === 'big_daddyville' ? '⛰️' : town === 'millstone' ? '🏭' : '🌲'} ${townLabel}`;
 }
 
 
@@ -1446,7 +1533,7 @@ function renderScenario() {
           onclick="goBackToMap()"
         >
 
-          ← Back to Cedar Hollow
+          ← Back to ${escapeHtml(townLabel)}
 
         </button>
 
@@ -1874,9 +1961,11 @@ function goBackToMap() {
   }
 
   const mapPage =
-    town === 'millstone'
-      ? 'millstone-map.html'
-      : 'map.html';
+    town === 'big_daddyville'
+      ? 'big-daddyville-map.html'
+      : town === 'millstone'
+        ? 'millstone-map.html'
+        : 'map.html';
 
   window.location.href =
     `${mapPage}?town=${encodeURIComponent(town)}&level=${encodeURIComponent(level)}&age=${encodeURIComponent(age)}`;
