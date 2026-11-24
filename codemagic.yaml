@@ -12,11 +12,13 @@ workflows:
       node: 20.11.1
 
       ios_signing:
-        distribution_type: app_store
-        bundle_identifier: "com.xpressomedic.scenarioapp"
+        provisioning_profiles:
+          - "Scenarios 2027"
+        certificates:
+          - "iOS Distribution 2026"
 
       vars:
-        MARKETING_VERSION: "1.0.8"
+        MARKETING_VERSION: "1.0.9"
         XCODE_WORKSPACE: "ios/App/App.xcworkspace"
         XCODE_SCHEME: "App"
 
