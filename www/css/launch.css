@@ -1,0 +1,11 @@
+#xm-launch{position:fixed;inset:0;z-index:2147483647;display:grid;place-items:center;background:#0d1117;opacity:1;transition:opacity .35s ease;overscroll-behavior:none;touch-action:none;padding:24px;}
+[data-theme="light"] #xm-launch{background:#f5f0e8;}
+#xm-launch[hidden]{display:none!important;}
+#xm-launch.xm-exit{opacity:0;pointer-events:none;}
+#xm-launch .xm-mark{width:min(84vw,340px,68vh);height:auto;display:block;overflow:visible;}
+#xm-launch .xm-title{fill:#f0e6d9;}#xm-launch .xm-sub{fill:#c8a475;}#xm-launch .xm-motto{fill:#a99e90;}
+[data-theme="light"] #xm-launch .xm-title{fill:#493923;}[data-theme="light"] #xm-launch .xm-sub{fill:#80532c;}[data-theme="light"] #xm-launch .xm-motto{fill:#79634b;}[data-theme="light"] #xm-launch .xm-vapor-color{stop-color:#91633b;}
+#xm-launch .xm-wisp{animation:xm-drift 2.5s ease-in-out infinite;transform-box:fill-box;transform-origin:center bottom;}
+#xm-launch .xm-w2{animation-delay:-.8s;}#xm-launch .xm-w3{animation-delay:-1.6s;}
+@keyframes xm-drift{0%{opacity:0;transform:translateY(9px) scale(.8)}40%{opacity:.85}100%{opacity:0;transform:translateY(-18px) scale(1.15)}}
+@media(prefers-reduced-motion:reduce){#xm-launch .xm-wisp{animation:none;opacity:.55;}#xm-launch{transition:none;}}
