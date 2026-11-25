@@ -111,65 +111,16 @@ workflows:
         script: |
           set -euo pipefail
 
-          ARCHIVE_PATH="build/ios/xcarchive/App.xcarchive"
-          EXPORT_PATH="build/ios/ipa"
-
-          mkdir -p "$(dirname "$ARCHIVE_PATH")" "$EXPORT_PATH"
-
           echo "Using MARKETING_VERSION=${MARKETING_VERSION}"
           echo "Using CURRENT_PROJECT_VERSION=${BUILD_NUM}"
 
-          xcodebuild \
-            -workspace "$XCODE_WORKSPACE" \
-            -scheme "$XCODE_SCHEME" \
-            -configuration Release \
-            -archivePath "$ARCHIVE_PATH" \
-            MARKETING_VERSION="$MARKETING_VERSION" \
-            CURRENT_PROJECT_VERSION="$BUILD_NUM" \
-            archive
-
-          echo "=== ARCHIVE VERSION APPLE SEES ==="
-
-          /usr/libexec/PlistBuddy \
-            -c "Print :ApplicationProperties:CFBundleShortVersionString" \
-            "$ARCHIVE_PATH/Info.plist" || true
-
-          /usr/libexec/PlistBuddy \
-            -c "Print :ApplicationProperties:CFBundleVersion" \
-            "$ARCHIVE_PATH/Info.plist" || true
-
-          cat > export_options.plist <<'EOF'
-          <?xml version="1.0" encoding="UTF-8"?>
-          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-          <plist version="1.0">
-          <dict>
-            <key>method</key>
-            <string>app-store-connect</string>
-
-            <key>teamID</key>
-            <string>VQGPM443U5</string>
-
-            <key>signingStyle</key>
-            <string>manual</string>
-
-            <key>provisioningProfiles</key>
-            <dict>
-              <key>com.xpressomedic.scenarioapp</key>
-              <string>XpressoMedic Scenarios App Store Profile</string>
-            </dict>
-          </dict>
-          </plist>
-          EOF
-
-          xcodebuild \
-            -exportArchive \
-            -archivePath "$ARCHIVE_PATH" \
-            -exportPath "$EXPORT_PATH" \
-            -exportOptionsPlist export_options.plist \
-            COMPILER_INDEX_STORE_ENABLE=NO
+          xcode-project build-ipa \
+            --workspace "$XCODE_WORKSPACE" \
+            --scheme "$XCODE_SCHEME" \
+            --archive-xcargs "MARKETING_VERSION=$MARKETING_VERSION CURRENT_PROJECT_VERSION=$BUILD_NUM"
 
           echo "=== GENERATED IPA ==="
-          ls -lh "$EXPORT_PATH"
+          ls -lh build/ios/ipa/
 
     artifacts:
       - build/ios/ipa/*.ipa
