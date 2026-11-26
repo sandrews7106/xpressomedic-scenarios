@@ -9,3 +9,12 @@
 #xm-launch .xm-w2{animation-delay:-.8s;}#xm-launch .xm-w3{animation-delay:-1.6s;}
 @keyframes xm-drift{0%{opacity:0;transform:translateY(9px) scale(.8)}40%{opacity:.85}100%{opacity:0;transform:translateY(-18px) scale(1.15)}}
 @media(prefers-reduced-motion:reduce){#xm-launch .xm-wisp{animation:none;opacity:.55;}#xm-launch{transition:none;}}
+
+/* Hold steam until the visible startup sequence begins. */
+#xm-launch .xm-wisp {
+  animation-play-state: paused;
+}
+
+#xm-launch.xm-running .xm-wisp {
+  animation-play-state: running;
+}
