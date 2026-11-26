@@ -168,33 +168,158 @@
     .footer-sub { font-size: 0.62rem; color: #7d8590; letter-spacing: 0.5px; margin-top: 3px; }
     .footer-version { font-size: 0.58rem; color: #4a5568; letter-spacing: 1px; text-transform: uppercase; }
   </style>
-  <link rel="stylesheet" href="css/launch.css"/>
+  
+
+<style id="scenario-launch-style">
+#xm-launch {
+    position: fixed;
+    inset: 0;
+    z-index: 2147483647;
+    display: grid;
+    place-items: center;
+    background: #0d1117;
+    opacity: 1;
+    transition: opacity 350ms ease-out;
+}
+
+[data-theme="light"] #xm-launch {
+    background: #f5f0e8;
+}
+
+.xm-launch-art {
+    position: relative;
+    width: min(340px, 84vw, 68vh);
+    aspect-ratio: 4 / 5;
+}
+
+.xm-launch-art img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.xm-steam {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    animation: xmSteamRise 2.5s ease-in-out infinite;
+}
+
+.xm-steam-2 { animation-delay: -.8s; }
+.xm-steam-3 { animation-delay: -1.6s; }
+
+.xm-light { display: none !important; }
+
+[data-theme="light"] .xm-dark {
+    display: none !important;
+}
+
+[data-theme="light"] .xm-light {
+    display: block !important;
+}
+
+@keyframes xmSteamRise {
+    0% {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    40% {
+        opacity: .9;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-18px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .xm-steam {
+        animation: none;
+        opacity: .55;
+    }
+    #xm-launch {
+        transition: none;
+    }
+}
+</style>
+
 </head>
 <body>
 
-<div id="xm-launch" hidden role="status" aria-label="Starting XpressoMedic Scenarios">
-<svg class="xm-mark" viewBox="0 0 320 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<defs>
-<radialGradient id="xm-halo"><stop stop-color="#b8793e" stop-opacity=".15"/><stop offset="1" stop-color="#b8793e" stop-opacity="0"/></radialGradient>
-<linearGradient id="xm-metal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f1d8b3"/><stop offset=".48" stop-color="#bc925f"/><stop offset="1" stop-color="#775132"/></linearGradient>
-<linearGradient id="xm-vapor" x1="0" y1="1" x2="0" y2="0"><stop class="xm-vapor-color" stop-color="#e3b67d" stop-opacity=".9"/><stop offset="1" stop-color="#f5ddbb" stop-opacity="0"/></linearGradient>
-<filter id="xm-soft" x="-60%" y="-40%" width="220%" height="180%"><feGaussianBlur stdDeviation="4"/></filter>
-</defs>
-<ellipse cx="160" cy="185" rx="130" ry="125" fill="url(#xm-halo)"/>
-<g stroke="url(#xm-vapor)" fill="none" stroke-linecap="round">
-<g class="xm-wisp"><path d="M145 164 C115 135 169 116 140 82" stroke-width="9" filter="url(#xm-soft)"/><path d="M145 164 C115 135 169 116 140 82" stroke-width="2.5"/></g>
-<g class="xm-wisp xm-w2"><path d="M163 164 C190 134 141 111 171 68" stroke-width="8" filter="url(#xm-soft)"/><path d="M163 164 C190 134 141 111 171 68" stroke-width="2"/></g>
-<g class="xm-wisp xm-w3"><path d="M181 164 C160 138 207 120 187 94" stroke-width="7" filter="url(#xm-soft)"/><path d="M181 164 C160 138 207 120 187 94" stroke-width="2"/></g>
-</g>
-<path d="M205 181 C249 168 252 224 204 231" stroke="url(#xm-metal)" stroke-width="6" fill="none"/>
-<path d="M105 174 L112 230 Q115 251 157 251 Q199 251 202 230 L209 174" fill="#16191c" stroke="url(#xm-metal)" stroke-width="3"/>
-<ellipse cx="157" cy="174" rx="52" ry="11" fill="#17191c" stroke="url(#xm-metal)" stroke-width="3"/>
-<ellipse cx="157" cy="177" rx="42" ry="5" fill="#9b5733" opacity=".7"/>
-<g transform="translate(157 215)" fill="#bb6248"><rect x="-5" y="-17" width="10" height="34"/><rect x="-5" y="-17" width="10" height="34" transform="rotate(60)"/><rect x="-5" y="-17" width="10" height="34" transform="rotate(-60)"/><path d="M0 -9 V10 M3 -7 C-9 -9 -5 -1 1 1 S6 6 0 7" stroke="#f2d5b1" stroke-width="1.7" fill="none"/><circle cy="-10" r="1.5" fill="#f2d5b1"/></g>
-<path d="M94 261 Q157 273 220 261" fill="none" stroke="url(#xm-metal)" stroke-width="2" opacity=".65"/>
-<g text-anchor="middle" font-family="Arial,sans-serif"><text class="xm-title" x="160" y="303" font-size="22" font-weight="600" letter-spacing="1.6">XPRESSOMEDIC</text><text class="xm-sub" x="160" y="325" font-size="10" letter-spacing="7">SCENARIOS</text><path d="M142 343 H178" stroke="#9c774c" opacity=".6"/><text class="xm-motto" x="160" y="362" font-size="8" letter-spacing="2.8">NEVER STOP LEARNING</text></g>
-</svg></div>
-<script src="js/launch.js"></script>
+
+<div id="xm-launch" aria-hidden="true">
+    <div class="xm-launch-art">
+
+        <img class="xm-dark"
+             src="images/scenario-launch-dark.png" alt="">
+
+        <img class="xm-dark xm-steam xm-steam-1"
+             src="images/scenario-steam-dark-1.png" alt="">
+
+        <img class="xm-dark xm-steam xm-steam-2"
+             src="images/scenario-steam-dark-2.png" alt="">
+
+        <img class="xm-dark xm-steam xm-steam-3"
+             src="images/scenario-steam-dark-3.png" alt="">
+
+        <img class="xm-light"
+             src="images/scenario-launch-light.png" alt="">
+
+        <img class="xm-light xm-steam xm-steam-1"
+             src="images/scenario-steam-light-1.png" alt="">
+
+        <img class="xm-light xm-steam xm-steam-2"
+             src="images/scenario-steam-light-2.png" alt="">
+
+        <img class="xm-light xm-steam xm-steam-3"
+             src="images/scenario-steam-light-3.png" alt="">
+
+    </div>
+</div>
+
+<script>
+(function () {
+    const overlay = document.getElementById('xm-launch');
+    let seen = false;
+
+    try {
+        seen = sessionStorage.getItem('scenarioLaunchSeen') === '1';
+        sessionStorage.setItem('scenarioLaunchSeen', '1');
+    } catch (e) {}
+
+    if (seen) {
+        overlay.remove();
+        return;
+    }
+
+    const started = performance.now();
+    let finished = false;
+
+    function finish() {
+        if (finished) return;
+        finished = true;
+
+        const remaining = Math.max(
+            0, 2500 - (performance.now() - started)
+        );
+
+        setTimeout(() => {
+            overlay.style.opacity = '0';
+            setTimeout(() => overlay.remove(), 350);
+        }, remaining);
+    }
+
+    if (document.readyState === 'complete') {
+        finish();
+    } else {
+        window.addEventListener('load', finish, { once: true });
+    }
+
+    setTimeout(finish, 6000);
+})();
+</script>
+
 
 
   <div class="home-header">
